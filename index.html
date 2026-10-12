@@ -1,34 +1,10 @@
-       p<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Obesity in Australia: a data story</title>
-<style>
-:root{--bg:#faf8f5;--fg:#222;--muted:#666;--accent:#c0392b;--card:#fff;--line:#e5e0d8}
-*{box-sizing:border-box}
-body{margin:0;font-family:Georgia,'Times New Roman',serif;background:var(--bg);color:var(--fg);line-height:1.65}
-header{background:#2b2d42;color:#fff;padding:56px 24px 40px}
-header .in,main,footer .in{max-width:1000px;margin:0 auto}
-header h1{margin:0 0 12px;font-size:2.4rem;line-height:1.15}
-header p{margin:0;max-width:720px;font-size:1.1rem;color:#dfe3ee}
-nav{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:10;overflow-x:auto;white-space:nowrap;padding:10px 24px;font-family:system-ui,sans-serif;font-size:.85rem}
-nav a{margin-right:18px;color:#2b2d42;text-decoration:none}nav a:hover{color:var(--accent)}
-.stats{display:flex;flex-wrap:wrap;gap:16px;margin:32px 0}
-.stat{flex:1 1 200px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px 18px}
-.stat b{display:block;font-size:2rem;color:var(--accent);font-family:system-ui,sans-serif}
-.stat span{font-size:.9rem;color:var(--muted);font-family:system-ui,sans-serif}
-main{padding:0 24px 40px}
-section{padding:36px 0;border-bottom:1px solid var(--line)}
-h2{font-size:1.6rem;margin:0 0 12px}
-.text{max-width:760px}.text p{margin:0 0 12px}
-.chart{margin:20px 0 8px;overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px;min-height:80px}
-.src{font-family:system-ui,sans-serif;font-size:.8rem;color:var(--muted);margin:6px 0 0}
-.design{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 24px 16px;margin-top:36px}
-.design h2{margin-top:16px}.design li{margin-bottom:6px}
-footer{background:#2b2d42;color:#c9cde0;padding:24px;font-family:system-ui,sans-serif;font-size:.85rem}
-code{background:#eee;padding:1px 5px;border-radius:3px}
-</style>
+<link rel="stylesheet" href="Charts/css/styles.css">
 <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
@@ -56,13 +32,49 @@ code{background:#eee;padding:1px 5px;border-radius:3px}
 <section id="cost"><h2>What does it cost? Health expenditure by age and sex</h2><div class="text"><p>Health spending linked to overweight and obesity in 2023–24 totals about <strong>$10.8 billion</strong> across the age groups shown. Only about <strong>$0.8 billion</strong> of this is spent directly on treating and managing obesity. The remaining <strong>$10.1 billion</strong> goes to treating conditions caused by excess weight.</p><p>Spending climbs steeply with age, peaking at ages 65 to 69 for both sexes. Males account for about $5.7 billion and females about $5.1 billion. Direct obesity treatment spending is higher for females than males in every age group.</p></div><div class="chart" id="vis-cost"></div><p class="src">Source: AIHW Table S29, 2023–24. Values converted from dollars to millions.</p></section>
 <section id="glp1"><h2>Treatment: GLP-1 medicines and other options</h2><div class="text"><p><em>Placeholder section.</em> The data files supplied for this project do not include GLP-1 or other treatment data, so this chart is empty. Add rows to <code>GLP1-Treatment.csv</code> with columns <code>year, treatment, value</code> (for example PBS scripts or patient numbers by treatment type) and the chart will populate.</p></div><div class="chart" id="vis-glp1"></div><p class="src">Replace this note with the source of your treatment data.</p></section>
 
+<section class="design"><h2>About this dashboard</h2>
+<ul>
+<li><strong>Audience and purpose:</strong> a general audience who want to understand obesity in Australia, moving from the overall picture to causes, geography and consequences.</li>
+<li><strong>Design choices:</strong> a single red-orange accent marks obesity throughout; males and females keep the same blue and coral in every chart; sequential colour is used for the map because the data is a continuous rate; confidence intervals are shown where the sources provide them so uncertainty is visible.</li>
+<li><strong>Chart types:</strong> a back-to-back bar chart for comparing two groups, a dot plot for change between two time points, a line with bands for trends, a choropleth with a ranked bar chart for place, and stacked bars for cost components.</li>
+<li><strong>Data:</strong> AIHW overweight and obesity tables (S5, S15, S21, S29), hospital separations with U78.1, and PHIDU modelled estimates for Population Health Areas (2022). Boundaries: ABS Population Health Areas 2021, simplified for web use.</li>
+</ul></section>
+
 </main>
-
-
-
-
+<footer><div class="in">Built with Vega-Lite. Hover over any chart for exact values.</div></footer>
 <script>
+// ---- Where the chart specs and data live (edit if you rename the repo/branch) ----
+const CHARTS_BASE = 'https://raw.githubusercontent.com/elMuffinHombre1/FIT3179/main/Charts/';
 
+// Chart specs, keyed by the id of the <div> they render into.
+const specs = {
+  "pyramid": "1_population_pyramid.vl.json",
+  "time": "3_obesity_over_time.vl.json",
+  "social": "2_social_determinants.vl.json",
+  "map": "4_obesity_map_ranked_bar.vl.json",
+  "limits": "6_limitations.vl.json",
+  "comorb": "5_comorbidities.vl.json",
+  "hosp": "7_hospitalisations.vl.json",
+  "cost": "8_cost.vl.json",
+  "glp1": "9_glp1_and_other_treatment.vl.json"
+};
+
+// Specs use relative data paths (e.g. "8_cost.csv"); point them at the GitHub folder.
+function absolutise(node) {
+  if (Array.isArray(node)) { node.forEach(absolutise); return; }
+  if (node && typeof node === 'object') {
+    if (typeof node.url === 'string' && !/^https?:\/\//.test(node.url)) node.url = CHARTS_BASE + node.url;
+    Object.values(node).forEach(absolutise);
+  }
+}
+
+for (const [id, file] of Object.entries(specs)) {
+  const box = document.getElementById('vis-' + id);
+  fetch(CHARTS_BASE + file)
+    .then(r => { if (!r.ok) throw new Error(file + ' (HTTP ' + r.status + ')'); return r.json(); })
+    .then(spec => { absolutise(spec); return vegaEmbed(box, spec, {actions: {export: true, source: false, editor: false}}); })
+    .catch(e => { box.textContent = 'Could not load chart: ' + e.message; });
+}
 </script>
 </body>
 </html>
