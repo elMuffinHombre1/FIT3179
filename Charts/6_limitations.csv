@@ -1,0 +1,55 @@
+sex,severity,measure,pct,lo,hi
+Males,Has core limitations,Obesity,43.2,39.4,47.0
+Males,Has core limitations,Severe obesity,19.2,16.0,22.4
+Males,Has core limitations,Abdominal obesity,54.9,51.3,58.5
+Males,Profound,Obesity,21.6,9.8,33.4
+Males,Profound,Severe obesity,12.2,4.4,20.1
+Males,Profound,Abdominal obesity,40.0,29.5,50.5
+Males,Severe,Obesity,48.0,35.2,60.9
+Males,Severe,Severe obesity,24.6,12.9,36.2
+Males,Severe,Abdominal obesity,54.5,42.0,67.0
+Males,Moderate,Obesity,50.3,42.8,57.8
+Males,Moderate,Severe obesity,18.2,11.7,24.7
+Males,Moderate,Abdominal obesity,57.0,49.7,64.4
+Males,Mild,Obesity,50.4,45.3,55.5
+Males,Mild,Severe obesity,23.2,17.8,28.6
+Males,Mild,Abdominal obesity,62.0,57.0,67.0
+Males,Schooling/employment restriction only,Obesity,29.7,22.1,37.4
+Males,Schooling/employment restriction only,Severe obesity,13.6,8.3,19.0
+Males,Schooling/employment restriction only,Abdominal obesity,46.2,37.2,55.2
+Males,Does not have core limitations,Obesity,30.4,28.7,32.1
+Males,Does not have core limitations,Severe obesity,10.2,9.2,11.3
+Males,Does not have core limitations,Abdominal obesity,37.7,35.8,39.7
+Males,No limitation or specific restriction,Obesity,35.3,31.0,39.5
+Males,No limitation or specific restriction,Severe obesity,10.9,8.2,13.6
+Males,No limitation or specific restriction,Abdominal obesity,45.4,41.1,49.7
+Males,No disability,Obesity,29.1,27.2,31.1
+Males,No disability,Severe obesity,10.1,8.9,11.2
+Males,No disability,Abdominal obesity,35.7,33.5,37.9
+Females,Has core limitations,Obesity,44.3,41.5,47.0
+Females,Has core limitations,Severe obesity,23.2,20.9,25.5
+Females,Has core limitations,Abdominal obesity,71.4,68.9,74.0
+Females,Profound,Obesity,34.8,24.5,45.1
+Females,Profound,Severe obesity,17.9,10.0,25.7
+Females,Profound,Abdominal obesity,68.5,57.4,79.6
+Females,Severe,Obesity,43.6,35.3,51.9
+Females,Severe,Severe obesity,23.0,15.6,30.5
+Females,Severe,Abdominal obesity,71.4,62.8,79.9
+Females,Moderate,Obesity,53.0,46.5,59.4
+Females,Moderate,Severe obesity,31.1,25.4,36.8
+Females,Moderate,Abdominal obesity,76.7,70.1,83.2
+Females,Mild,Obesity,44.6,39.9,49.3
+Females,Mild,Severe obesity,23.2,19.5,26.9
+Females,Mild,Abdominal obesity,74.7,70.5,79.0
+Females,Schooling/employment restriction only,Obesity,36.1,27.3,44.8
+Females,Schooling/employment restriction only,Severe obesity,14.1,8.3,19.9
+Females,Schooling/employment restriction only,Abdominal obesity,57.2,47.7,66.7
+Females,Does not have core limitations,Obesity,27.3,25.8,28.8
+Females,Does not have core limitations,Severe obesity,10.8,9.6,11.9
+Females,Does not have core limitations,Abdominal obesity,48.5,46.9,50.1
+Females,No limitation or specific restriction,Obesity,30.8,26.5,35.0
+Females,No limitation or specific restriction,Severe obesity,13.3,10.0,16.6
+Females,No limitation or specific restriction,Abdominal obesity,56.7,53.1,60.4
+Females,No disability,Obesity,26.6,24.7,28.5
+Females,No disability,Severe obesity,10.2,8.9,11.5
+Females,No disability,Abdominal obesity,46.8,44.9,48.6

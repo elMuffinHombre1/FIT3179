@@ -1,0 +1,104 @@
+{
+ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ "config": {
+  "view": {
+   "stroke": null
+  },
+  "axis": {
+   "labelFontSize": 11,
+   "titleFontSize": 12
+  },
+  "title": {
+   "fontSize": 15,
+   "anchor": "start"
+  }
+ },
+ "title": "Obesity prevalence, adults 18–64, 2007–08 to 2017–18 (age-standardised %)",
+ "data": {
+  "url": "3_obesity_over_time.csv",
+  "format": {
+   "type": "csv"
+  }
+ },
+ "encoding": {
+  "x": {
+   "field": "year",
+   "type": "ordinal",
+   "title": null,
+   "axis": {
+    "labelAngle": 0
+   }
+  },
+  "color": {
+   "field": "category",
+   "type": "nominal",
+   "title": null,
+   "scale": {
+    "domain": [
+     "Males",
+     "Females",
+     "Persons"
+    ],
+    "range": [
+     "#2a6f97",
+     "#e07a5f",
+     "#222"
+    ]
+   }
+  }
+ },
+ "layer": [
+  {
+   "mark": {
+    "type": "errorband",
+    "opacity": 0.15
+   },
+   "encoding": {
+    "y": {
+     "field": "lo",
+     "type": "quantitative",
+     "title": "% obese",
+     "scale": {
+      "zero": false
+     }
+    },
+    "y2": {
+     "field": "hi"
+    }
+   }
+  },
+  {
+   "mark": {
+    "type": "line",
+    "point": true,
+    "tooltip": true
+   },
+   "encoding": {
+    "y": {
+     "field": "asr",
+     "type": "quantitative"
+    },
+    "tooltip": [
+     {
+      "field": "category"
+     },
+     {
+      "field": "year"
+     },
+     {
+      "field": "asr",
+      "title": "Age-std %"
+     },
+     {
+      "field": "lo"
+     },
+     {
+      "field": "hi"
+     }
+    ]
+   }
+  }
+ ],
+ "width": 520,
+ "height": 320
+}

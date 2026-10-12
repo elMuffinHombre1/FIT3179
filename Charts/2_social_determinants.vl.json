@@ -1,0 +1,151 @@
+{
+ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ "config": {
+  "view": {
+   "stroke": null
+  },
+  "axis": {
+   "labelFontSize": 11,
+   "titleFontSize": 12
+  },
+  "title": {
+   "fontSize": 15,
+   "anchor": "start"
+  }
+ },
+ "title": "Obesity in adults 18–64 by social determinant (age-standardised %, 2007–08 vs 2017–18)",
+ "data": {
+  "url": "2_social_determinants.csv",
+  "format": {
+   "type": "csv"
+  }
+ },
+ "transform": [
+  {
+   "filter": "datum.year=='2007–08' || datum.year=='2017–18'"
+  }
+ ],
+ "facet": {
+  "row": {
+   "field": "group",
+   "type": "nominal",
+   "title": null,
+   "header": {
+    "labelAngle": 0,
+    "labelAlign": "left",
+    "labelFontWeight": "bold"
+   }
+  }
+ },
+ "spec": {
+  "width": 420,
+  "height": {
+   "step": 18
+  },
+  "encoding": {
+   "y": {
+    "field": "category",
+    "type": "nominal",
+    "sort": null,
+    "title": null
+   }
+  },
+  "layer": [
+   {
+    "mark": {
+     "type": "rule",
+     "color": "#bbb"
+    },
+    "transform": [
+     {
+      "aggregate": [
+       {
+        "op": "min",
+        "field": "asr",
+        "as": "mn"
+       },
+       {
+        "op": "max",
+        "field": "asr",
+        "as": "mx"
+       }
+      ],
+      "groupby": [
+       "category"
+      ]
+     }
+    ],
+    "encoding": {
+     "x": {
+      "field": "mn",
+      "type": "quantitative"
+     },
+     "x2": {
+      "field": "mx"
+     }
+    }
+   },
+   {
+    "mark": {
+     "type": "point",
+     "filled": true,
+     "size": 70,
+     "tooltip": true
+    },
+    "encoding": {
+     "x": {
+      "field": "asr",
+      "type": "quantitative",
+      "title": "Obese, age-standardised %",
+      "scale": {
+       "zero": false
+      }
+     },
+     "color": {
+      "field": "year",
+      "type": "nominal",
+      "scale": {
+       "range": [
+        "#9aa5b1",
+        "#c0392b"
+       ]
+      },
+      "legend": {
+       "title": null,
+       "orient": "top"
+      }
+     },
+     "tooltip": [
+      {
+       "field": "category"
+      },
+      {
+       "field": "year"
+      },
+      {
+       "field": "asr",
+       "title": "Age-std %"
+      },
+      {
+       "field": "crude",
+       "title": "Crude %"
+      },
+      {
+       "field": "lo",
+       "title": "CI low"
+      },
+      {
+       "field": "hi",
+       "title": "CI high"
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "resolve": {
+  "scale": {
+   "y": "independent"
+  }
+ }
+}

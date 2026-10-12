@@ -1,0 +1,13 @@
+bmi,sex,pct,lo,hi
+Underweight (less than 18.50),Males,0.8,0.6,1.0
+Underweight (less than 18.50),Females,2.1,1.7,2.5
+Normal range (18.50–24.99),Males,26.7,25.5,27.9
+Normal range (18.50–24.99),Females,36.1,34.7,37.4
+Overweight but not obese (25.00–29.99),Males,38.4,37.2,39.7
+Overweight but not obese (25.00–29.99),Females,30.2,29.0,31.5
+Obese class I (30.00–34.99),Males,21.9,20.9,22.9
+Obese class I (30.00–34.99),Females,17.7,16.6,18.7
+Obese class II (35.00–39.99),Males,8.3,7.6,9.0
+Obese class II (35.00–39.99),Females,8.6,7.8,9.3
+Obese class III (40.00 or more),Males,3.9,3.4,4.4
+Obese class III (40.00 or more),Females,5.4,4.9,5.8

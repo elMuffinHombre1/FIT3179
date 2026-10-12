@@ -1,0 +1,107 @@
+{
+ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ "config": {
+  "view": {
+   "stroke": null
+  },
+  "axis": {
+   "labelFontSize": 11,
+   "titleFontSize": 12
+  },
+  "title": {
+   "fontSize": 15,
+   "anchor": "start"
+  }
+ },
+ "title": "Health expenditure on overweight and obesity by age and sex, 2023–24 ($m)",
+ "data": {
+  "url": "8_cost.csv",
+  "format": {
+   "type": "csv"
+  }
+ },
+ "facet": {
+  "row": {
+   "field": "sex",
+   "type": "nominal",
+   "title": null,
+   "sort": [
+    "Males",
+    "Females"
+   ]
+  }
+ },
+ "spec": {
+  "width": 560,
+  "height": 200,
+  "mark": {
+   "type": "bar",
+   "tooltip": true
+  },
+  "encoding": {
+   "x": {
+    "field": "age",
+    "type": "ordinal",
+    "sort": [
+     "<1",
+     "1–4",
+     "5–9",
+     "10–14",
+     "15–19",
+     "20–24",
+     "25–29",
+     "30–34",
+     "35–39",
+     "40–44",
+     "45–49",
+     "50–54",
+     "55–59",
+     "60–64",
+     "65–69",
+     "70–74",
+     "75–79",
+     "80–84",
+     "85+"
+    ],
+    "title": "Age group",
+    "axis": {
+     "labelAngle": -40
+    }
+   },
+   "y": {
+    "field": "aud_m",
+    "type": "quantitative",
+    "title": "$ million"
+   },
+   "color": {
+    "field": "type",
+    "type": "nominal",
+    "scale": {
+     "range": [
+      "#e9c46a",
+      "#264653"
+     ]
+    },
+    "legend": {
+     "title": null,
+     "orient": "top",
+     "labelLimit": 320,
+     "columns": 1
+    }
+   },
+   "tooltip": [
+    {
+     "field": "age"
+    },
+    {
+     "field": "type"
+    },
+    {
+     "field": "aud_m",
+     "format": ",.1f",
+     "title": "$m"
+    }
+   ]
+  }
+ }
+}

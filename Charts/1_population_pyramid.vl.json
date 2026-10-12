@@ -1,0 +1,140 @@
+{
+ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ "config": {
+  "view": {
+   "stroke": null
+  },
+  "axis": {
+   "labelFontSize": 11,
+   "titleFontSize": 12
+  },
+  "title": {
+   "fontSize": 15,
+   "anchor": "start"
+  }
+ },
+ "title": "Adult BMI distribution by sex (pyramid)",
+ "data": {
+  "url": "1_population_pyramid.csv",
+  "format": {
+   "type": "csv"
+  }
+ },
+ "transform": [
+  {
+   "calculate": "datum.sex=='Males' ? -datum.pct : datum.pct",
+   "as": "signed"
+  }
+ ],
+ "encoding": {
+  "y": {
+   "field": "bmi",
+   "type": "ordinal",
+   "sort": [
+    "Obese class III (40.00 or more)",
+    "Obese class II (35.00–39.99)",
+    "Obese class I (30.00–34.99)",
+    "Overweight but not obese (25.00–29.99)",
+    "Normal range (18.50–24.99)",
+    "Underweight (less than 18.50)"
+   ],
+   "axis": {
+    "title": null,
+    "labelLimit": 260
+   }
+  }
+ },
+ "layer": [
+  {
+   "mark": {
+    "type": "bar",
+    "tooltip": true
+   },
+   "encoding": {
+    "x": {
+     "field": "signed",
+     "type": "quantitative",
+     "title": "% of adults (Males ← → Females)",
+     "scale": {
+      "domain": [
+       -50,
+       45
+      ]
+     },
+     "axis": {
+      "format": "~s",
+      "labelExpr": "abs(datum.value)+'%'"
+     }
+    },
+    "color": {
+     "field": "sex",
+     "type": "nominal",
+     "scale": {
+      "domain": [
+       "Males",
+       "Females"
+      ],
+      "range": [
+       "#2a6f97",
+       "#e07a5f"
+      ]
+     },
+     "legend": {
+      "title": null,
+      "orient": "top"
+     }
+    },
+    "tooltip": [
+     {
+      "field": "bmi"
+     },
+     {
+      "field": "sex"
+     },
+     {
+      "field": "pct",
+      "title": "%"
+     },
+     {
+      "field": "lo",
+      "title": "95% CI low"
+     },
+     {
+      "field": "hi",
+      "title": "95% CI high"
+     }
+    ]
+   }
+  },
+  {
+   "mark": {
+    "type": "text",
+    "fontSize": 11,
+    "align": {
+     "expr": "datum.sex=='Males' ? 'right':'left'"
+    },
+    "dx": {
+     "expr": "datum.sex=='Males' ? -4:4"
+    }
+   },
+   "encoding": {
+    "x": {
+     "field": "signed",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "pct",
+     "format": ".1f"
+    },
+    "xOffset": {
+     "value": 0
+    },
+    "color": {
+     "value": "#333"
+    }
+   }
+  }
+ ],
+ "width": 520,
+ "height": 260
+}

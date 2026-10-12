@@ -1,0 +1,131 @@
+{
+ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ "config": {
+  "view": {
+   "stroke": null
+  },
+  "axis": {
+   "labelFontSize": 11,
+   "titleFontSize": 12
+  },
+  "title": {
+   "fontSize": 15,
+   "anchor": "start"
+  }
+ },
+ "title": "Obesity by severity of core limitations and sex, adults 2022",
+ "data": {
+  "url": "6_limitations.csv",
+  "format": {
+   "type": "csv"
+  }
+ },
+ "facet": {
+  "column": {
+   "field": "measure",
+   "type": "nominal",
+   "title": null,
+   "sort": [
+    "Obesity",
+    "Severe obesity",
+    "Abdominal obesity"
+   ]
+  }
+ },
+ "spec": {
+  "width": 230,
+  "height": 300,
+  "encoding": {
+   "y": {
+    "field": "severity",
+    "type": "nominal",
+    "sort": [
+     "Has core limitations",
+     "Profound",
+     "Severe",
+     "Moderate",
+     "Mild",
+     "Schooling/employment restriction only",
+     "Does not have core limitations",
+     "No limitation or specific restriction",
+     "No disability"
+    ],
+    "title": null,
+    "axis": {
+     "labelLimit": 230
+    }
+   }
+  },
+  "layer": [
+   {
+    "mark": {
+     "type": "bar",
+     "tooltip": true
+    },
+    "encoding": {
+     "x": {
+      "field": "pct",
+      "type": "quantitative",
+      "title": "%"
+     },
+     "yOffset": {
+      "field": "sex"
+     },
+     "color": {
+      "field": "sex",
+      "type": "nominal",
+      "scale": {
+       "domain": [
+        "Males",
+        "Females"
+       ],
+       "range": [
+        "#2a6f97",
+        "#e07a5f"
+       ]
+      },
+      "legend": {
+       "title": null,
+       "orient": "top"
+      }
+     },
+     "tooltip": [
+      {
+       "field": "severity"
+      },
+      {
+       "field": "sex"
+      },
+      {
+       "field": "pct"
+      },
+      {
+       "field": "lo"
+      },
+      {
+       "field": "hi"
+      }
+     ]
+    }
+   },
+   {
+    "mark": {
+     "type": "rule",
+     "color": "#333"
+    },
+    "encoding": {
+     "x": {
+      "field": "lo",
+      "type": "quantitative"
+     },
+     "x2": {
+      "field": "hi"
+     },
+     "yOffset": {
+      "field": "sex"
+     }
+    }
+   }
+  ]
+ }
+}
