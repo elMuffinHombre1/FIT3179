@@ -1,74 +1,174 @@
 {
- "description": "Jitter plot of the modelled adult obesity rate of every Population Health Area, grouped by state, with a median marker for each state.",
+ "description": "Choropleth map of modelled adult obesity rate by Population Health Area with a ranked bar chart of the 25 highest areas.",
  "title": {
-  "text": "Obesity varies widely inside every state, often more than between states",
-  "subtitle": "Each dot is one Population Health Area (adults 18+, 2022, age-standardised rate per 100). Bars mark each state's median area."
+  "text": "Where is adult obesity highest?",
+  "subtitle": "Modelled obesity rate (age-standardised, per 100 adults, 2022). Grey = no published estimate. Click a bar to highlight."
  },
- "data": {
-  "url": "08_area_jitter.csv",
-  "format": {
-   "type": "csv"
-  }
- },
- "width": 620,
- "height": 380,
- "encoding": {
-  "x": {
-   "field": "State",
-   "type": "nominal",
-   "sort": [
-    "ACT",
-    "VIC",
-    "NSW",
-    "WA",
-    "NT",
-    "SA",
-    "QLD",
-    "TAS"
-   ],
-   "title": null,
-   "axis": {
-    "labelAngle": 0,
-    "labelFontSize": 13,
-    "labelFontWeight": "bold"
+ "params": [
+  {
+   "name": "pick",
+   "select": {
+    "type": "point",
+    "fields": [
+     "Name"
+    ],
+    "on": "click"
    }
   }
- },
- "layer": [
+ ],
+ "hconcat": [
   {
+   "width": 520,
+   "height": 460,
+   "data": {
+    "url": "PHA_2021_Aust_GDA2020_Gen50.json",
+    "format": {
+     "type": "topojson",
+     "feature": "PHA_2021_Aust_GDA2020_Gen50"
+    }
+   },
+   "projection": {
+    "type": "mercator"
+   },
+   "transform": [
+    {
+     "lookup": "properties.Code",
+     "from": {
+      "data": {
+       "url": "phidu_obesity_clean.csv",
+       "format": {
+        "type": "csv"
+       }
+      },
+      "key": "Code",
+      "fields": [
+       "Name",
+       "State",
+       "obese_asr",
+       "obese_n"
+      ]
+     }
+    }
+   ],
    "mark": {
-    "type": "circle",
-    "size": 26,
-    "opacity": 0.4,
-    "color": "#0072B2",
-    "tooltip": true
+    "type": "geoshape",
+    "stroke": "#fff",
+    "strokeWidth": 0.15,
+    "invalid": null
    },
    "encoding": {
-    "y": {
+    "color": {
+     "condition": {
+      "test": "!isValid(datum.obese_asr)",
+      "value": "#e0e0e0"
+     },
      "field": "obese_asr",
      "type": "quantitative",
-     "title": "Obesity rate per 100",
+     "title": "Obese per 100",
      "scale": {
+      "scheme": "viridis",
+      "reverse": true,
       "domain": [
        10,
-       58
+       55
       ]
+     },
+     "legend": {
+      "orient": "bottom",
+      "gradientLength": 260
      }
     },
-    "xOffset": {
-     "field": "jitter",
-     "type": "quantitative",
-     "scale": {
-      "domain": [
-       -1.5,
-       1.5
-      ]
-     }
+    "opacity": {
+     "condition": {
+      "param": "pick",
+      "value": 1
+     },
+     "value": 0.88
     },
     "tooltip": [
      {
       "field": "Name",
-      "title": "Area"
+      "title": "PHA"
+     },
+     {
+      "field": "State"
+     },
+     {
+      "field": "obese_asr",
+      "title": "Rate per 100"
+     },
+     {
+      "field": "obese_n",
+      "title": "Estimated obese adults",
+      "format": ","
+     }
+    ]
+   }
+  },
+  {
+   "width": 240,
+   "height": {
+    "step": 14
+   },
+   "data": {
+    "url": "phidu_obesity_clean.csv",
+    "format": {
+     "type": "csv"
+    }
+   },
+   "transform": [
+    {
+     "filter": "isValid(datum.obese_asr)"
+    },
+    {
+     "window": [
+      {
+       "op": "rank",
+       "as": "rank"
+      }
+     ],
+     "sort": [
+      {
+       "field": "obese_asr",
+       "order": "descending"
+      }
+     ]
+    },
+    {
+     "filter": "datum.rank<=25"
+    }
+   ],
+   "title": "25 highest areas",
+   "mark": {
+    "type": "bar",
+    "color": "#31688E",
+    "tooltip": true
+   },
+   "encoding": {
+    "y": {
+     "field": "Name",
+     "type": "nominal",
+     "sort": "-x",
+     "title": null,
+     "axis": {
+      "labelLimit": 210
+     }
+    },
+    "x": {
+     "field": "obese_asr",
+     "type": "quantitative",
+     "title": "Rate per 100"
+    },
+    "opacity": {
+     "condition": {
+      "param": "pick",
+      "value": 1
+     },
+     "value": 0.55
+    },
+    "tooltip": [
+     {
+      "field": "Name"
      },
      {
       "field": "State"
@@ -78,68 +178,6 @@
       "title": "Rate per 100"
      }
     ]
-   }
-  },
-  {
-   "mark": {
-    "type": "tick",
-    "thickness": 4,
-    "size": 62,
-    "color": "#D55E00"
-   },
-   "encoding": {
-    "y": {
-     "aggregate": "median",
-     "field": "obese_asr",
-     "type": "quantitative"
-    }
-   }
-  },
-  {
-   "mark": {
-    "type": "text",
-    "dy": -14,
-    "fontWeight": "bold",
-    "fontSize": 13,
-    "color": "#fff",
-    "stroke": "#fff",
-    "strokeWidth": 5,
-    "strokeJoin": "round"
-   },
-   "encoding": {
-    "y": {
-     "aggregate": "median",
-     "field": "obese_asr",
-     "type": "quantitative"
-    },
-    "text": {
-     "aggregate": "median",
-     "field": "obese_asr",
-     "type": "quantitative",
-     "format": ".1f"
-    }
-   }
-  },
-  {
-   "mark": {
-    "type": "text",
-    "dy": -14,
-    "fontWeight": "bold",
-    "fontSize": 13,
-    "color": "#8c3d00"
-   },
-   "encoding": {
-    "y": {
-     "aggregate": "median",
-     "field": "obese_asr",
-     "type": "quantitative"
-    },
-    "text": {
-     "aggregate": "median",
-     "field": "obese_asr",
-     "type": "quantitative",
-     "format": ".1f"
-    }
    }
   }
  ],

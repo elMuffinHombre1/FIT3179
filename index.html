@@ -46,7 +46,13 @@
 <footer><div class="in">Built with Vega-Lite. Hover over any chart for exact values.</div></footer>
 <script>
 // ---- Where the chart specs and data live (edit if you rename the repo/branch) ----
-const CHARTS_BASE = 'https://raw.githubusercontent.com/elMuffinHombre1/FIT3179/main/';
+// If you ever host this page somewhere that is NOT your GitHub Pages site, set the branch the files are on:
+const BRANCH = 'main';
+const GITHUB_BASE = 'https://raw.githubusercontent.com/elMuffinHombre1/FIT3179/' + BRANCH + '/';
+// On your computer (Live Server) and on GitHub Pages the chart files sit next to this page, so read them
+// from the same place. This works whichever branch Pages is publishing.
+const SAME_PLACE = ['localhost', '127.0.0.1', ''].includes(location.hostname) || location.hostname.endsWith('github.io');
+const CHARTS_BASE = SAME_PLACE ? '' : GITHUB_BASE;
 
 // Chart specs, keyed by the id of the <div> they render into.
 const specs = {

@@ -1,11 +1,209 @@
-group,low_group,low_value,high_group,high_value,gap
-Education,Bachelor degree or higher,20.5,Did not finish secondary school,38.3,17.8
-Language spoken at home,Language other than English,16.7,English,32.0,15.3
-Occupation,Professionals,22.6,Machinery operators & drivers,36.3,13.7
-Country of birth,Elsewhere,23.0,Australia,33.0,10.0
-Household income,Fifth quintile,25.4,First quintile,34.3,8.9
-Remoteness,Major cities,27.7,Inner regional,36.3,8.6
-Household type,Couple with children,28.1,One-parent family,33.7,5.6
-Employment,Employed,28.6,Not in labour force,33.2,4.6
-Social marital status,Married,29.1,Not married,31.6,2.5
-Household tenure,"Owner, no mortgage",28.8,Renter,31.0,2.2
+{
+ "description": "Connected dot plot showing, for each social factor, the obesity rate of the group with the lowest and highest obesity in 2017-18.",
+ "title": {
+  "text": "Education and language shape obesity most: a gap of up to 18 points",
+  "subtitle": "Obesity rate (age-standardised %, adults 18–64, 2017–18) of the lowest and highest group within each social factor."
+ },
+ "data": {
+  "url": "05_social_gaps.csv",
+  "format": {
+   "type": "csv"
+  }
+ },
+ "width": 620,
+ "height": {
+  "step": 34
+ },
+ "encoding": {
+  "y": {
+   "field": "group",
+   "type": "nominal",
+   "sort": {
+    "field": "gap",
+    "order": "descending"
+   },
+   "title": null,
+   "axis": {
+    "labelFontWeight": "bold",
+    "labelLimit": 180
+   }
+  }
+ },
+ "layer": [
+  {
+   "mark": {
+    "type": "rule",
+    "strokeWidth": 3,
+    "color": "#b5b5b5"
+   },
+   "encoding": {
+    "x": {
+     "field": "low_value",
+     "type": "quantitative",
+     "title": "% obese (age-standardised)",
+     "scale": {
+      "domain": [
+       0,
+       62
+      ]
+     }
+    },
+    "x2": {
+     "field": "high_value"
+    }
+   }
+  },
+  {
+   "mark": {
+    "type": "point",
+    "filled": true,
+    "size": 150,
+    "opacity": 1,
+    "color": "#44AA99",
+    "shape": "circle"
+   },
+   "encoding": {
+    "x": {
+     "field": "low_value",
+     "type": "quantitative"
+    },
+    "tooltip": [
+     {
+      "field": "group"
+     },
+     {
+      "field": "low_group",
+      "title": "Lowest group"
+     },
+     {
+      "field": "low_value",
+      "title": "%"
+     }
+    ]
+   }
+  },
+  {
+   "mark": {
+    "type": "point",
+    "filled": true,
+    "size": 150,
+    "opacity": 1,
+    "color": "#882255",
+    "shape": "diamond"
+   },
+   "encoding": {
+    "x": {
+     "field": "high_value",
+     "type": "quantitative"
+    },
+    "tooltip": [
+     {
+      "field": "group"
+     },
+     {
+      "field": "high_group",
+      "title": "Highest group"
+     },
+     {
+      "field": "high_value",
+      "title": "%"
+     }
+    ]
+   }
+  },
+  {
+   "mark": {
+    "type": "text",
+    "align": "right",
+    "dx": -12,
+    "fontSize": 11,
+    "color": "#1b6b5f"
+   },
+   "encoding": {
+    "x": {
+     "field": "low_value",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "low_group"
+    }
+   }
+  },
+  {
+   "mark": {
+    "type": "text",
+    "align": "left",
+    "dx": 12,
+    "fontSize": 11,
+    "color": "#882255"
+   },
+   "encoding": {
+    "x": {
+     "field": "high_value",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "high_group"
+    }
+   }
+  },
+  {
+   "mark": {
+    "type": "text",
+    "align": "right",
+    "fontWeight": "bold",
+    "fontSize": 12,
+    "color": "#222"
+   },
+   "encoding": {
+    "x": {
+     "value": 620
+    },
+    "text": {
+     "field": "gap",
+     "format": ".1f"
+    }
+   }
+  }
+ ],
+ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ "config": {
+  "background": "#fff",
+  "view": {
+   "stroke": null
+  },
+  "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+  "axis": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "domainColor": "#666",
+   "tickColor": "#666",
+   "gridColor": "#e5e0d8"
+  },
+  "title": {
+   "fontSize": 16,
+   "anchor": "start",
+   "color": "#2b2d42",
+   "subtitleColor": "#666",
+   "subtitleFontSize": 12,
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "header": {
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "labelFont": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "legend": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222"
+  },
+  "text": {
+   "color": "#222",
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  }
+ }
+}

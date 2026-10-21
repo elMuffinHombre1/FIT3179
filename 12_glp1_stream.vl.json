@@ -1,126 +1,49 @@
 {
- "description": "Proportional symbol map: each Population Health Area is a circle sized by the estimated number of adults with obesity and coloured by the obesity rate.",
+ "description": "TEMPLATE streamgraph. No GLP-1 data was supplied; add rows (year, treatment, value) to GLP1-Treatment.csv.",
  "title": {
-  "text": "Most adults with obesity live along the east and south-east coasts",
-  "subtitle": "Circle size = estimated number of obese adults; colour = rate per 100 (darker = higher)."
+  "text": "GLP-1 and other obesity treatments over time",
+  "subtitle": "Template: add data to GLP1-Treatment.csv (columns: year, treatment, value)."
  },
- "width": 720,
- "height": 560,
- "projection": {
-  "type": "mercator"
+ "data": {
+  "url": "GLP1-Treatment.csv",
+  "format": {
+   "type": "csv"
+  }
  },
- "layer": [
-  {
-   "data": {
-    "url": "PHA_2021_Aust_GDA2020_Gen50.json",
-    "format": {
-     "type": "topojson",
-     "feature": "PHA_2021_Aust_GDA2020_Gen50"
-    }
-   },
-   "mark": {
-    "type": "geoshape",
-    "fill": "#efefef",
-    "stroke": "#d0d0d0",
-    "strokeWidth": 0.2
-   }
+ "width": 620,
+ "height": 320,
+ "mark": {
+  "type": "area",
+  "interpolate": "monotone"
+ },
+ "encoding": {
+  "x": {
+   "field": "year",
+   "type": "ordinal",
+   "title": null
   },
-  {
-   "data": {
-    "url": "phidu_obesity_symbols.csv",
-    "format": {
-     "type": "csv"
-    }
-   },
-   "transform": [
-    {
-     "filter": "isValid(datum.obese_n) && isValid(datum.obese_asr)"
-    }
-   ],
-   "mark": {
-    "type": "circle",
-    "opacity": 0.75,
-    "stroke": "#333",
-    "strokeWidth": 0.35,
-    "tooltip": true
-   },
-   "encoding": {
-    "longitude": {
-     "field": "lon",
-     "type": "quantitative"
-    },
-    "latitude": {
-     "field": "lat",
-     "type": "quantitative"
-    },
-    "size": {
-     "field": "obese_n",
-     "type": "quantitative",
-     "title": "Estimated obese adults",
-     "scale": {
-      "type": "sqrt",
-      "range": [
-       3,
-       420
-      ],
-      "domain": [
-       0,
-       22000
-      ]
-     },
-     "legend": {
-      "orient": "bottom-left",
-      "format": ",.0f",
-      "values": [
-       2000,
-       10000,
-       20000
-      ]
-     }
-    },
-    "color": {
-     "field": "obese_asr",
-     "type": "quantitative",
-     "title": "Rate per 100",
-     "scale": {
-      "scheme": "viridis",
-      "reverse": true,
-      "domain": [
-       10,
-       55
-      ],
-      "clamp": true
-     },
-     "legend": {
-      "orient": "bottom-right",
-      "gradientLength": 160
-     }
-    },
-    "order": {
-     "field": "obese_n",
-     "sort": "descending"
-    },
-    "tooltip": [
-     {
-      "field": "Name",
-      "title": "PHA"
-     },
-     {
-      "field": "State"
-     },
-     {
-      "field": "obese_n",
-      "title": "Estimated obese adults",
-      "format": ",.0f"
-     },
-     {
-      "field": "obese_asr",
-      "title": "Rate per 100"
-     }
+  "y": {
+   "field": "value",
+   "type": "quantitative",
+   "stack": "center",
+   "axis": null
+  },
+  "color": {
+   "field": "treatment",
+   "type": "nominal",
+   "title": null,
+   "scale": {
+    "range": [
+     "#0072B2",
+     "#E69F00",
+     "#009E73",
+     "#CC79A7",
+     "#56B4E9",
+     "#D55E00"
     ]
    }
   }
- ],
+ },
  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
  "config": {
   "background": "#fff",
