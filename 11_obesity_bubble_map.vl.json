@@ -1,130 +1,123 @@
 {
- "description": "Tile grid map with one square per state or territory showing the approximate adult obesity rate.",
+ "description": "Proportional symbol map: each Population Health Area is a circle sized by the estimated number of adults with obesity and coloured by the obesity rate.",
  "title": {
-  "text": "Tasmania has the highest obesity rate; the ACT and Victoria the lowest",
-  "subtitle": "Approximate adult obesity rate (%) by state or territory. Tiles are arranged roughly like the map of Australia."
+  "text": "Most adults with obesity live along the east and south-east coasts",
+  "subtitle": "Circle size = estimated number of obese adults; colour = rate per 100 (darker = higher)."
  },
- "data": {
-  "url": "state_tiles.csv",
-  "format": {
-   "type": "csv"
-  }
- },
- "width": 420,
- "height": 420,
- "encoding": {
-  "x": {
-   "field": "col",
-   "type": "ordinal",
-   "axis": null,
-   "scale": {
-    "paddingInner": 0.06,
-    "paddingOuter": 0.02
-   }
-  },
-  "y": {
-   "field": "row",
-   "type": "ordinal",
-   "axis": null,
-   "scale": {
-    "paddingInner": 0.06,
-    "paddingOuter": 0.02
-   }
-  }
+ "width": 720,
+ "height": 560,
+ "projection": {
+  "type": "mercator"
  },
  "layer": [
   {
+   "data": {
+    "url": "PHA_2021_Aust_GDA2020_Gen50.json",
+    "format": {
+     "type": "topojson",
+     "feature": "PHA_2021_Aust_GDA2020_Gen50"
+    }
+   },
    "mark": {
-    "type": "rect",
-    "cornerRadius": 6,
+    "type": "geoshape",
+    "fill": "#efefef",
+    "stroke": "#d0d0d0",
+    "strokeWidth": 0.2
+   }
+  },
+  {
+   "data": {
+    "url": "phidu_obesity_symbols.csv",
+    "format": {
+     "type": "csv"
+    }
+   },
+   "transform": [
+    {
+     "filter": "isValid(datum.obese_n) && isValid(datum.obese_asr)"
+    }
+   ],
+   "mark": {
+    "type": "circle",
+    "opacity": 0.75,
+    "stroke": "#333",
+    "strokeWidth": 0.35,
     "tooltip": true
    },
    "encoding": {
-    "color": {
-     "field": "obese_rate_weighted",
+    "longitude": {
+     "field": "lon",
+     "type": "quantitative"
+    },
+    "latitude": {
+     "field": "lat",
+     "type": "quantitative"
+    },
+    "size": {
+     "field": "obese_n",
      "type": "quantitative",
-     "title": "Obese adults (%)",
+     "title": "Estimated obese adults",
+     "scale": {
+      "type": "sqrt",
+      "range": [
+       3,
+       420
+      ],
+      "domain": [
+       0,
+       22000
+      ]
+     },
+     "legend": {
+      "orient": "bottom-left",
+      "format": ",.0f",
+      "values": [
+       2000,
+       10000,
+       20000
+      ]
+     }
+    },
+    "color": {
+     "field": "obese_asr",
+     "type": "quantitative",
+     "title": "Rate per 100",
      "scale": {
       "scheme": "viridis",
       "reverse": true,
       "domain": [
-       26,
-       40
-      ]
+       10,
+       55
+      ],
+      "clamp": true
      },
      "legend": {
-      "orient": "bottom",
-      "gradientLength": 260
+      "orient": "bottom-right",
+      "gradientLength": 160
      }
+    },
+    "order": {
+     "field": "obese_n",
+     "sort": "descending"
     },
     "tooltip": [
      {
-      "field": "state",
-      "title": "State"
+      "field": "Name",
+      "title": "PHA"
      },
      {
-      "field": "obese_rate_weighted",
-      "title": "Obesity rate (approx %)"
+      "field": "State"
      },
      {
-      "field": "obese_adults_est",
+      "field": "obese_n",
       "title": "Estimated obese adults",
-      "format": ","
+      "format": ",.0f"
      },
      {
-      "field": "median_area_rate",
-      "title": "Median area rate",
-      "format": ".1f"
-     },
-     {
-      "field": "areas_with_estimate",
-      "title": "Areas with an estimate"
-     },
-     {
-      "field": "areas_total",
-      "title": "Total areas"
+      "field": "obese_asr",
+      "title": "Rate per 100"
      }
     ]
-   }
-  },
-  {
-   "mark": {
-    "type": "text",
-    "fontSize": 20,
-    "fontWeight": "bold",
-    "dy": -12
-   },
-   "encoding": {
-    "text": {
-     "field": "abbr"
-    },
-    "color": {
-     "condition": {
-      "test": "datum.obese_rate_weighted > 32",
-      "value": "white"
-     },
-     "value": "#222"
-    }
-   }
-  },
-  {
-   "mark": {
-    "type": "text",
-    "fontSize": 14,
-    "dy": 10
-   },
-   "encoding": {
-    "text": {
-     "field": "obese_rate_weighted",
-     "format": ".1f"
-    },
-    "color": {
-     "condition": {
-      "test": "datum.obese_rate_weighted > 32",
-      "value": "white"
-     },
-     "value": "#222"
-    }
    }
   }
  ],

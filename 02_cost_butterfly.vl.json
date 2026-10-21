@@ -1,77 +1,298 @@
-age,sex,type,aud_m
-<1,Males,Treatment & management of obesity,0.286188
-<1,Males,Treatment of conditions due to overweight,0.0
-<1,Females,Treatment & management of obesity,0.453729
-<1,Females,Treatment of conditions due to overweight,0.0
-1–4,Males,Treatment & management of obesity,0.304967
-1–4,Males,Treatment of conditions due to overweight,0.0
-1–4,Females,Treatment & management of obesity,0.46427
-1–4,Females,Treatment of conditions due to overweight,0.0
-5–9,Males,Treatment & management of obesity,2.510492
-5–9,Males,Treatment of conditions due to overweight,9.624136
-5–9,Females,Treatment & management of obesity,3.649669
-5–9,Females,Treatment of conditions due to overweight,6.20641
-10–14,Males,Treatment & management of obesity,2.501531
-10–14,Males,Treatment of conditions due to overweight,2.444575
-10–14,Females,Treatment & management of obesity,4.360358
-10–14,Females,Treatment of conditions due to overweight,1.757702
-15–19,Males,Treatment & management of obesity,5.237258
-15–19,Males,Treatment of conditions due to overweight,9.617803
-15–19,Females,Treatment & management of obesity,9.378594
-15–19,Females,Treatment of conditions due to overweight,12.201843
-20–24,Males,Treatment & management of obesity,6.907705
-20–24,Males,Treatment of conditions due to overweight,14.025066
-20–24,Females,Treatment & management of obesity,23.042507
-20–24,Females,Treatment of conditions due to overweight,22.347871
-25–29,Males,Treatment & management of obesity,13.422163
-25–29,Males,Treatment of conditions due to overweight,40.999783
-25–29,Females,Treatment & management of obesity,47.787524
-25–29,Females,Treatment of conditions due to overweight,62.860131
-30–34,Males,Treatment & management of obesity,19.956818
-30–34,Males,Treatment of conditions due to overweight,65.220036
-30–34,Females,Treatment & management of obesity,70.151321
-30–34,Females,Treatment of conditions due to overweight,84.603853
-35–39,Males,Treatment & management of obesity,24.118701
-35–39,Males,Treatment of conditions due to overweight,116.802059
-35–39,Females,Treatment & management of obesity,78.676598
-35–39,Females,Treatment of conditions due to overweight,129.504239
-40–44,Males,Treatment & management of obesity,26.008
-40–44,Males,Treatment of conditions due to overweight,162.879054
-40–44,Females,Treatment & management of obesity,73.796405
-40–44,Females,Treatment of conditions due to overweight,150.301681
-45–49,Males,Treatment & management of obesity,22.380068
-45–49,Males,Treatment of conditions due to overweight,261.033905
-45–49,Females,Treatment & management of obesity,66.692329
-45–49,Females,Treatment of conditions due to overweight,205.574217
-50–54,Males,Treatment & management of obesity,25.215071
-50–54,Males,Treatment of conditions due to overweight,406.892022
-50–54,Females,Treatment & management of obesity,68.806641
-50–54,Females,Treatment of conditions due to overweight,342.188562
-55–59,Males,Treatment & management of obesity,18.409698
-55–59,Males,Treatment of conditions due to overweight,539.77957
-55–59,Females,Treatment & management of obesity,48.317914
-55–59,Females,Treatment of conditions due to overweight,381.78775
-60–64,Males,Treatment & management of obesity,16.91406
-60–64,Males,Treatment of conditions due to overweight,719.042958
-60–64,Females,Treatment & management of obesity,36.809393
-60–64,Females,Treatment of conditions due to overweight,533.863905
-65–69,Males,Treatment & management of obesity,9.526816
-65–69,Males,Treatment of conditions due to overweight,847.221831
-65–69,Females,Treatment & management of obesity,18.52422
-65–69,Females,Treatment of conditions due to overweight,650.99554
-70–74,Males,Treatment & management of obesity,7.771987
-70–74,Males,Treatment of conditions due to overweight,832.093793
-70–74,Females,Treatment & management of obesity,13.567617
-70–74,Females,Treatment of conditions due to overweight,621.901673
-75–79,Males,Treatment & management of obesity,3.018184
-75–79,Males,Treatment of conditions due to overweight,791.727791
-75–79,Females,Treatment & management of obesity,5.247818
-75–79,Females,Treatment of conditions due to overweight,605.095697
-80–84,Males,Treatment & management of obesity,1.929935
-80–84,Males,Treatment of conditions due to overweight,386.370421
-80–84,Females,Treatment & management of obesity,3.522842
-80–84,Females,Treatment of conditions due to overweight,351.065977
-85+,Males,Treatment & management of obesity,0.61983
-85+,Males,Treatment of conditions due to overweight,319.162903
-85+,Females,Treatment & management of obesity,1.127632
-85+,Females,Treatment of conditions due to overweight,366.707866
+{
+ "description": "Butterfly chart of 2023-24 health spending linked to overweight and obesity by age group, males on the left and females on the right, split into direct treatment and treatment of resulting conditions.",
+ "title": {
+  "text": "Health spending on excess weight peaks at ages 65–69",
+  "subtitle": "2023–24, $ million by age group and sex. Darker = treating conditions caused by excess weight; lighter = direct obesity treatment."
+ },
+ "width": 560,
+ "height": 440,
+ "layer": [
+  {
+   "data": {
+    "url": "02_cost_butterfly.csv",
+    "format": {
+     "type": "csv"
+    }
+   },
+   "transform": [
+    {
+     "calculate": "datum.sex == 'Males' ? -datum.aud_m : datum.aud_m",
+     "as": "signed"
+    },
+    {
+     "calculate": "datum.sex + ' – ' + (datum.type == 'Treatment & management of obesity' ? 'direct obesity treatment' : 'conditions caused by excess weight')",
+     "as": "series"
+    },
+    {
+     "calculate": "datum.type == 'Treatment & management of obesity' ? 1 : 0",
+     "as": "ord"
+    }
+   ],
+   "mark": {
+    "type": "bar",
+    "tooltip": true
+   },
+   "encoding": {
+    "y": {
+     "field": "age",
+     "type": "ordinal",
+     "sort": [
+      "85+",
+      "80–84",
+      "75–79",
+      "70–74",
+      "65–69",
+      "60–64",
+      "55–59",
+      "50–54",
+      "45–49",
+      "40–44",
+      "35–39",
+      "30–34",
+      "25–29",
+      "20–24",
+      "15–19",
+      "10–14",
+      "5–9",
+      "1–4",
+      "<1"
+     ],
+     "title": "Age group",
+     "axis": {
+      "labelPadding": 6
+     }
+    },
+    "x": {
+     "field": "signed",
+     "type": "quantitative",
+     "title": "← Males  |  Females →  ($ million)",
+     "scale": {
+      "domain": [
+       -1100,
+       900
+      ]
+     },
+     "axis": {
+      "labelExpr": "abs(datum.value)",
+      "grid": true
+     }
+    },
+    "color": {
+     "field": "series",
+     "type": "nominal",
+     "title": null,
+     "scale": {
+      "domain": [
+       "Males – conditions caused by excess weight",
+       "Males – direct obesity treatment",
+       "Females – conditions caused by excess weight",
+       "Females – direct obesity treatment"
+      ],
+      "range": [
+       "#0072B2",
+       "#8CC3E6",
+       "#D55E00",
+       "#F2B07F"
+      ]
+     },
+     "legend": {
+      "orient": "bottom",
+      "columns": 2,
+      "labelLimit": 300
+     }
+    },
+    "order": {
+     "field": "ord",
+     "type": "quantitative"
+    },
+    "tooltip": [
+     {
+      "field": "age",
+      "title": "Age"
+     },
+     {
+      "field": "series",
+      "title": "Series"
+     },
+     {
+      "field": "aud_m",
+      "title": "$ million",
+      "format": ",.1f"
+     }
+    ]
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "age": "65–69",
+      "signed": -856.748647,
+      "text": "Peak $857m",
+      "side": "Males"
+     },
+     {
+      "age": "65–69",
+      "signed": 669.51976,
+      "text": "Peak $670m",
+      "side": "Females"
+     }
+    ]
+   },
+   "transform": [
+    {
+     "filter": "datum.side == 'Males'"
+    }
+   ],
+   "mark": {
+    "type": "text",
+    "fontSize": 12,
+    "fontWeight": "bold",
+    "color": "#222",
+    "baseline": "middle",
+    "align": "right",
+    "dx": -8
+   },
+   "encoding": {
+    "y": {
+     "field": "age",
+     "type": "ordinal",
+     "sort": [
+      "85+",
+      "80–84",
+      "75–79",
+      "70–74",
+      "65–69",
+      "60–64",
+      "55–59",
+      "50–54",
+      "45–49",
+      "40–44",
+      "35–39",
+      "30–34",
+      "25–29",
+      "20–24",
+      "15–19",
+      "10–14",
+      "5–9",
+      "1–4",
+      "<1"
+     ]
+    },
+    "x": {
+     "field": "signed",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "text"
+    }
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "age": "65–69",
+      "signed": -856.748647,
+      "text": "Peak $857m",
+      "side": "Males"
+     },
+     {
+      "age": "65–69",
+      "signed": 669.51976,
+      "text": "Peak $670m",
+      "side": "Females"
+     }
+    ]
+   },
+   "transform": [
+    {
+     "filter": "datum.side == 'Females'"
+    }
+   ],
+   "mark": {
+    "type": "text",
+    "fontSize": 12,
+    "fontWeight": "bold",
+    "color": "#222",
+    "baseline": "middle",
+    "align": "left",
+    "dx": 8
+   },
+   "encoding": {
+    "y": {
+     "field": "age",
+     "type": "ordinal",
+     "sort": [
+      "85+",
+      "80–84",
+      "75–79",
+      "70–74",
+      "65–69",
+      "60–64",
+      "55–59",
+      "50–54",
+      "45–49",
+      "40–44",
+      "35–39",
+      "30–34",
+      "25–29",
+      "20–24",
+      "15–19",
+      "10–14",
+      "5–9",
+      "1–4",
+      "<1"
+     ]
+    },
+    "x": {
+     "field": "signed",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "text"
+    }
+   }
+  }
+ ],
+ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ "config": {
+  "background": "#fff",
+  "view": {
+   "stroke": null
+  },
+  "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+  "axis": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "domainColor": "#666",
+   "tickColor": "#666",
+   "gridColor": "#e5e0d8"
+  },
+  "title": {
+   "fontSize": 16,
+   "anchor": "start",
+   "color": "#2b2d42",
+   "subtitleColor": "#666",
+   "subtitleFontSize": 12,
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "header": {
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "labelFont": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "legend": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222"
+  },
+  "text": {
+   "color": "#222",
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  }
+ }
+}
