@@ -1,19 +1,9 @@
 {
- "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
- "config": {
-  "view": {
-   "stroke": null
-  },
-  "axis": {
-   "labelFontSize": 11,
-   "titleFontSize": 12
-  },
-  "title": {
-   "fontSize": 15,
-   "anchor": "start"
-  }
+ "description": "Choropleth map of modelled adult obesity rate by Population Health Area with a ranked bar chart of the 25 highest areas.",
+ "title": {
+  "text": "Where is adult obesity highest?",
+  "subtitle": "Modelled obesity rate (age-standardised, per 100 adults, 2022). Grey = no published estimate. Click a bar to highlight."
  },
- "title": "Adult obesity by Population Health Area, 2022 (modelled ASR per 100)",
  "params": [
   {
    "name": "pick",
@@ -45,7 +35,10 @@
      "lookup": "properties.Code",
      "from": {
       "data": {
-       "url": "phidu_obesity_clean.csv"
+       "url": "phidu_obesity_clean.csv",
+       "format": {
+        "type": "csv"
+       }
       },
       "key": "Code",
       "fields": [
@@ -60,28 +53,29 @@
    "mark": {
     "type": "geoshape",
     "stroke": "#fff",
-    "strokeWidth": 0.1,
+    "strokeWidth": 0.15,
     "invalid": null
    },
    "encoding": {
     "color": {
      "condition": {
       "test": "!isValid(datum.obese_asr)",
-      "value": "#e3e3e3"
+      "value": "#e0e0e0"
      },
      "field": "obese_asr",
      "type": "quantitative",
-     "title": "Obese ASR /100",
+     "title": "Obese per 100",
      "scale": {
-      "scheme": "orangered",
+      "scheme": "viridis",
+      "reverse": true,
       "domain": [
        10,
-       45
-      ],
-      "clamp": true
+       55
+      ]
      },
      "legend": {
-      "orient": "bottom"
+      "orient": "bottom",
+      "gradientLength": 260
      }
     },
     "opacity": {
@@ -89,7 +83,7 @@
       "param": "pick",
       "value": 1
      },
-     "value": 0.85
+     "value": 0.88
     },
     "tooltip": [
      {
@@ -101,23 +95,26 @@
      },
      {
       "field": "obese_asr",
-      "title": "ASR per 100"
+      "title": "Rate per 100"
      },
      {
       "field": "obese_n",
-      "title": "Estimated number",
+      "title": "Estimated obese adults",
       "format": ","
      }
     ]
    }
   },
   {
-   "width": 260,
+   "width": 240,
    "height": {
     "step": 14
    },
    "data": {
-    "url": "phidu_obesity_clean.csv"
+    "url": "phidu_obesity_clean.csv",
+    "format": {
+     "type": "csv"
+    }
    },
    "transform": [
     {
@@ -141,11 +138,11 @@
      "filter": "datum.rank<=25"
     }
    ],
-   "title": "Top 25 PHAs by obesity rate",
+   "title": "25 highest areas",
    "mark": {
     "type": "bar",
-    "tooltip": true,
-    "color": "#c0392b"
+    "color": "#31688E",
+    "tooltip": true
    },
    "encoding": {
     "y": {
@@ -154,20 +151,20 @@
      "sort": "-x",
      "title": null,
      "axis": {
-      "labelLimit": 220
+      "labelLimit": 210
      }
     },
     "x": {
      "field": "obese_asr",
      "type": "quantitative",
-     "title": "ASR per 100"
+     "title": "Rate per 100"
     },
     "opacity": {
      "condition": {
       "param": "pick",
       "value": 1
      },
-     "value": 0.6
+     "value": 0.55
     },
     "tooltip": [
      {
@@ -178,10 +175,50 @@
      },
      {
       "field": "obese_asr",
-      "title": "ASR per 100"
+      "title": "Rate per 100"
      }
     ]
    }
   }
- ]
+ ],
+ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ "config": {
+  "background": "#fff",
+  "view": {
+   "stroke": null
+  },
+  "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+  "axis": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "domainColor": "#666",
+   "tickColor": "#666",
+   "gridColor": "#e5e0d8"
+  },
+  "title": {
+   "fontSize": 16,
+   "anchor": "start",
+   "color": "#2b2d42",
+   "subtitleColor": "#666",
+   "subtitleFontSize": 12,
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "header": {
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "labelFont": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "legend": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222"
+  },
+  "text": {
+   "color": "#222",
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  }
+ }
 }

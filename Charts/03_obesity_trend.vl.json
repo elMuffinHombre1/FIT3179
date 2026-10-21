@@ -1,0 +1,209 @@
+{
+ "description": "Line chart with confidence bands: obesity prevalence among adults 18-64 for males, females and persons from 2007-08 to 2017-18.",
+ "title": {
+  "text": "Obesity among adults rose from 24% to 30% in a decade",
+  "subtitle": "Age-standardised %, adults 18–64. Shaded bands are 95% confidence intervals."
+ },
+ "data": {
+  "url": "03_obesity_trend.csv",
+  "format": {
+   "type": "csv"
+  }
+ },
+ "width": 520,
+ "height": 330,
+ "encoding": {
+  "x": {
+   "field": "year",
+   "type": "ordinal",
+   "title": null,
+   "axis": {
+    "labelAngle": 0
+   },
+   "scale": {
+    "padding": 0.4
+   }
+  },
+  "color": {
+   "field": "category",
+   "type": "nominal",
+   "legend": null,
+   "scale": {
+    "domain": [
+     "Males",
+     "Females",
+     "Persons"
+    ],
+    "range": [
+     "#0072B2",
+     "#D55E00",
+     "#222"
+    ]
+   }
+  }
+ },
+ "layer": [
+  {
+   "mark": {
+    "type": "errorband",
+    "opacity": 0.13
+   },
+   "encoding": {
+    "y": {
+     "field": "lo",
+     "type": "quantitative",
+     "title": "% obese (age-standardised)",
+     "scale": {
+      "domain": [
+       20,
+       34
+      ]
+     }
+    },
+    "y2": {
+     "field": "hi"
+    }
+   }
+  },
+  {
+   "mark": {
+    "type": "line",
+    "strokeWidth": 2.5
+   },
+   "encoding": {
+    "y": {
+     "field": "asr",
+     "type": "quantitative"
+    },
+    "strokeDash": {
+     "condition": {
+      "test": "datum.category == 'Persons'",
+      "value": [
+       5,
+       4
+      ]
+     },
+     "value": [
+      1,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "mark": {
+    "type": "point",
+    "filled": true,
+    "size": 70,
+    "tooltip": true
+   },
+   "encoding": {
+    "y": {
+     "field": "asr",
+     "type": "quantitative"
+    },
+    "shape": {
+     "field": "category",
+     "type": "nominal",
+     "legend": null,
+     "scale": {
+      "domain": [
+       "Males",
+       "Females",
+       "Persons"
+      ],
+      "range": [
+       "circle",
+       "square",
+       "diamond"
+      ]
+     }
+    },
+    "tooltip": [
+     {
+      "field": "category",
+      "title": "Group"
+     },
+     {
+      "field": "year"
+     },
+     {
+      "field": "asr",
+      "title": "Age-std %"
+     },
+     {
+      "field": "lo",
+      "title": "CI low"
+     },
+     {
+      "field": "hi",
+      "title": "CI high"
+     }
+    ]
+   }
+  },
+  {
+   "transform": [
+    {
+     "filter": "datum.year == '2017–18'"
+    }
+   ],
+   "mark": {
+    "type": "text",
+    "align": "left",
+    "dx": 10,
+    "fontWeight": "bold",
+    "fontSize": 13
+   },
+   "encoding": {
+    "y": {
+     "field": "asr",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "category"
+    }
+   }
+  }
+ ],
+ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ "config": {
+  "background": "#fff",
+  "view": {
+   "stroke": null
+  },
+  "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+  "axis": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "domainColor": "#666",
+   "tickColor": "#666",
+   "gridColor": "#e5e0d8"
+  },
+  "title": {
+   "fontSize": 16,
+   "anchor": "start",
+   "color": "#2b2d42",
+   "subtitleColor": "#666",
+   "subtitleFontSize": 12,
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "header": {
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "labelFont": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "legend": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222"
+  },
+  "text": {
+   "color": "#222",
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  }
+ }
+}
