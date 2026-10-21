@@ -1,0 +1,215 @@
+{
+ "description": "Slope chart ranking the top 20 diagnoses of hospital stays with obesity coded, comparing rank by number of stays with rank by share of all stays for that diagnosis that carry an obesity code.",
+ "title": {
+  "text": "Common is not the same as obesity-linked",
+  "subtitle": "Top 20 principal diagnoses of hospital stays with obesity recorded: rank by volume (left) vs. rank by how often obesity is recorded for that diagnosis (right)."
+ },
+ "data": {
+  "url": "06_comorbidity_slope.csv",
+  "format": {
+   "type": "csv"
+  }
+ },
+ "width": 720,
+ "height": 560,
+ "encoding": {
+  "y": {
+   "field": "rank",
+   "type": "quantitative",
+   "scale": {
+    "domain": [
+     20.6,
+     -1.2
+    ]
+   },
+   "axis": null
+  },
+  "x": {
+   "field": "x",
+   "type": "quantitative",
+   "scale": {
+    "domain": [
+     -1.55,
+     2.55
+    ]
+   },
+   "axis": {
+    "orient": "top",
+    "values": [
+     0,
+     1
+    ],
+    "labelExpr": "datum.value == 0 ? 'RANK BY VOLUME' : 'RANK BY OBESITY SHARE'",
+    "labelFontWeight": "bold",
+    "labelFontSize": 12,
+    "domain": false,
+    "ticks": false,
+    "grid": false,
+    "title": null,
+    "labelPadding": 8
+   }
+  },
+  "color": {
+   "field": "direction",
+   "type": "nominal",
+   "title": null,
+   "scale": {
+    "domain": [
+     "Much more obesity-linked than volume suggests",
+     "Similar rank",
+     "Less obesity-linked than volume suggests"
+    ],
+    "range": [
+     "#882255",
+     "#9a9a9a",
+     "#56B4E9"
+    ]
+   },
+   "legend": {
+    "orient": "bottom",
+    "symbolStrokeWidth": 4,
+    "labelLimit": 330
+   }
+  }
+ },
+ "layer": [
+  {
+   "mark": {
+    "type": "line",
+    "strokeWidth": 2.5,
+    "opacity": 0.9
+   },
+   "encoding": {
+    "detail": {
+     "field": "diagnosis",
+     "type": "nominal"
+    }
+   }
+  },
+  {
+   "mark": {
+    "type": "point",
+    "filled": true,
+    "size": 60,
+    "opacity": 1,
+    "tooltip": true
+   },
+   "encoding": {
+    "tooltip": [
+     {
+      "field": "diagnosis"
+     },
+     {
+      "field": "side",
+      "title": "Ranked by"
+     },
+     {
+      "field": "rank",
+      "title": "Rank"
+     },
+     {
+      "field": "value",
+      "title": "Value",
+      "format": ",.1f"
+     }
+    ]
+   }
+  },
+  {
+   "transform": [
+    {
+     "filter": "datum.x == 0"
+    }
+   ],
+   "mark": {
+    "type": "text",
+    "align": "right",
+    "dx": -9,
+    "fontSize": 11.5
+   },
+   "encoding": {
+    "text": {
+     "field": "label"
+    },
+    "color": {
+     "value": "#222"
+    },
+    "fontWeight": {
+     "condition": {
+      "test": "datum.direction != 'Similar rank'",
+      "value": "bold"
+     },
+     "value": "normal"
+    }
+   }
+  },
+  {
+   "transform": [
+    {
+     "filter": "datum.x == 1"
+    }
+   ],
+   "mark": {
+    "type": "text",
+    "align": "left",
+    "dx": 9,
+    "fontSize": 11.5
+   },
+   "encoding": {
+    "text": {
+     "field": "label"
+    },
+    "color": {
+     "value": "#222"
+    },
+    "fontWeight": {
+     "condition": {
+      "test": "datum.direction != 'Similar rank'",
+      "value": "bold"
+     },
+     "value": "normal"
+    }
+   }
+  }
+ ],
+ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ "config": {
+  "background": "#fff",
+  "view": {
+   "stroke": null
+  },
+  "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+  "axis": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "domainColor": "#666",
+   "tickColor": "#666",
+   "gridColor": "#e5e0d8"
+  },
+  "title": {
+   "fontSize": 16,
+   "anchor": "start",
+   "color": "#2b2d42",
+   "subtitleColor": "#666",
+   "subtitleFontSize": 12,
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "header": {
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "labelFont": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "legend": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222"
+  },
+  "text": {
+   "color": "#222",
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  }
+ }
+}
