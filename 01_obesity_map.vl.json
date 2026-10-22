@@ -2,11 +2,7 @@
  "description": "Choropleth map of modelled adult obesity rate by Population Health Area with a ranked bar chart of the 25 highest areas.",
  "title": {
   "text": "Where is adult obesity highest?",
-<<<<<<<< HEAD:01_obesity_map.vl.json
   "subtitle": "Modelled obesity rate (age-standardised, per 100 adults, 2022). Grey = no published estimate. Click a bar to highlight it."
-========
-  "subtitle": "Modelled obesity rate (age-standardised, per 100 adults, 2022). Grey = no published estimate. Click a bar to highlight."
->>>>>>>> 403317a67727f7eaf51e43ef4424abe3ed9e5661:09_obesity_map.vl.json
  },
  "params": [
   {

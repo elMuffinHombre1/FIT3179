@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<<< HEAD:Charts/css/styles.scss
-========
->>>>>>> 403317a67727f7eaf51e43ef4424abe3ed9e5661
 // ==========================================================
 // Obesity in Australia dashboard (FIT3179)
 // Compile with:  sass css/styles.scss css/styles.css
@@ -12,11 +7,7 @@
 $bg:        #faf8f5;
 $fg:        #222;
 $muted:     #666;
-<<<<<<< HEAD
 $accent:    #882255;   // wine: colour-blind safe, high contrast on white (same as $obese)
-=======
-$accent:    #882255;   // wine: colour-blind safe, high contrast on white
->>>>>>> 403317a67727f7eaf51e43ef4424abe3ed9e5661
 $navy:      #2b2d42;
 $card:      #fff;
 $line:      #e5e0d8;
@@ -29,7 +20,6 @@ $content-width: 1000px;
 $radius: 8px;
 $gutter: 24px;
 
-<<<<<<< HEAD
 
 // ---------- Chart palette ----------
 // Colour-blind safe (Okabe–Ito / Paul Tol / viridis). The Vega-Lite specs read these values,
@@ -51,8 +41,6 @@ $bi-s1-o1: #E8E8E8; $bi-s1-o2: #ACE4E4; $bi-s1-o3: #5AC8C8;
 $bi-s2-o1: #DFB0D6; $bi-s2-o2: #A5ADD3; $bi-s2-o3: #5698B9;
 $bi-s3-o1: #BE64AC; $bi-s3-o2: #8C62AA; $bi-s3-o3: #3B4994;
 
-=======
->>>>>>> 403317a67727f7eaf51e43ef4424abe3ed9e5661
 // ---------- Mixins ----------
 @mixin card($pad: 16px) {
   background: $card;
@@ -209,7 +197,6 @@ footer {
   .in { @include centred; }
 }
 
-<<<<<<< HEAD
 
 // ---------- Section intros and colour key ----------
 .section-group {
@@ -247,14 +234,8 @@ footer {
   i { display: inline-block; width: 18px; height: 18px; border-radius: 3px; border: 1px solid rgba(0, 0, 0, 0.25); }
 }
 
-=======
->>>>>>> 403317a67727f7eaf51e43ef4424abe3ed9e5661
 // ---------- Small screens ----------
 @media (max-width: 600px) {
   header h1 { font-size: 1.8rem; }
   section h2 { font-size: 1.35rem; }
 }
-<<<<<<< HEAD
-=======
->>>>>>>> 403317a67727f7eaf51e43ef4424abe3ed9e5661:styles.scss
->>>>>>> 403317a67727f7eaf51e43ef4424abe3ed9e5661
