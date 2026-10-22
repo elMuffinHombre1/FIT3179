@@ -1,0 +1,200 @@
+{
+ "description": "Lollipop charts with 95% confidence intervals of obesity, severe obesity and abdominal obesity by severity of core activity limitation, adults 18 and over, 2022.",
+ "title": {
+  "text": "Obesity is more common among people with core activity limitations",
+  "subtitle": "% of adults 18+ (2022) by severity of core limitation. Thin bars are 95% confidence intervals."
+ },
+ "data": {
+  "url": "07_limitations_lollipop.csv",
+  "format": {
+   "type": "csv"
+  }
+ },
+ "facet": {
+  "column": {
+   "field": "measure",
+   "type": "nominal",
+   "title": null,
+   "sort": [
+    "Obesity",
+    "Severe obesity",
+    "Abdominal obesity"
+   ],
+   "header": {
+    "labelFontSize": 14,
+    "labelFontWeight": "bold"
+   }
+  }
+ },
+ "spec": {
+  "width": 220,
+  "height": {
+   "step": 28
+  },
+  "encoding": {
+   "y": {
+    "field": "severity",
+    "type": "nominal",
+    "sort": [
+     "Has core limitations",
+     "Profound",
+     "Severe",
+     "Moderate",
+     "Mild",
+     "Schooling/employment restriction only",
+     "Does not have core limitations",
+     "No limitation or specific restriction",
+     "No disability"
+    ],
+    "title": null,
+    "axis": {
+     "labelLimit": 250,
+     "domain": false,
+     "ticks": false
+    }
+   }
+  },
+  "layer": [
+   {
+    "mark": {
+     "type": "rule",
+     "strokeWidth": 2.5,
+     "color": "#9a93c8"
+    },
+    "transform": [
+     {
+      "calculate": "0",
+      "as": "zero"
+     }
+    ],
+    "encoding": {
+     "x": {
+      "field": "zero",
+      "type": "quantitative"
+     },
+     "x2": {
+      "field": "pct"
+     }
+    }
+   },
+   {
+    "mark": {
+     "type": "rule",
+     "strokeWidth": 1,
+     "color": "#222"
+    },
+    "encoding": {
+     "x": {
+      "field": "lo",
+      "type": "quantitative"
+     },
+     "x2": {
+      "field": "hi"
+     }
+    }
+   },
+   {
+    "mark": {
+     "type": "point",
+     "filled": true,
+     "size": 110,
+     "color": "#332288",
+     "opacity": 1,
+     "tooltip": true
+    },
+    "encoding": {
+     "x": {
+      "field": "pct",
+      "type": "quantitative",
+      "title": "% of adults",
+      "scale": {
+       "domain": [
+        0,
+        80
+       ]
+      }
+     },
+     "tooltip": [
+      {
+       "field": "severity"
+      },
+      {
+       "field": "measure"
+      },
+      {
+       "field": "pct",
+       "title": "%"
+      },
+      {
+       "field": "lo",
+       "title": "CI low"
+      },
+      {
+       "field": "hi",
+       "title": "CI high"
+      }
+     ]
+    }
+   },
+   {
+    "mark": {
+     "type": "text",
+     "dy": -12,
+     "fontSize": 11,
+     "fontWeight": "bold",
+     "color": "#332288"
+    },
+    "encoding": {
+     "x": {
+      "field": "pct",
+      "type": "quantitative"
+     },
+     "text": {
+      "field": "pct",
+      "format": ".0f"
+     }
+    }
+   }
+  ]
+ },
+ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ "config": {
+  "background": "#fff",
+  "view": {
+   "stroke": null
+  },
+  "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+  "axis": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "domainColor": "#666",
+   "tickColor": "#666",
+   "gridColor": "#e5e0d8"
+  },
+  "title": {
+   "fontSize": 16,
+   "anchor": "start",
+   "color": "#2b2d42",
+   "subtitleColor": "#666",
+   "subtitleFontSize": 12,
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "header": {
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "labelFont": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "legend": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222"
+  },
+  "text": {
+   "color": "#222",
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  }
+ }
+}

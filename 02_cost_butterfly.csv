@@ -1,0 +1,77 @@
+age,sex,type,aud_m
+<1,Males,Treatment & management of obesity,0.286188
+<1,Males,Treatment of conditions due to overweight,0.0
+<1,Females,Treatment & management of obesity,0.453729
+<1,Females,Treatment of conditions due to overweight,0.0
+1–4,Males,Treatment & management of obesity,0.304967
+1–4,Males,Treatment of conditions due to overweight,0.0
+1–4,Females,Treatment & management of obesity,0.46427
+1–4,Females,Treatment of conditions due to overweight,0.0
+5–9,Males,Treatment & management of obesity,2.510492
+5–9,Males,Treatment of conditions due to overweight,9.624136
+5–9,Females,Treatment & management of obesity,3.649669
+5–9,Females,Treatment of conditions due to overweight,6.20641
+10–14,Males,Treatment & management of obesity,2.501531
+10–14,Males,Treatment of conditions due to overweight,2.444575
+10–14,Females,Treatment & management of obesity,4.360358
+10–14,Females,Treatment of conditions due to overweight,1.757702
+15–19,Males,Treatment & management of obesity,5.237258
+15–19,Males,Treatment of conditions due to overweight,9.617803
+15–19,Females,Treatment & management of obesity,9.378594
+15–19,Females,Treatment of conditions due to overweight,12.201843
+20–24,Males,Treatment & management of obesity,6.907705
+20–24,Males,Treatment of conditions due to overweight,14.025066
+20–24,Females,Treatment & management of obesity,23.042507
+20–24,Females,Treatment of conditions due to overweight,22.347871
+25–29,Males,Treatment & management of obesity,13.422163
+25–29,Males,Treatment of conditions due to overweight,40.999783
+25–29,Females,Treatment & management of obesity,47.787524
+25–29,Females,Treatment of conditions due to overweight,62.860131
+30–34,Males,Treatment & management of obesity,19.956818
+30–34,Males,Treatment of conditions due to overweight,65.220036
+30–34,Females,Treatment & management of obesity,70.151321
+30–34,Females,Treatment of conditions due to overweight,84.603853
+35–39,Males,Treatment & management of obesity,24.118701
+35–39,Males,Treatment of conditions due to overweight,116.802059
+35–39,Females,Treatment & management of obesity,78.676598
+35–39,Females,Treatment of conditions due to overweight,129.504239
+40–44,Males,Treatment & management of obesity,26.008
+40–44,Males,Treatment of conditions due to overweight,162.879054
+40–44,Females,Treatment & management of obesity,73.796405
+40–44,Females,Treatment of conditions due to overweight,150.301681
+45–49,Males,Treatment & management of obesity,22.380068
+45–49,Males,Treatment of conditions due to overweight,261.033905
+45–49,Females,Treatment & management of obesity,66.692329
+45–49,Females,Treatment of conditions due to overweight,205.574217
+50–54,Males,Treatment & management of obesity,25.215071
+50–54,Males,Treatment of conditions due to overweight,406.892022
+50–54,Females,Treatment & management of obesity,68.806641
+50–54,Females,Treatment of conditions due to overweight,342.188562
+55–59,Males,Treatment & management of obesity,18.409698
+55–59,Males,Treatment of conditions due to overweight,539.77957
+55–59,Females,Treatment & management of obesity,48.317914
+55–59,Females,Treatment of conditions due to overweight,381.78775
+60–64,Males,Treatment & management of obesity,16.91406
+60–64,Males,Treatment of conditions due to overweight,719.042958
+60–64,Females,Treatment & management of obesity,36.809393
+60–64,Females,Treatment of conditions due to overweight,533.863905
+65–69,Males,Treatment & management of obesity,9.526816
+65–69,Males,Treatment of conditions due to overweight,847.221831
+65–69,Females,Treatment & management of obesity,18.52422
+65–69,Females,Treatment of conditions due to overweight,650.99554
+70–74,Males,Treatment & management of obesity,7.771987
+70–74,Males,Treatment of conditions due to overweight,832.093793
+70–74,Females,Treatment & management of obesity,13.567617
+70–74,Females,Treatment of conditions due to overweight,621.901673
+75–79,Males,Treatment & management of obesity,3.018184
+75–79,Males,Treatment of conditions due to overweight,791.727791
+75–79,Females,Treatment & management of obesity,5.247818
+75–79,Females,Treatment of conditions due to overweight,605.095697
+80–84,Males,Treatment & management of obesity,1.929935
+80–84,Males,Treatment of conditions due to overweight,386.370421
+80–84,Females,Treatment & management of obesity,3.522842
+80–84,Females,Treatment of conditions due to overweight,351.065977
+85+,Males,Treatment & management of obesity,0.61983
+85+,Males,Treatment of conditions due to overweight,319.162903
+85+,Females,Treatment & management of obesity,1.127632
+85+,Females,Treatment of conditions due to overweight,366.707866

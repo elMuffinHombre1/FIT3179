@@ -1,0 +1,171 @@
+{
+ "description": "Tile grid map with one square per state or territory showing the approximate adult obesity rate.",
+ "title": {
+  "text": "Tasmania has the highest obesity rate; the ACT and Victoria the lowest",
+  "subtitle": "Approximate adult obesity rate (%) by state or territory. Tiles are arranged roughly like the map of Australia."
+ },
+ "data": {
+  "url": "state_tiles.csv",
+  "format": {
+   "type": "csv"
+  }
+ },
+ "width": 420,
+ "height": 420,
+ "encoding": {
+  "x": {
+   "field": "col",
+   "type": "ordinal",
+   "axis": null,
+   "scale": {
+    "paddingInner": 0.06,
+    "paddingOuter": 0.02
+   }
+  },
+  "y": {
+   "field": "row",
+   "type": "ordinal",
+   "axis": null,
+   "scale": {
+    "paddingInner": 0.06,
+    "paddingOuter": 0.02
+   }
+  }
+ },
+ "layer": [
+  {
+   "mark": {
+    "type": "rect",
+    "cornerRadius": 6,
+    "tooltip": true
+   },
+   "encoding": {
+    "color": {
+     "field": "obese_rate_weighted",
+     "type": "quantitative",
+     "title": "Obese adults (%)",
+     "scale": {
+      "scheme": "viridis",
+      "reverse": true,
+      "domain": [
+       26,
+       40
+      ]
+     },
+     "legend": {
+      "orient": "bottom",
+      "gradientLength": 260
+     }
+    },
+    "tooltip": [
+     {
+      "field": "state",
+      "title": "State"
+     },
+     {
+      "field": "obese_rate_weighted",
+      "title": "Obesity rate (approx %)"
+     },
+     {
+      "field": "obese_adults_est",
+      "title": "Estimated obese adults",
+      "format": ","
+     },
+     {
+      "field": "median_area_rate",
+      "title": "Median area rate",
+      "format": ".1f"
+     },
+     {
+      "field": "areas_with_estimate",
+      "title": "Areas with an estimate"
+     },
+     {
+      "field": "areas_total",
+      "title": "Total areas"
+     }
+    ]
+   }
+  },
+  {
+   "mark": {
+    "type": "text",
+    "fontSize": 20,
+    "fontWeight": "bold",
+    "dy": -12
+   },
+   "encoding": {
+    "text": {
+     "field": "abbr"
+    },
+    "color": {
+     "condition": {
+      "test": "datum.obese_rate_weighted > 32",
+      "value": "white"
+     },
+     "value": "#222"
+    }
+   }
+  },
+  {
+   "mark": {
+    "type": "text",
+    "fontSize": 14,
+    "dy": 10
+   },
+   "encoding": {
+    "text": {
+     "field": "obese_rate_weighted",
+     "format": ".1f"
+    },
+    "color": {
+     "condition": {
+      "test": "datum.obese_rate_weighted > 32",
+      "value": "white"
+     },
+     "value": "#222"
+    }
+   }
+  }
+ ],
+ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ "config": {
+  "background": "#fff",
+  "view": {
+   "stroke": null
+  },
+  "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+  "axis": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "domainColor": "#666",
+   "tickColor": "#666",
+   "gridColor": "#e5e0d8"
+  },
+  "title": {
+   "fontSize": 16,
+   "anchor": "start",
+   "color": "#2b2d42",
+   "subtitleColor": "#666",
+   "subtitleFontSize": 12,
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "header": {
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "labelFont": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "legend": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222"
+  },
+  "text": {
+   "color": "#222",
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  }
+ }
+}
