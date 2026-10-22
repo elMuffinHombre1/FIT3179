@@ -55,7 +55,7 @@ nav a {
   text-decoration: none;
 }
 nav a:hover {
-  color: #c0392b;
+  color: #882255;
 }
 
 .stats {
@@ -76,7 +76,7 @@ nav a:hover {
   display: block;
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: 2rem;
-  color: #c0392b;
+  color: #882255;
 }
 .stat span {
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;

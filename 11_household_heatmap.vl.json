@@ -1,0 +1,179 @@
+{
+ "description": "Heatmap of obesity prevalence for adults 18-64 by household type, employment, marital status and household tenure across four survey years.",
+ "title": {
+  "text": "Household circumstances matter less: differences of 2 to 6 points",
+  "subtitle": "Age-standardised % of adults 18–64 who are obese, by survey year. Darker = higher."
+ },
+ "data": {
+  "url": "11_household_heatmap.csv",
+  "format": {
+   "type": "csv"
+  }
+ },
+ "facet": {
+  "row": {
+   "field": "group",
+   "type": "nominal",
+   "title": null,
+   "sort": [
+    "Employment",
+    "Household type",
+    "Marital status",
+    "Household tenure"
+   ],
+   "header": {
+    "labelAngle": 0,
+    "labelAlign": "left",
+    "labelFontWeight": "bold",
+    "labelLimit": 170,
+    "labelPadding": 6
+   }
+  }
+ },
+ "spec": {
+  "width": 300,
+  "height": {
+   "step": 24
+  },
+  "encoding": {
+   "y": {
+    "field": "category",
+    "type": "nominal",
+    "sort": null,
+    "title": null,
+    "axis": {
+     "labelLimit": 220,
+     "domain": false,
+     "ticks": false
+    }
+   },
+   "x": {
+    "field": "year",
+    "type": "ordinal",
+    "title": null,
+    "axis": {
+     "orient": "top",
+     "labelAngle": 0,
+     "domain": false,
+     "ticks": false
+    }
+   }
+  },
+  "layer": [
+   {
+    "mark": {
+     "type": "rect",
+     "stroke": "#fff",
+     "strokeWidth": 2,
+     "tooltip": true
+    },
+    "encoding": {
+     "color": {
+      "field": "asr",
+      "type": "quantitative",
+      "title": "Obese, age-standardised %",
+      "scale": {
+       "scheme": "viridis",
+       "reverse": true,
+       "domain": [
+        16,
+        40
+       ]
+      },
+      "legend": {
+       "orient": "bottom",
+       "gradientLength": 300
+      }
+     },
+     "tooltip": [
+      {
+       "field": "group"
+      },
+      {
+       "field": "category"
+      },
+      {
+       "field": "year"
+      },
+      {
+       "field": "asr",
+       "title": "Age-std %"
+      },
+      {
+       "field": "lo",
+       "title": "CI low"
+      },
+      {
+       "field": "hi",
+       "title": "CI high"
+      }
+     ]
+    }
+   },
+   {
+    "mark": {
+     "type": "text",
+     "fontSize": 12
+    },
+    "encoding": {
+     "text": {
+      "field": "asr",
+      "format": ".1f"
+     },
+     "color": {
+      "condition": {
+       "test": "datum.asr > 28",
+       "value": "white"
+      },
+      "value": "#222"
+     }
+    }
+   }
+  ]
+ },
+ "resolve": {
+  "scale": {
+   "y": "independent"
+  }
+ },
+ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ "config": {
+  "background": "#fff",
+  "view": {
+   "stroke": null
+  },
+  "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+  "axis": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "domainColor": "#666",
+   "tickColor": "#666",
+   "gridColor": "#e5e0d8"
+  },
+  "title": {
+   "fontSize": 16,
+   "anchor": "start",
+   "color": "#2b2d42",
+   "subtitleColor": "#666",
+   "subtitleFontSize": 12,
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "header": {
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "labelFont": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "legend": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222"
+  },
+  "text": {
+   "color": "#222",
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  }
+ }
+}

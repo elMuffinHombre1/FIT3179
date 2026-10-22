@@ -1,0 +1,25 @@
+age,band,sex,measure,pct
+2–4,Children,Males,Obese,3.2
+2–4,Children,Males,Overweight but not obese,13.7
+2–4,Children,Females,Obese,10.9
+2–4,Children,Females,Overweight but not obese,16.1
+5–7,Children,Males,Obese,7.9
+5–7,Children,Males,Overweight but not obese,15.3
+5–7,Children,Females,Obese,4.8
+5–7,Children,Females,Overweight but not obese,18.8
+8–11,Children,Males,Obese,9.0
+8–11,Children,Males,Overweight but not obese,21.1
+8–11,Children,Females,Obese,9.9
+8–11,Children,Females,Overweight but not obese,20.7
+12–15,Children,Males,Obese,10.1
+12–15,Children,Males,Overweight but not obese,19.4
+12–15,Children,Females,Obese,7.7
+12–15,Children,Females,Overweight but not obese,19.0
+16–17,Children,Males,Obese,13.7
+16–17,Children,Males,Overweight but not obese,17.9
+16–17,Children,Females,Obese,8.1
+16–17,Children,Females,Overweight but not obese,20.7
+Adults 18+,Adults,Males,Obese,34.1
+Adults 18+,Adults,Males,Overweight but not obese,38.4
+Adults 18+,Adults,Females,Obese,31.7
+Adults 18+,Adults,Females,Overweight but not obese,30.2

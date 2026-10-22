@@ -1,0 +1,57 @@
+group,category,year,crude,asr,lo,hi
+Employment,Employed,2007–08,22.9,23.1,21.8,24.3
+Employment,Employed,2011–12,27.0,26.9,25.6,28.2
+Employment,Employed,2014–15,25.8,25.8,24.7,27.0
+Employment,Employed,2017–18,28.6,28.6,27.5,29.8
+Employment,Unemployed,2007–08,21.7,25.7,18.5,32.9
+Employment,Unemployed,2011–12,27.4,32.8,25.2,40.4
+Employment,Unemployed,2014–15,30.2,31.9,25.7,38.1
+Employment,Unemployed,2017–18,29.2,32.9,27.4,38.5
+Employment,Not in labour force,2007–08,28.3,26.1,23.3,28.9
+Employment,Not in labour force,2011–12,30.0,28.9,26.1,31.8
+Employment,Not in labour force,2014–15,31.0,29.0,26.4,31.6
+Employment,Not in labour force,2017–18,35.3,33.2,30.5,36.0
+Household type,Person living alone,2007–08,25.8,23.4,20.9,25.9
+Household type,Person living alone,2011–12,28.6,26.6,24.1,29.2
+Household type,Person living alone,2014–15,29.6,27.4,24.6,30.2
+Household type,Person living alone,2017–18,32.3,29.4,27.1,31.7
+Household type,Couple only,2007–08,25.3,22.5,19.9,25.2
+Household type,Couple only,2011–12,28.7,25.5,23.1,28.0
+Household type,Couple only,2014–15,27.6,24.5,22.1,26.9
+Household type,Couple only,2017–18,32.6,29.9,27.2,32.5
+Household type,Couple with children,2007–08,22.9,23.7,21.7,25.6
+Household type,Couple with children,2011–12,28.3,29.1,27.2,31.0
+Household type,Couple with children,2014–15,26.9,26.9,25.1,28.7
+Household type,Couple with children,2017–18,27.7,28.1,26.3,29.9
+Household type,One-parent family,2007–08,25.4,27.2,23.4,31.0
+Household type,One-parent family,2011–12,27.3,29.6,25.9,33.3
+Household type,One-parent family,2014–15,30.2,30.4,26.9,34.0
+Household type,One-parent family,2017–18,30.6,33.7,29.6,37.9
+Household type,Other,2007–08,22.4,26.7,22.7,30.7
+Household type,Other,2011–12,22.9,27.4,23.2,31.5
+Household type,Other,2014–15,22.5,27.0,23.3,30.8
+Household type,Other,2017–18,30.0,33.3,30.2,36.4
+Marital status,Not married,2007–08,21.9,25.4,23.8,27.1
+Marital status,Not married,2011–12,24.2,27.5,25.8,29.2
+Marital status,Not married,2014–15,24.9,27.8,26.0,29.6
+Marital status,Not married,2017–18,27.6,31.6,30.0,33.1
+Marital status,Married,2007–08,25.4,23.7,21.8,25.6
+Marital status,Married,2011–12,29.9,27.8,25.9,29.7
+Marital status,Married,2014–15,28.4,26.6,24.9,28.3
+Marital status,Married,2017–18,31.5,29.1,27.3,30.9
+Household tenure,"Owner, no mortgage",2007–08,28.5,22.8,18.2,27.5
+Household tenure,"Owner, no mortgage",2011–12,28.7,24.9,22.0,27.7
+Household tenure,"Owner, no mortgage",2014–15,27.6,24.9,21.6,28.2
+Household tenure,"Owner, no mortgage",2017–18,31.6,28.8,25.4,32.1
+Household tenure,"Owner, with mortgage",2007–08,24.1,23.3,21.5,25.1
+Household tenure,"Owner, with mortgage",2011–12,28.0,27.5,25.8,29.2
+Household tenure,"Owner, with mortgage",2014–15,27.6,26.7,25.2,28.3
+Household tenure,"Owner, with mortgage",2017–18,30.4,29.5,27.9,31.1
+Household tenure,Renter,2007–08,22.6,25.8,23.3,28.2
+Household tenure,Renter,2011–12,26.1,29.6,27.3,31.8
+Household tenure,Renter,2014–15,26.0,28.9,26.9,30.8
+Household tenure,Renter,2017–18,28.8,31.0,29.1,32.9
+Household tenure,Other,2007–08,18.8,29.7,23.7,35.6
+Household tenure,Other,2011–12,32.4,32.1,22.7,41.5
+Household tenure,Other,2014–15,21.2,23.0,15.1,31.0
+Household tenure,Other,2017–18,28.6,30.5,21.1,39.8

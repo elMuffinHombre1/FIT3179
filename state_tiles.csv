@@ -1,0 +1,9 @@
+state,abbr,col,row,obese_adults_est,obese_rate_weighted,median_area_rate,areas_with_estimate,areas_total
+New South Wales,NSW,2,1,1915955,30.7,33.150000000000006,326,330
+Victoria,VIC,2,2,1520022,29.9,30.4,275,276
+Queensland,QLD,2,0,1375908,34.7,34.8,232,236
+South Australia,SA,1,1,486097,34.0,34.7,99,104
+Western Australia,WA,0,1,637656,30.8,33.2,119,129
+Tasmania,TAS,2,3,166587,37.1,39.900000000000006,50,51
+Northern Territory,NT,1,0,47352,34.9,34.5,9,14
+Australian Capital Territory,ACT,3,1,100820,29.3,28.85,24,25

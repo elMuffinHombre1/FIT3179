@@ -1,0 +1,249 @@
+{
+ "description": "Bump chart ranking eight occupation groups by obesity prevalence across four survey years from 2007-08 to 2017-18, adults 18-64.",
+ "title": {
+  "text": "Machinery operators rank highest, and professionals lowest, in every survey",
+  "subtitle": "Rank of eight occupation groups by obesity rate (1 = highest), adults 18–64. Wine = highest in 2017–18, teal = lowest."
+ },
+ "data": {
+  "url": "10_occupation_bump.csv",
+  "format": {
+   "type": "csv"
+  }
+ },
+ "width": 680,
+ "height": 440,
+ "encoding": {
+  "x": {
+   "field": "yi",
+   "type": "quantitative",
+   "scale": {
+    "domain": [
+     -2.5,
+     6.0
+    ]
+   },
+   "axis": {
+    "orient": "top",
+    "values": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "labelExpr": "['2007–08','2011–12','2014–15','2017–18'][datum.value]",
+    "labelFontWeight": "bold",
+    "labelFontSize": 13,
+    "domain": false,
+    "ticks": false,
+    "grid": false,
+    "title": null,
+    "labelPadding": 8
+   }
+  },
+  "y": {
+   "field": "rank",
+   "type": "quantitative",
+   "scale": {
+    "domain": [
+     8.6,
+     0.4
+    ]
+   },
+   "axis": null
+  },
+  "color": {
+   "field": "role",
+   "type": "nominal",
+   "title": null,
+   "scale": {
+    "domain": [
+     "Highest",
+     "Other",
+     "Lowest"
+    ],
+    "range": [
+     "#882255",
+     "#9A9A9A",
+     "#44AA99"
+    ]
+   },
+   "legend": null
+  }
+ },
+ "layer": [
+  {
+   "mark": {
+    "type": "line",
+    "strokeWidth": 3.5,
+    "opacity": 0.9
+   },
+   "encoding": {
+    "detail": {
+     "field": "occupation",
+     "type": "nominal"
+    }
+   }
+  },
+  {
+   "mark": {
+    "type": "circle",
+    "size": 520,
+    "opacity": 1,
+    "stroke": "#fff",
+    "strokeWidth": 1.5,
+    "tooltip": true
+   },
+   "encoding": {
+    "fill": {
+     "field": "role",
+     "type": "nominal",
+     "legend": null,
+     "scale": {
+      "domain": [
+       "Highest",
+       "Other",
+       "Lowest"
+      ],
+      "range": [
+       "#882255",
+       "#CFCFCF",
+       "#44AA99"
+      ]
+     }
+    },
+    "tooltip": [
+     {
+      "field": "occupation",
+      "title": "Occupation"
+     },
+     {
+      "field": "year"
+     },
+     {
+      "field": "rank",
+      "title": "Rank (1 = highest)"
+     },
+     {
+      "field": "asr",
+      "title": "Age-std %"
+     }
+    ]
+   }
+  },
+  {
+   "mark": {
+    "type": "text",
+    "fontWeight": "bold",
+    "fontSize": 13
+   },
+   "encoding": {
+    "text": {
+     "field": "rank"
+    },
+    "color": {
+     "condition": {
+      "test": "datum.role == 'Other'",
+      "value": "#222"
+     },
+     "value": "#ffffff"
+    }
+   }
+  },
+  {
+   "transform": [
+    {
+     "filter": "datum.yi == 0"
+    }
+   ],
+   "mark": {
+    "type": "text",
+    "align": "right",
+    "dx": -16,
+    "fontSize": 12
+   },
+   "encoding": {
+    "text": {
+     "field": "label"
+    },
+    "color": {
+     "value": "#222"
+    },
+    "fontWeight": {
+     "condition": {
+      "test": "datum.role != 'Other'",
+      "value": "bold"
+     },
+     "value": "normal"
+    }
+   }
+  },
+  {
+   "transform": [
+    {
+     "filter": "datum.yi == 3"
+    }
+   ],
+   "mark": {
+    "type": "text",
+    "align": "left",
+    "dx": 16,
+    "fontSize": 12
+   },
+   "encoding": {
+    "text": {
+     "field": "label"
+    },
+    "color": {
+     "value": "#222"
+    },
+    "fontWeight": {
+     "condition": {
+      "test": "datum.role != 'Other'",
+      "value": "bold"
+     },
+     "value": "normal"
+    }
+   }
+  }
+ ],
+ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ "config": {
+  "background": "#fff",
+  "view": {
+   "stroke": null
+  },
+  "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+  "axis": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "domainColor": "#666",
+   "tickColor": "#666",
+   "gridColor": "#e5e0d8"
+  },
+  "title": {
+   "fontSize": 16,
+   "anchor": "start",
+   "color": "#2b2d42",
+   "subtitleColor": "#666",
+   "subtitleFontSize": 12,
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "header": {
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "labelFont": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "legend": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222"
+  },
+  "text": {
+   "color": "#222",
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  }
+ }
+}

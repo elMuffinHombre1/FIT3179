@@ -1,0 +1,300 @@
+{
+ "description": "Population pyramid of the share of boys and girls by age band, and of adult men and women, who are overweight but not obese or obese. Males on the left, females on the right.",
+ "title": {
+  "text": "The share who are overweight or obese climbs from childhood into adulthood",
+  "subtitle": "% of each group, males left and females right. Dark = obese; light = overweight but not obese; labels show the total. Adults and children use different BMI definitions, so compare shapes, not exact values."
+ },
+ "data": {
+  "url": "06_population_pyramid.csv",
+  "format": {
+   "type": "csv"
+  }
+ },
+ "facet": {
+  "row": {
+   "field": "band",
+   "type": "nominal",
+   "sort": [
+    "Adults",
+    "Children"
+   ],
+   "title": null,
+   "header": {
+    "labelAngle": 0,
+    "labelAlign": "left",
+    "labelAnchor": "start",
+    "labelFontWeight": "bold",
+    "labelFontSize": 13,
+    "labelOrient": "top",
+    "labelPadding": 4
+   }
+  }
+ },
+ "spec": {
+  "width": 520,
+  "height": {
+   "step": 30
+  },
+  "layer": [
+   {
+    "transform": [
+     {
+      "calculate": "datum.sex == 'Males' ? -datum.pct : datum.pct",
+      "as": "signed"
+     },
+     {
+      "calculate": "datum.sex + ' – ' + (datum.measure == 'Obese' ? 'obese' : 'overweight but not obese')",
+      "as": "series"
+     },
+     {
+      "calculate": "datum.measure == 'Obese' ? 0 : 1",
+      "as": "ord"
+     }
+    ],
+    "mark": {
+     "type": "bar",
+     "tooltip": true,
+     "stroke": "#fff",
+     "strokeWidth": 0.8
+    },
+    "encoding": {
+     "y": {
+      "field": "age",
+      "type": "ordinal",
+      "sort": [
+       "Adults 18+",
+       "16–17",
+       "12–15",
+       "8–11",
+       "5–7",
+       "2–4"
+      ],
+      "title": null,
+      "axis": {
+       "labelFontWeight": "bold"
+      }
+     },
+     "x": {
+      "field": "signed",
+      "type": "quantitative",
+      "title": "← Males  |  Females →  (% of group)",
+      "scale": {
+       "domain": [
+        -90,
+        90
+       ]
+      },
+      "axis": {
+       "labelExpr": "abs(datum.value) + '%'",
+       "grid": true
+      }
+     },
+     "color": {
+      "field": "series",
+      "type": "nominal",
+      "title": null,
+      "scale": {
+       "domain": [
+        "Males – obese",
+        "Males – overweight but not obese",
+        "Females – obese",
+        "Females – overweight but not obese"
+       ],
+       "range": [
+        "#0072B2",
+        "#8CC3E6",
+        "#D55E00",
+        "#F2B07F"
+       ]
+      },
+      "legend": {
+       "orient": "bottom",
+       "columns": 2,
+       "labelLimit": 320
+      }
+     },
+     "order": {
+      "field": "ord",
+      "type": "quantitative"
+     },
+     "tooltip": [
+      {
+       "field": "age",
+       "title": "Group"
+      },
+      {
+       "field": "series",
+       "title": "Series"
+      },
+      {
+       "field": "pct",
+       "title": "%",
+       "format": ".1f"
+      }
+     ]
+    }
+   },
+   {
+    "transform": [
+     {
+      "aggregate": [
+       {
+        "op": "sum",
+        "field": "pct",
+        "as": "total"
+       }
+      ],
+      "groupby": [
+       "age",
+       "sex",
+       "band"
+      ]
+     },
+     {
+      "calculate": "datum.sex == 'Males' ? -datum.total : datum.total",
+      "as": "signed"
+     },
+     {
+      "calculate": "format(datum.total, '.0f') + '%'",
+      "as": "label"
+     },
+     {
+      "filter": "datum.sex == 'Males'"
+     }
+    ],
+    "mark": {
+     "type": "text",
+     "fontWeight": "bold",
+     "fontSize": 12,
+     "align": "right",
+     "dx": -6,
+     "baseline": "middle"
+    },
+    "encoding": {
+     "y": {
+      "field": "age",
+      "type": "ordinal",
+      "sort": [
+       "Adults 18+",
+       "16–17",
+       "12–15",
+       "8–11",
+       "5–7",
+       "2–4"
+      ]
+     },
+     "x": {
+      "field": "signed",
+      "type": "quantitative"
+     },
+     "text": {
+      "field": "label"
+     }
+    }
+   },
+   {
+    "transform": [
+     {
+      "aggregate": [
+       {
+        "op": "sum",
+        "field": "pct",
+        "as": "total"
+       }
+      ],
+      "groupby": [
+       "age",
+       "sex",
+       "band"
+      ]
+     },
+     {
+      "calculate": "datum.sex == 'Males' ? -datum.total : datum.total",
+      "as": "signed"
+     },
+     {
+      "calculate": "format(datum.total, '.0f') + '%'",
+      "as": "label"
+     },
+     {
+      "filter": "datum.sex == 'Females'"
+     }
+    ],
+    "mark": {
+     "type": "text",
+     "fontWeight": "bold",
+     "fontSize": 12,
+     "align": "left",
+     "dx": 6,
+     "baseline": "middle"
+    },
+    "encoding": {
+     "y": {
+      "field": "age",
+      "type": "ordinal",
+      "sort": [
+       "Adults 18+",
+       "16–17",
+       "12–15",
+       "8–11",
+       "5–7",
+       "2–4"
+      ]
+     },
+     "x": {
+      "field": "signed",
+      "type": "quantitative"
+     },
+     "text": {
+      "field": "label"
+     }
+    }
+   }
+  ]
+ },
+ "resolve": {
+  "scale": {
+   "y": "independent"
+  }
+ },
+ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ "config": {
+  "background": "#fff",
+  "view": {
+   "stroke": null
+  },
+  "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+  "axis": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "domainColor": "#666",
+   "tickColor": "#666",
+   "gridColor": "#e5e0d8"
+  },
+  "title": {
+   "fontSize": 16,
+   "anchor": "start",
+   "color": "#2b2d42",
+   "subtitleColor": "#666",
+   "subtitleFontSize": 12,
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "header": {
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "labelFont": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "legend": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222"
+  },
+  "text": {
+   "color": "#222",
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  }
+ }
+}

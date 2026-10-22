@@ -1,0 +1,41 @@
+diagnosis,side,x,rank,value,direction,label
+Osteoarthritis of the knee,By number of stays with obesity,0,1,21258,Similar rank,1. Osteoarthritis of the knee
+Osteoarthritis of the knee,By share of stays with obesity,1,4,12.22,Similar rank,Osteoarthritis of the knee (12.2%)
+Cataract,By number of stays with obesity,0,2,16365,Less obesity-linked than volume suggests,2. Cataract
+Cataract,By share of stays with obesity,1,15,5.31,Less obesity-linked than volume suggests,Cataract (5.3%)
+Caesarean delivery,By number of stays with obesity,0,3,8964,Less obesity-linked than volume suggests,3. Caesarean delivery
+Caesarean delivery,By share of stays with obesity,1,10,8.11,Less obesity-linked than volume suggests,Caesarean delivery (8.1%)
+Osteoarthritis of the hip,By number of stays with obesity,0,4,8468,Similar rank,4. Osteoarthritis of the hip
+Osteoarthritis of the hip,By share of stays with obesity,1,8,9.41,Similar rank,Osteoarthritis of the hip (9.4%)
+Cancer drug therapy session,By number of stays with obesity,0,5,7403,Less obesity-linked than volume suggests,5. Cancer drug therapy session
+Cancer drug therapy session,By share of stays with obesity,1,20,1.04,Less obesity-linked than volume suggests,Cancer drug therapy session (1.0%)
+Obstructive sleep apnoea,By number of stays with obesity,0,6,6745,Similar rank,6. Obstructive sleep apnoea
+Obstructive sleep apnoea,By share of stays with obesity,1,3,12.63,Similar rank,Obstructive sleep apnoea (12.6%)
+Other faecal abnormalities,By number of stays with obesity,0,7,6157,Similar rank,7. Other faecal abnormalities
+Other faecal abnormalities,By share of stays with obesity,1,9,8.79,Similar rank,Other faecal abnormalities (8.8%)
+GI haemorrhage,By number of stays with obesity,0,8,5643,Less obesity-linked than volume suggests,8. GI haemorrhage
+GI haemorrhage,By share of stays with obesity,1,14,6.54,Less obesity-linked than volume suggests,GI haemorrhage (6.5%)
+Cellulitis of lower limb,By number of stays with obesity,0,9,5588,Much more obesity-linked than volume suggests,9. Cellulitis of lower limb
+Cellulitis of lower limb,By share of stays with obesity,1,2,13.41,Much more obesity-linked than volume suggests,Cellulitis of lower limb (13.4%)
+Single spontaneous delivery,By number of stays with obesity,0,10,5412,Less obesity-linked than volume suggests,10. Single spontaneous delivery
+Single spontaneous delivery,By share of stays with obesity,1,18,4.5,Less obesity-linked than volume suggests,Single spontaneous delivery (4.5%)
+Congestive heart failure,By number of stays with obesity,0,11,4722,Similar rank,11. Congestive heart failure
+Congestive heart failure,By share of stays with obesity,1,7,9.73,Similar rank,Congestive heart failure (9.7%)
+Atrial fibrillation,By number of stays with obesity,0,12,4619,Similar rank,12. Atrial fibrillation
+Atrial fibrillation,By share of stays with obesity,1,11,7.39,Similar rank,Atrial fibrillation (7.4%)
+Coronary artery disease,By number of stays with obesity,0,13,4339,Similar rank,13. Coronary artery disease
+Coronary artery disease,By share of stays with obesity,1,13,6.76,Similar rank,Coronary artery disease (6.8%)
+Prostate cancer,By number of stays with obesity,0,14,4129,Similar rank,14. Prostate cancer
+Prostate cancer,By share of stays with obesity,1,12,7.3,Similar rank,Prostate cancer (7.3%)
+Chest pain,By number of stays with obesity,0,15,4047,Similar rank,15. Chest pain
+Chest pain,By share of stays with obesity,1,17,4.58,Similar rank,Chest pain (4.6%)
+Gallstones with cholecystitis,By number of stays with obesity,0,16,3933,Much more obesity-linked than volume suggests,16. Gallstones with cholecystitis
+Gallstones with cholecystitis,By share of stays with obesity,1,1,14.0,Much more obesity-linked than volume suggests,Gallstones with cholecystitis (14.0%)
+Carpal tunnel syndrome,By number of stays with obesity,0,17,3922,Much more obesity-linked than volume suggests,17. Carpal tunnel syndrome
+Carpal tunnel syndrome,By share of stays with obesity,1,6,11.16,Much more obesity-linked than volume suggests,Carpal tunnel syndrome (11.2%)
+Heavy menstrual bleeding,By number of stays with obesity,0,18,3723,Much more obesity-linked than volume suggests,18. Heavy menstrual bleeding
+Heavy menstrual bleeding,By share of stays with obesity,1,5,11.2,Much more obesity-linked than volume suggests,Heavy menstrual bleeding (11.2%)
+Iron deficiency,By number of stays with obesity,0,19,3333,Similar rank,19. Iron deficiency
+Iron deficiency,By share of stays with obesity,1,19,4.18,Similar rank,Iron deficiency (4.2%)
+Upper abdominal pain,By number of stays with obesity,0,20,3312,Similar rank,20. Upper abdominal pain
+Upper abdominal pain,By share of stays with obesity,1,16,5.24,Similar rank,Upper abdominal pain (5.2%)

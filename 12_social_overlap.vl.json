@@ -1,0 +1,483 @@
+{
+ "description": "Bivariate choropleth map and linked scatterplot showing, for each Population Health Area, adult obesity together with a social measure supplied in social_area.csv. Drag a box on the scatterplot to highlight areas on the map.",
+ "title": {
+  "text": "Where do obesity and social disadvantage overlap?",
+  "subtitle": "Each area is placed in a third (low, middle, high) for obesity and for the social measure. Dark blue = high on both. Drag on the scatterplot to highlight areas on the map."
+ },
+ "params": [
+  {
+   "name": "brush",
+   "select": {
+    "type": "interval"
+   },
+   "views": [
+    "scatter"
+   ]
+  }
+ ],
+ "hconcat": [
+  {
+   "width": 520,
+   "height": 460,
+   "projection": {
+    "type": "mercator"
+   },
+   "layer": [
+    {
+     "data": {
+      "url": "PHA_2021_Aust_GDA2020_Gen50.json",
+      "format": {
+       "type": "topojson",
+       "feature": "PHA_2021_Aust_GDA2020_Gen50"
+      }
+     },
+     "mark": {
+      "type": "geoshape",
+      "fill": "#ececec",
+      "stroke": "#fff",
+      "strokeWidth": 0.15
+     }
+    },
+    {
+     "data": {
+      "url": "phidu_obesity_clean.csv",
+      "format": {
+       "type": "csv"
+      }
+     },
+     "transform": [
+      {
+       "lookup": "Code",
+       "from": {
+        "data": {
+         "url": "social_area.csv",
+         "format": {
+          "type": "csv"
+         }
+        },
+        "key": "Code",
+        "fields": [
+         "social_value"
+        ]
+       }
+      },
+      {
+       "filter": "isValid(datum.obese_asr) && isValid(datum.social_value)"
+      },
+      {
+       "window": [
+        {
+         "op": "ntile",
+         "param": 3,
+         "as": "obese_t"
+        }
+       ],
+       "sort": [
+        {
+         "field": "obese_asr"
+        }
+       ]
+      },
+      {
+       "window": [
+        {
+         "op": "ntile",
+         "param": 3,
+         "as": "social_t"
+        }
+       ],
+       "sort": [
+        {
+         "field": "social_value"
+        }
+       ]
+      },
+      {
+       "calculate": "'s' + datum.social_t + 'o' + datum.obese_t",
+       "as": "bi"
+      },
+      {
+       "lookup": "Code",
+       "from": {
+        "data": {
+         "url": "PHA_2021_Aust_GDA2020_Gen50.json",
+         "format": {
+          "type": "topojson",
+          "feature": "PHA_2021_Aust_GDA2020_Gen50"
+         }
+        },
+        "key": "properties.Code"
+       },
+       "as": "geo"
+      }
+     ],
+     "mark": {
+      "type": "geoshape",
+      "stroke": "#fff",
+      "strokeWidth": 0.15
+     },
+     "encoding": {
+      "shape": {
+       "field": "geo",
+       "type": "geojson"
+      },
+      "color": {
+       "field": "bi",
+       "type": "nominal",
+       "legend": null,
+       "scale": {
+        "domain": [
+         "s1o1",
+         "s1o2",
+         "s1o3",
+         "s2o1",
+         "s2o2",
+         "s2o3",
+         "s3o1",
+         "s3o2",
+         "s3o3"
+        ],
+        "range": [
+         "#E8E8E8",
+         "#ACE4E4",
+         "#5AC8C8",
+         "#DFB0D6",
+         "#A5ADD3",
+         "#5698B9",
+         "#BE64AC",
+         "#8C62AA",
+         "#3B4994"
+        ]
+       }
+      },
+      "opacity": {
+       "condition": {
+        "param": "brush",
+        "value": 1
+       },
+       "value": 0.25
+      },
+      "tooltip": [
+       {
+        "field": "Name",
+        "title": "PHA"
+       },
+       {
+        "field": "State"
+       },
+       {
+        "field": "obese_asr",
+        "title": "Obesity per 100"
+       },
+       {
+        "field": "social_value",
+        "title": "Social measure"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "vconcat": [
+    {
+     "width": 130,
+     "height": 130,
+     "title": {
+      "text": "How to read the colours",
+      "fontSize": 12
+     },
+     "data": {
+      "values": [
+       {
+        "o": 1,
+        "s": 1,
+        "bi": "s1o1"
+       },
+       {
+        "o": 2,
+        "s": 1,
+        "bi": "s1o2"
+       },
+       {
+        "o": 3,
+        "s": 1,
+        "bi": "s1o3"
+       },
+       {
+        "o": 1,
+        "s": 2,
+        "bi": "s2o1"
+       },
+       {
+        "o": 2,
+        "s": 2,
+        "bi": "s2o2"
+       },
+       {
+        "o": 3,
+        "s": 2,
+        "bi": "s2o3"
+       },
+       {
+        "o": 1,
+        "s": 3,
+        "bi": "s3o1"
+       },
+       {
+        "o": 2,
+        "s": 3,
+        "bi": "s3o2"
+       },
+       {
+        "o": 3,
+        "s": 3,
+        "bi": "s3o3"
+       }
+      ]
+     },
+     "layer": [
+      {
+       "mark": {
+        "type": "rect",
+        "stroke": "#fff",
+        "strokeWidth": 2
+       },
+       "encoding": {
+        "x": {
+         "field": "o",
+         "type": "ordinal",
+         "title": "Higher obesity →",
+         "axis": {
+          "labels": false,
+          "ticks": false,
+          "domain": false
+         }
+        },
+        "y": {
+         "field": "s",
+         "type": "ordinal",
+         "sort": "descending",
+         "title": "Higher social measure →",
+         "axis": {
+          "labels": false,
+          "ticks": false,
+          "domain": false
+         }
+        },
+        "color": {
+         "field": "bi",
+         "type": "nominal",
+         "legend": null,
+         "scale": {
+          "domain": [
+           "s1o1",
+           "s1o2",
+           "s1o3",
+           "s2o1",
+           "s2o2",
+           "s2o3",
+           "s3o1",
+           "s3o2",
+           "s3o3"
+          ],
+          "range": [
+           "#E8E8E8",
+           "#ACE4E4",
+           "#5AC8C8",
+           "#DFB0D6",
+           "#A5ADD3",
+           "#5698B9",
+           "#BE64AC",
+           "#8C62AA",
+           "#3B4994"
+          ]
+         }
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "scatter",
+     "width": 340,
+     "height": 300,
+     "data": {
+      "url": "phidu_obesity_clean.csv",
+      "format": {
+       "type": "csv"
+      }
+     },
+     "transform": [
+      {
+       "lookup": "Code",
+       "from": {
+        "data": {
+         "url": "social_area.csv",
+         "format": {
+          "type": "csv"
+         }
+        },
+        "key": "Code",
+        "fields": [
+         "social_value"
+        ]
+       }
+      },
+      {
+       "filter": "isValid(datum.obese_asr) && isValid(datum.social_value)"
+      },
+      {
+       "window": [
+        {
+         "op": "ntile",
+         "param": 3,
+         "as": "obese_t"
+        }
+       ],
+       "sort": [
+        {
+         "field": "obese_asr"
+        }
+       ]
+      },
+      {
+       "window": [
+        {
+         "op": "ntile",
+         "param": 3,
+         "as": "social_t"
+        }
+       ],
+       "sort": [
+        {
+         "field": "social_value"
+        }
+       ]
+      },
+      {
+       "calculate": "'s' + datum.social_t + 'o' + datum.obese_t",
+       "as": "bi"
+      }
+     ],
+     "mark": {
+      "type": "circle",
+      "size": 28,
+      "tooltip": true
+     },
+     "encoding": {
+      "x": {
+       "field": "social_value",
+       "type": "quantitative",
+       "title": "Social measure",
+       "scale": {
+        "zero": false
+       }
+      },
+      "y": {
+       "field": "obese_asr",
+       "type": "quantitative",
+       "title": "Obesity rate per 100",
+       "scale": {
+        "zero": false
+       }
+      },
+      "color": {
+       "field": "bi",
+       "type": "nominal",
+       "legend": null,
+       "scale": {
+        "domain": [
+         "s1o1",
+         "s1o2",
+         "s1o3",
+         "s2o1",
+         "s2o2",
+         "s2o3",
+         "s3o1",
+         "s3o2",
+         "s3o3"
+        ],
+        "range": [
+         "#E8E8E8",
+         "#ACE4E4",
+         "#5AC8C8",
+         "#DFB0D6",
+         "#A5ADD3",
+         "#5698B9",
+         "#BE64AC",
+         "#8C62AA",
+         "#3B4994"
+        ]
+       }
+      },
+      "opacity": {
+       "condition": {
+        "param": "brush",
+        "value": 0.9
+       },
+       "value": 0.2
+      },
+      "tooltip": [
+       {
+        "field": "Name",
+        "title": "PHA"
+       },
+       {
+        "field": "State"
+       },
+       {
+        "field": "obese_asr",
+        "title": "Obesity per 100"
+       },
+       {
+        "field": "social_value",
+        "title": "Social measure"
+       }
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ "config": {
+  "background": "#fff",
+  "view": {
+   "stroke": null
+  },
+  "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+  "axis": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "domainColor": "#666",
+   "tickColor": "#666",
+   "gridColor": "#e5e0d8"
+  },
+  "title": {
+   "fontSize": 16,
+   "anchor": "start",
+   "color": "#2b2d42",
+   "subtitleColor": "#666",
+   "subtitleFontSize": 12,
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "header": {
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "labelFont": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "legend": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222"
+  },
+  "text": {
+   "color": "#222",
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  }
+ }
+}
