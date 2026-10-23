@@ -1,8 +1,14 @@
 {
- "description": "Choropleth map of modelled adult obesity rate by Population Health Area with a ranked bar chart of the 25 highest areas.",
+ "description": "Choropleth map of modelled adult obesity rate by Population Health Area next to a ranked bar chart of the 25 highest areas.",
  "title": {
-  "text": "Where is adult obesity highest?",
-  "subtitle": "Modelled obesity rate (age-standardised, per 100 adults, 2022). Grey = no published estimate. Click a bar to highlight it."
+  "text": [
+   "Adult obesity is highest in outer-suburban and regional areas"
+  ],
+  "subtitle": [
+   "Modelled obesity rate (age-standardised, % of adults, 2022). Grey",
+   "= no published estimate. Click a bar to highlight",
+   "that area on the map."
+  ]
  },
  "params": [
   {
@@ -64,7 +70,7 @@
      },
      "field": "obese_asr",
      "type": "quantitative",
-     "title": "Obese per 100",
+     "title": "Obese adults (%)",
      "scale": {
       "scheme": "viridis",
       "reverse": true,
@@ -75,7 +81,8 @@
      },
      "legend": {
       "orient": "bottom",
-      "gradientLength": 260
+      "gradientLength": 260,
+      "labelExpr": "datum.value + '%'"
      }
     },
     "opacity": {
@@ -88,14 +95,15 @@
     "tooltip": [
      {
       "field": "Name",
-      "title": "PHA"
+      "title": "Area"
      },
      {
       "field": "State"
      },
      {
       "field": "obese_asr",
-      "title": "Rate per 100"
+      "title": "Obesity rate (%)",
+      "format": ".1f"
      },
      {
       "field": "obese_n",
@@ -106,9 +114,9 @@
    }
   },
   {
-   "width": 240,
+   "width": 300,
    "height": {
-    "step": 14
+    "step": 15
    },
    "data": {
     "url": "phidu_obesity_clean.csv",
@@ -151,13 +159,32 @@
      "sort": "-x",
      "title": null,
      "axis": {
-      "labelLimit": 210
+      "labelLimit": 240
      }
     },
     "x": {
      "field": "obese_asr",
      "type": "quantitative",
-     "title": "Rate per 100"
+     "title": "Adults who are obese (%)",
+     "scale": {
+      "domain": [
+       0,
+       60
+      ],
+      "zero": true
+     },
+     "axis": {
+      "labelExpr": "datum.value + '%'",
+      "values": [
+       0,
+       10,
+       20,
+       30,
+       40,
+       50,
+       60
+      ]
+     }
     },
     "opacity": {
      "condition": {
@@ -168,14 +195,16 @@
     },
     "tooltip": [
      {
-      "field": "Name"
+      "field": "Name",
+      "title": "Area"
      },
      {
       "field": "State"
      },
      {
       "field": "obese_asr",
-      "title": "Rate per 100"
+      "title": "Obesity rate (%)",
+      "format": ".1f"
      }
     ]
    }
@@ -197,13 +226,20 @@
    "tickColor": "#666",
    "gridColor": "#e5e0d8"
   },
+  "axisX": {
+   "grid": true
+  },
+  "axisY": {
+   "grid": true
+  },
   "title": {
    "fontSize": 16,
    "anchor": "start",
    "color": "#2b2d42",
    "subtitleColor": "#666",
    "subtitleFontSize": 12,
-   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "subtitlePadding": 4
   },
   "header": {
    "labelColor": "#222",
@@ -214,7 +250,8 @@
    "labelFontSize": 12,
    "titleFontSize": 12,
    "labelColor": "#222",
-   "titleColor": "#222"
+   "titleColor": "#222",
+   "titleLimit": 420
   },
   "text": {
    "color": "#222",

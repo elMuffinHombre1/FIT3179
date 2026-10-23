@@ -1,47 +1,45 @@
 {
- "description": "Slope chart ranking the top 20 diagnoses of hospital stays with obesity coded, comparing rank by number of stays with rank by share of all stays for that diagnosis that carry an obesity code.",
+ "description": "Bump chart ranking eight occupation groups by obesity prevalence across four survey years from 2007-08 to 2017-18, adults 18-64.",
  "title": {
-  "text": "Common is not the same as obesity-linked",
-  "subtitle": "Top 20 principal diagnoses of hospital stays with obesity recorded: rank by volume (left) vs. rank by how often obesity is recorded for that diagnosis (right)."
+  "text": [
+   "Machinery operators rank highest and professionals lowest in every",
+   "survey"
+  ],
+  "subtitle": [
+   "Rank of eight occupation groups by obesity rate (1",
+   "= highest), adults 18–64. Wine = highest in 2017–18,",
+   "teal = lowest."
+  ]
  },
  "data": {
-  "url": "04_hospital_slope.csv",
+  "url": "07_occupation_bump.csv",
   "format": {
    "type": "csv"
   }
  },
- "width": 720,
- "height": 560,
+ "width": 600,
+ "height": 430,
  "encoding": {
-  "y": {
-   "field": "rank",
-   "type": "quantitative",
-   "scale": {
-    "domain": [
-     20.6,
-     -1.2
-    ]
-   },
-   "axis": null
-  },
   "x": {
-   "field": "x",
+   "field": "yi",
    "type": "quantitative",
    "scale": {
     "domain": [
-     -1.55,
-     2.55
+     -2.9,
+     6.4
     ]
    },
    "axis": {
     "orient": "top",
     "values": [
      0,
-     1
+     1,
+     2,
+     3
     ],
-    "labelExpr": "datum.value == 0 ? 'RANK BY VOLUME' : 'RANK BY OBESITY SHARE'",
+    "labelExpr": "['2007–08','2011–12','2014–15','2017–18'][datum.value]",
     "labelFontWeight": "bold",
-    "labelFontSize": 12,
+    "labelFontSize": 13,
     "domain": false,
     "ticks": false,
     "grid": false,
@@ -49,15 +47,42 @@
     "labelPadding": 8
    }
   },
+  "y": {
+   "field": "rank",
+   "type": "quantitative",
+   "title": "Rank (1 = highest obesity rate)",
+   "scale": {
+    "domain": [
+     8.6,
+     0.4
+    ]
+   },
+   "axis": {
+    "values": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "labels": false,
+    "ticks": false,
+    "domain": false,
+    "grid": true
+   }
+  },
   "color": {
-   "field": "direction",
+   "field": "role",
    "type": "nominal",
    "title": null,
    "scale": {
     "domain": [
-     "Much more obesity-linked than volume suggests",
-     "Similar rank",
-     "Less obesity-linked than volume suggests"
+     "Highest",
+     "Other",
+     "Lowest"
     ],
     "range": [
      "#882255",
@@ -65,66 +90,99 @@
      "#44AA99"
     ]
    },
-   "legend": {
-    "orient": "bottom",
-    "symbolStrokeWidth": 4,
-    "labelLimit": 330
-   }
+   "legend": null
   }
  },
  "layer": [
   {
    "mark": {
     "type": "line",
-    "strokeWidth": 2.5,
+    "strokeWidth": 3.5,
     "opacity": 0.9
    },
    "encoding": {
     "detail": {
-     "field": "diagnosis",
+     "field": "occupation",
      "type": "nominal"
     }
    }
   },
   {
    "mark": {
-    "type": "point",
-    "filled": true,
-    "size": 60,
+    "type": "circle",
+    "size": 520,
     "opacity": 1,
+    "stroke": "#fff",
+    "strokeWidth": 1.5,
     "tooltip": true
    },
    "encoding": {
+    "fill": {
+     "field": "role",
+     "type": "nominal",
+     "legend": null,
+     "scale": {
+      "domain": [
+       "Highest",
+       "Other",
+       "Lowest"
+      ],
+      "range": [
+       "#882255",
+       "#CFCFCF",
+       "#44AA99"
+      ]
+     }
+    },
     "tooltip": [
      {
-      "field": "diagnosis"
+      "field": "occupation",
+      "title": "Occupation"
      },
      {
-      "field": "side",
-      "title": "Ranked by"
+      "field": "year",
+      "title": "Survey year"
      },
      {
       "field": "rank",
-      "title": "Rank"
+      "title": "Rank (1 = highest)"
      },
      {
-      "field": "value",
-      "title": "Value",
-      "format": ",.1f"
+      "field": "asr",
+      "title": "Age-std obesity (%)"
      }
     ]
    }
   },
   {
+   "mark": {
+    "type": "text",
+    "fontWeight": "bold",
+    "fontSize": 13
+   },
+   "encoding": {
+    "text": {
+     "field": "rank"
+    },
+    "color": {
+     "condition": {
+      "test": "datum.role == 'Other'",
+      "value": "#222"
+     },
+     "value": "#ffffff"
+    }
+   }
+  },
+  {
    "transform": [
     {
-     "filter": "datum.x == 0"
+     "filter": "datum.yi == 0"
     }
    ],
    "mark": {
     "type": "text",
     "align": "right",
-    "dx": -9,
+    "dx": -16,
     "fontSize": 11.5
    },
    "encoding": {
@@ -136,7 +194,7 @@
     },
     "fontWeight": {
      "condition": {
-      "test": "datum.direction != 'Similar rank'",
+      "test": "datum.role != 'Other'",
       "value": "bold"
      },
      "value": "normal"
@@ -146,13 +204,13 @@
   {
    "transform": [
     {
-     "filter": "datum.x == 1"
+     "filter": "datum.yi == 3"
     }
    ],
    "mark": {
     "type": "text",
     "align": "left",
-    "dx": 9,
+    "dx": 16,
     "fontSize": 11.5
    },
    "encoding": {
@@ -164,7 +222,7 @@
     },
     "fontWeight": {
      "condition": {
-      "test": "datum.direction != 'Similar rank'",
+      "test": "datum.role != 'Other'",
       "value": "bold"
      },
      "value": "normal"
@@ -188,13 +246,20 @@
    "tickColor": "#666",
    "gridColor": "#e5e0d8"
   },
+  "axisX": {
+   "grid": true
+  },
+  "axisY": {
+   "grid": true
+  },
   "title": {
    "fontSize": 16,
    "anchor": "start",
    "color": "#2b2d42",
    "subtitleColor": "#666",
    "subtitleFontSize": 12,
-   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "subtitlePadding": 4
   },
   "header": {
    "labelColor": "#222",
@@ -205,7 +270,8 @@
    "labelFontSize": 12,
    "titleFontSize": 12,
    "labelColor": "#222",
-   "titleColor": "#222"
+   "titleColor": "#222",
+   "titleLimit": 420
   },
   "text": {
    "color": "#222",

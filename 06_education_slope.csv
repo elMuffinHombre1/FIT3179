@@ -1,0 +1,11 @@
+name,year,x,asr,y_label,role,label
+Did not finish secondary,2007–08,0,29.3,29.9,Highest,Did not finish secondary  29.3%
+Completed secondary,2007–08,0,22.5,22.5,Other,Completed secondary  22.5%
+Certificate III/IV,2007–08,0,28.6,28.0,Other,Certificate III/IV  28.6%
+Diploma,2007–08,0,18.4,18.7,Other,Diploma  18.4%
+Bachelor degree+,2007–08,0,17.1,16.8,Lowest,Bachelor degree+  17.1%
+Did not finish secondary,2017–18,1,38.3,38.3,Highest,38.3%  Did not finish secondary (+9.0)
+Completed secondary,2017–18,1,31.3,30.75,Other,31.3%  Completed secondary (+8.8)
+Certificate III/IV,2017–18,1,35.1,35.1,Other,35.1%  Certificate III/IV (+6.5)
+Diploma,2017–18,1,32.1,32.65,Other,32.1%  Diploma (+13.7)
+Bachelor degree+,2017–18,1,20.5,20.5,Lowest,20.5%  Bachelor degree+ (+3.4)

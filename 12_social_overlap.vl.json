@@ -1,8 +1,15 @@
 {
  "description": "Bivariate choropleth map and linked scatterplot showing, for each Population Health Area, adult obesity together with a social measure supplied in social_area.csv. Drag a box on the scatterplot to highlight areas on the map.",
  "title": {
-  "text": "Where do obesity and social disadvantage overlap?",
-  "subtitle": "Each area is placed in a third (low, middle, high) for obesity and for the social measure. Dark blue = high on both. Drag on the scatterplot to highlight areas on the map."
+  "text": [
+   "Where do obesity and social disadvantage overlap?"
+  ],
+  "subtitle": [
+   "Each area is placed in a third (low, middle,",
+   "high) for obesity and for the social measure. Dark",
+   "blue = high on both. Drag on the scatterplot",
+   "to highlight areas."
+  ]
  },
  "params": [
   {
@@ -17,8 +24,8 @@
  ],
  "hconcat": [
   {
-   "width": 520,
-   "height": 460,
+   "width": 480,
+   "height": 420,
    "projection": {
     "type": "mercator"
    },
@@ -160,14 +167,15 @@
       "tooltip": [
        {
         "field": "Name",
-        "title": "PHA"
+        "title": "Area"
        },
        {
         "field": "State"
        },
        {
         "field": "obese_asr",
-        "title": "Obesity per 100"
+        "title": "Obesity rate (%)",
+        "format": ".1f"
        },
        {
         "field": "social_value",
@@ -251,7 +259,8 @@
          "axis": {
           "labels": false,
           "ticks": false,
-          "domain": false
+          "domain": false,
+          "grid": false
          }
         },
         "y": {
@@ -262,7 +271,8 @@
          "axis": {
           "labels": false,
           "ticks": false,
-          "domain": false
+          "domain": false,
+          "grid": false
          }
         },
         "color": {
@@ -300,8 +310,8 @@
     },
     {
      "name": "scatter",
-     "width": 340,
-     "height": 300,
+     "width": 320,
+     "height": 280,
      "data": {
       "url": "phidu_obesity_clean.csv",
       "format": {
@@ -377,9 +387,12 @@
       "y": {
        "field": "obese_asr",
        "type": "quantitative",
-       "title": "Obesity rate per 100",
+       "title": "Adults who are obese (%)",
        "scale": {
-        "zero": false
+        "zero": true
+       },
+       "axis": {
+        "labelExpr": "datum.value + '%'"
        }
       },
       "color": {
@@ -421,14 +434,15 @@
       "tooltip": [
        {
         "field": "Name",
-        "title": "PHA"
+        "title": "Area"
        },
        {
         "field": "State"
        },
        {
         "field": "obese_asr",
-        "title": "Obesity per 100"
+        "title": "Obesity rate (%)",
+        "format": ".1f"
        },
        {
         "field": "social_value",
@@ -456,13 +470,20 @@
    "tickColor": "#666",
    "gridColor": "#e5e0d8"
   },
+  "axisX": {
+   "grid": true
+  },
+  "axisY": {
+   "grid": true
+  },
   "title": {
    "fontSize": 16,
    "anchor": "start",
    "color": "#2b2d42",
    "subtitleColor": "#666",
    "subtitleFontSize": 12,
-   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "subtitlePadding": 4
   },
   "header": {
    "labelColor": "#222",
@@ -473,7 +494,8 @@
    "labelFontSize": 12,
    "titleFontSize": 12,
    "labelColor": "#222",
-   "titleColor": "#222"
+   "titleColor": "#222",
+   "titleLimit": 420
   },
   "text": {
    "color": "#222",

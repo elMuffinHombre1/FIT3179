@@ -1,22 +1,28 @@
 {
  "description": "Line chart with confidence bands: obesity prevalence among adults 18-64 for males, females and persons from 2007-08 to 2017-18.",
  "title": {
-  "text": "Obesity among adults rose from 24% to 30% in a decade",
-  "subtitle": "Age-standardised %, adults 18–64. Shaded bands are 95% confidence intervals."
+  "text": [
+   "Obesity among adults rose from 24% to 30% in",
+   "a decade"
+  ],
+  "subtitle": [
+   "Age-standardised percentage of adults 18–64. Shaded bands are 95%",
+   "confidence intervals. The axis starts at zero."
+  ]
  },
  "data": {
-  "url": "07_obesity_trend.csv",
+  "url": "02_obesity_trend.csv",
   "format": {
    "type": "csv"
   }
  },
- "width": 520,
- "height": 330,
+ "width": 470,
+ "height": 380,
  "encoding": {
   "x": {
    "field": "year",
    "type": "ordinal",
-   "title": null,
+   "title": "Survey year",
    "axis": {
     "labelAngle": 0
    },
@@ -52,11 +58,25 @@
     "y": {
      "field": "lo",
      "type": "quantitative",
-     "title": "% obese (age-standardised)",
+     "title": "Adults who are obese (%)",
      "scale": {
       "domain": [
+       0,
+       35
+      ],
+      "zero": true
+     },
+     "axis": {
+      "labelExpr": "datum.value + '%'",
+      "values": [
+       0,
+       5,
+       10,
+       15,
        20,
-       34
+       25,
+       30,
+       35
       ]
      }
     },
@@ -125,19 +145,20 @@
       "title": "Group"
      },
      {
-      "field": "year"
+      "field": "year",
+      "title": "Survey year"
      },
      {
       "field": "asr",
-      "title": "Age-std %"
+      "title": "Age-std obesity (%)"
      },
      {
       "field": "lo",
-      "title": "CI low"
+      "title": "CI low (%)"
      },
      {
       "field": "hi",
-      "title": "CI high"
+      "title": "CI high (%)"
      }
     ]
    }
@@ -146,6 +167,10 @@
    "transform": [
     {
      "filter": "datum.year == '2017–18'"
+    },
+    {
+     "calculate": "datum.category + ' ' + format(datum.asr,'.1f') + '%'",
+     "as": "lab"
     }
    ],
    "mark": {
@@ -153,7 +178,7 @@
     "align": "left",
     "dx": 10,
     "fontWeight": "bold",
-    "fontSize": 13
+    "fontSize": 12
    },
    "encoding": {
     "y": {
@@ -161,7 +186,7 @@
      "type": "quantitative"
     },
     "text": {
-     "field": "category"
+     "field": "lab"
     }
    }
   }
@@ -182,13 +207,20 @@
    "tickColor": "#666",
    "gridColor": "#e5e0d8"
   },
+  "axisX": {
+   "grid": true
+  },
+  "axisY": {
+   "grid": true
+  },
   "title": {
    "fontSize": 16,
    "anchor": "start",
    "color": "#2b2d42",
    "subtitleColor": "#666",
    "subtitleFontSize": 12,
-   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "subtitlePadding": 4
   },
   "header": {
    "labelColor": "#222",
@@ -199,7 +231,8 @@
    "labelFontSize": 12,
    "titleFontSize": 12,
    "labelColor": "#222",
-   "titleColor": "#222"
+   "titleColor": "#222",
+   "titleLimit": 420
   },
   "text": {
    "color": "#222",

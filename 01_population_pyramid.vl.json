@@ -1,11 +1,19 @@
 {
  "description": "Population pyramid of the share of boys and girls by age band, and of adult men and women, who are overweight but not obese or obese. Males on the left, females on the right.",
  "title": {
-  "text": "The share who are overweight or obese climbs from childhood into adulthood",
-  "subtitle": "% of each group, males left and females right. Dark = obese; light = overweight but not obese; labels show the total. Adults and children use different BMI definitions, so compare shapes, not exact values."
+  "text": [
+   "The share overweight or obese climbs from childhood into",
+   "adulthood"
+  ],
+  "subtitle": [
+   "Percentage of each group, males left and females right.",
+   "Dark = obese, light = overweight but not obese.",
+   "Labels show the total. Adults and children use different",
+   "BMI definitions."
+  ]
  },
  "data": {
-  "url": "06_population_pyramid.csv",
+  "url": "01_population_pyramid.csv",
   "format": {
    "type": "csv"
   }
@@ -31,7 +39,7 @@
   }
  },
  "spec": {
-  "width": 520,
+  "width": 420,
   "height": {
    "step": 30
   },
@@ -86,7 +94,18 @@
       },
       "axis": {
        "labelExpr": "abs(datum.value) + '%'",
-       "grid": true
+       "grid": true,
+       "values": [
+        -80,
+        -60,
+        -40,
+        -20,
+        0,
+        20,
+        40,
+        60,
+        80
+       ]
       }
      },
      "color": {
@@ -109,7 +128,7 @@
       },
       "legend": {
        "orient": "bottom",
-       "columns": 2,
+       "columns": 1,
        "labelLimit": 320
       }
      },
@@ -128,7 +147,7 @@
       },
       {
        "field": "pct",
-       "title": "%",
+       "title": "% of group",
        "format": ".1f"
       }
      ]
@@ -273,13 +292,20 @@
    "tickColor": "#666",
    "gridColor": "#e5e0d8"
   },
+  "axisX": {
+   "grid": true
+  },
+  "axisY": {
+   "grid": true
+  },
   "title": {
    "fontSize": 16,
    "anchor": "start",
    "color": "#2b2d42",
    "subtitleColor": "#666",
    "subtitleFontSize": 12,
-   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "subtitlePadding": 4
   },
   "header": {
    "labelColor": "#222",
@@ -290,7 +316,8 @@
    "labelFontSize": 12,
    "titleFontSize": 12,
    "labelColor": "#222",
-   "titleColor": "#222"
+   "titleColor": "#222",
+   "titleLimit": 420
   },
   "text": {
    "color": "#222",

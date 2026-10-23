@@ -1,11 +1,17 @@
 {
  "description": "Heatmap of obesity prevalence for adults 18-64 by household type, employment, marital status and household tenure across four survey years.",
  "title": {
-  "text": "Household circumstances matter less: differences of 2 to 6 points",
-  "subtitle": "Age-standardised % of adults 18–64 who are obese, by survey year. Darker = higher."
+  "text": [
+   "Household circumstances matter less: differences of 2 to 6",
+   "points"
+  ],
+  "subtitle": [
+   "Age-standardised percentage of adults 18–64 who are obese, by",
+   "survey year. Darker = higher."
+  ]
  },
  "data": {
-  "url": "11_household_heatmap.csv",
+  "url": "08_household_heatmap.csv",
   "format": {
    "type": "csv"
   }
@@ -31,9 +37,9 @@
   }
  },
  "spec": {
-  "width": 300,
+  "width": 420,
   "height": {
-   "step": 24
+   "step": 26
   },
   "encoding": {
    "y": {
@@ -44,18 +50,20 @@
     "axis": {
      "labelLimit": 220,
      "domain": false,
-     "ticks": false
+     "ticks": false,
+     "grid": false
     }
    },
    "x": {
     "field": "year",
     "type": "ordinal",
-    "title": null,
+    "title": "Survey year",
     "axis": {
      "orient": "top",
      "labelAngle": 0,
      "domain": false,
-     "ticks": false
+     "ticks": false,
+     "grid": false
     }
    }
   },
@@ -71,7 +79,7 @@
      "color": {
       "field": "asr",
       "type": "quantitative",
-      "title": "Obese, age-standardised %",
+      "title": "Adults who are obese (%)",
       "scale": {
        "scheme": "viridis",
        "reverse": true,
@@ -82,43 +90,52 @@
       },
       "legend": {
        "orient": "bottom",
-       "gradientLength": 300
+       "gradientLength": 320,
+       "labelExpr": "datum.value + '%'"
       }
      },
      "tooltip": [
       {
-       "field": "group"
+       "field": "group",
+       "title": "Factor"
       },
       {
-       "field": "category"
+       "field": "category",
+       "title": "Group"
       },
       {
-       "field": "year"
+       "field": "year",
+       "title": "Survey year"
       },
       {
        "field": "asr",
-       "title": "Age-std %"
+       "title": "Age-std obesity (%)"
       },
       {
        "field": "lo",
-       "title": "CI low"
+       "title": "CI low (%)"
       },
       {
        "field": "hi",
-       "title": "CI high"
+       "title": "CI high (%)"
       }
      ]
     }
    },
    {
+    "transform": [
+     {
+      "calculate": "format(datum.asr,'.1f') + '%'",
+      "as": "lab"
+     }
+    ],
     "mark": {
      "type": "text",
      "fontSize": 12
     },
     "encoding": {
      "text": {
-      "field": "asr",
-      "format": ".1f"
+      "field": "lab"
      },
      "color": {
       "condition": {
@@ -152,13 +169,20 @@
    "tickColor": "#666",
    "gridColor": "#e5e0d8"
   },
+  "axisX": {
+   "grid": true
+  },
+  "axisY": {
+   "grid": true
+  },
   "title": {
    "fontSize": 16,
    "anchor": "start",
    "color": "#2b2d42",
    "subtitleColor": "#666",
    "subtitleFontSize": 12,
-   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "subtitlePadding": 4
   },
   "header": {
    "labelColor": "#222",
@@ -169,7 +193,8 @@
    "labelFontSize": 12,
    "titleFontSize": 12,
    "labelColor": "#222",
-   "titleColor": "#222"
+   "titleColor": "#222",
+   "titleLimit": 420
   },
   "text": {
    "color": "#222",

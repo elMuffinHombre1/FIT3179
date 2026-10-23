@@ -1,25 +1,32 @@
 {
  "description": "Slope chart of obesity prevalence for five education levels in 2007-08 and 2017-18, adults 18-64.",
  "title": {
-  "text": "Obesity rose at every education level, and the gap widened",
-  "subtitle": "Age-standardised % obese, adults 18–64. Wine = highest obesity in 2017–18, teal = lowest, grey = other levels."
+  "text": [
+   "Obesity rose at every education level, and the gap",
+   "widened"
+  ],
+  "subtitle": [
+   "Age-standardised percentage obese, adults 18–64. Numbers in brackets are",
+   "changes in percentage points. Wine = highest in 2017–18,",
+   "teal = lowest."
+  ]
  },
  "data": {
-  "url": "09_education_slope.csv",
+  "url": "06_education_slope.csv",
   "format": {
    "type": "csv"
   }
  },
- "width": 760,
- "height": 420,
+ "width": 540,
+ "height": 470,
  "encoding": {
   "x": {
    "field": "x",
    "type": "quantitative",
    "scale": {
     "domain": [
-     -2.3,
-     4.3
+     -1.75,
+     3.5
     ]
    },
    "axis": {
@@ -41,13 +48,25 @@
   "y": {
    "field": "asr",
    "type": "quantitative",
+   "title": "Adults who are obese (%)",
    "scale": {
     "domain": [
-     14,
-     42
-    ]
+     0,
+     45
+    ],
+    "zero": true
    },
-   "axis": null
+   "axis": {
+    "labelExpr": "datum.value + '%'",
+    "values": [
+     0,
+     10,
+     20,
+     30,
+     40
+    ],
+    "grid": true
+   }
   },
   "color": {
    "field": "role",
@@ -96,11 +115,12 @@
       "title": "Education"
      },
      {
-      "field": "year"
+      "field": "year",
+      "title": "Survey year"
      },
      {
       "field": "asr",
-      "title": "Age-std %"
+      "title": "Age-std obesity (%)"
      }
     ]
    }
@@ -115,7 +135,7 @@
     "type": "text",
     "align": "right",
     "dx": -12,
-    "fontSize": 12
+    "fontSize": 11.5
    },
    "encoding": {
     "y": {
@@ -147,7 +167,7 @@
     "type": "text",
     "align": "left",
     "dx": 12,
-    "fontSize": 12
+    "fontSize": 11.5
    },
    "encoding": {
     "y": {
@@ -186,13 +206,20 @@
    "tickColor": "#666",
    "gridColor": "#e5e0d8"
   },
+  "axisX": {
+   "grid": true
+  },
+  "axisY": {
+   "grid": true
+  },
   "title": {
    "fontSize": 16,
    "anchor": "start",
    "color": "#2b2d42",
    "subtitleColor": "#666",
    "subtitleFontSize": 12,
-   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "subtitlePadding": 4
   },
   "header": {
    "labelColor": "#222",
@@ -203,7 +230,8 @@
    "labelFontSize": 12,
    "titleFontSize": 12,
    "labelColor": "#222",
-   "titleColor": "#222"
+   "titleColor": "#222",
+   "titleLimit": 420
   },
   "text": {
    "color": "#222",

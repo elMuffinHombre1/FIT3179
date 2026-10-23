@@ -1,15 +1,21 @@
 {
  "description": "Butterfly chart of 2023-24 health spending linked to overweight and obesity by age group, males on the left and females on the right, split into direct treatment and treatment of resulting conditions.",
  "title": {
-  "text": "Health spending on excess weight peaks at ages 65–69",
-  "subtitle": "2023–24, $ million by age group and sex. Darker = treating conditions caused by excess weight; lighter = direct obesity treatment."
+  "text": [
+   "Health spending on excess weight peaks at ages 65–69"
+  ],
+  "subtitle": [
+   "2023–24, in millions of dollars by age group and",
+   "sex. Darker = treating conditions caused by excess weight,",
+   "lighter = direct obesity treatment."
+  ]
  },
- "width": 560,
+ "width": 430,
  "height": 440,
  "layer": [
   {
    "data": {
-    "url": "05_cost_butterfly.csv",
+    "url": "11_cost_butterfly.csv",
     "format": {
      "type": "csv"
     }
@@ -57,24 +63,35 @@
       "1–4",
       "<1"
      ],
-     "title": "Age group",
+     "title": "Age group (years)",
      "axis": {
-      "labelPadding": 6
+      "labelPadding": 6,
+      "grid": true,
+      "gridDash": [
+       2,
+       3
+      ]
      }
     },
     "x": {
      "field": "signed",
      "type": "quantitative",
-     "title": "← Males  |  Females →  ($ million)",
+     "title": "← Males  |  Females →  (spending, $ million)",
      "scale": {
       "domain": [
-       -1100,
-       900
+       -1250,
+       950
       ]
      },
      "axis": {
-      "labelExpr": "abs(datum.value)",
-      "grid": true
+      "labelExpr": "'$' + abs(datum.value) + 'm'",
+      "grid": true,
+      "values": [
+       -1000,
+       -500,
+       0,
+       500
+      ]
      }
     },
     "color": {
@@ -97,8 +114,8 @@
      },
      "legend": {
       "orient": "bottom",
-      "columns": 2,
-      "labelLimit": 300
+      "columns": 1,
+      "labelLimit": 320
      }
     },
     "order": {
@@ -108,7 +125,7 @@
     "tooltip": [
      {
       "field": "age",
-      "title": "Age"
+      "title": "Age (years)"
      },
      {
       "field": "series",
@@ -116,7 +133,7 @@
      },
      {
       "field": "aud_m",
-      "title": "$ million",
+      "title": "Spending ($ million)",
       "format": ",.1f"
      }
     ]
@@ -269,13 +286,20 @@
    "tickColor": "#666",
    "gridColor": "#e5e0d8"
   },
+  "axisX": {
+   "grid": true
+  },
+  "axisY": {
+   "grid": true
+  },
   "title": {
    "fontSize": 16,
    "anchor": "start",
    "color": "#2b2d42",
    "subtitleColor": "#666",
    "subtitleFontSize": 12,
-   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "subtitlePadding": 4
   },
   "header": {
    "labelColor": "#222",
@@ -286,7 +310,8 @@
    "labelFontSize": 12,
    "titleFontSize": 12,
    "labelColor": "#222",
-   "titleColor": "#222"
+   "titleColor": "#222",
+   "titleLimit": 420
   },
   "text": {
    "color": "#222",

@@ -1,0 +1,199 @@
+{
+ "description": "Bar chart of the 20 most common principal diagnoses among hospital stays with obesity recorded, with bars coloured by how often obesity is recorded across all stays for that diagnosis.",
+ "title": {
+  "text": [
+   "Knee osteoarthritis is the most common reason for obesity-coded",
+   "hospital stays"
+  ],
+  "subtitle": [
+   "Number of hospital stays with obesity recorded, by principal",
+   "diagnosis. Colour = share of all stays for that",
+   "diagnosis that have obesity recorded (%)."
+  ]
+ },
+ "data": {
+  "url": "10_comorbidity_bar.csv",
+  "format": {
+   "type": "csv"
+  }
+ },
+ "width": 330,
+ "height": {
+  "step": 21
+ },
+ "encoding": {
+  "y": {
+   "field": "diagnosis",
+   "type": "nominal",
+   "sort": [
+    "Osteoarthritis of the knee",
+    "Cataract",
+    "Caesarean delivery",
+    "Osteoarthritis of the hip",
+    "Cancer drug therapy session",
+    "Obstructive sleep apnoea",
+    "Other faecal abnormalities",
+    "GI haemorrhage",
+    "Cellulitis of lower limb",
+    "Single spontaneous delivery",
+    "Congestive heart failure",
+    "Atrial fibrillation",
+    "Coronary artery disease",
+    "Prostate cancer",
+    "Chest pain",
+    "Gallstones with cholecystitis",
+    "Carpal tunnel syndrome",
+    "Heavy menstrual bleeding",
+    "Iron deficiency",
+    "Upper abdominal pain"
+   ],
+   "title": null,
+   "axis": {
+    "labelLimit": 220,
+    "grid": true,
+    "gridDash": [
+     2,
+     3
+    ]
+   }
+  }
+ },
+ "layer": [
+  {
+   "mark": {
+    "type": "bar",
+    "tooltip": true
+   },
+   "encoding": {
+    "x": {
+     "field": "stays",
+     "type": "quantitative",
+     "title": "Hospital stays with obesity recorded (number of stays)",
+     "scale": {
+      "domain": [
+       0,
+       26000
+      ],
+      "zero": true
+     },
+     "axis": {
+      "format": ",.0f",
+      "values": [
+       0,
+       5000,
+       10000,
+       15000,
+       20000,
+       25000
+      ]
+     }
+    },
+    "color": {
+     "field": "share",
+     "type": "quantitative",
+     "title": "% of stays with obesity recorded",
+     "scale": {
+      "scheme": "viridis",
+      "reverse": true,
+      "domain": [
+       0,
+       15
+      ]
+     },
+     "legend": {
+      "orient": "bottom",
+      "gradientLength": 280,
+      "labelExpr": "datum.value + '%'"
+     }
+    },
+    "tooltip": [
+     {
+      "field": "diagnosis",
+      "title": "Diagnosis"
+     },
+     {
+      "field": "stays",
+      "title": "Stays with obesity recorded",
+      "format": ","
+     },
+     {
+      "field": "share",
+      "title": "Share of all stays for this diagnosis (%)",
+      "format": ".1f"
+     }
+    ]
+   }
+  },
+  {
+   "transform": [
+    {
+     "calculate": "format(datum.stays,',') + ' stays'",
+     "as": "lab"
+    }
+   ],
+   "mark": {
+    "type": "text",
+    "align": "left",
+    "dx": 5,
+    "fontSize": 11
+   },
+   "encoding": {
+    "x": {
+     "field": "stays",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "lab"
+    }
+   }
+  }
+ ],
+ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ "config": {
+  "background": "#fff",
+  "view": {
+   "stroke": null
+  },
+  "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+  "axis": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "domainColor": "#666",
+   "tickColor": "#666",
+   "gridColor": "#e5e0d8"
+  },
+  "axisX": {
+   "grid": true
+  },
+  "axisY": {
+   "grid": true
+  },
+  "title": {
+   "fontSize": 16,
+   "anchor": "start",
+   "color": "#2b2d42",
+   "subtitleColor": "#666",
+   "subtitleFontSize": 12,
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "subtitlePadding": 4
+  },
+  "header": {
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "labelFont": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "legend": {
+   "labelFontSize": 12,
+   "titleFontSize": 12,
+   "labelColor": "#222",
+   "titleColor": "#222",
+   "titleLimit": 420
+  },
+  "text": {
+   "color": "#222",
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  }
+ }
+}

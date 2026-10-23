@@ -1,11 +1,18 @@
 {
  "description": "Proportional symbol map: each Population Health Area is a circle sized by the estimated number of adults with obesity and coloured by the obesity rate.",
  "title": {
-  "text": "Most adults with obesity live along the east and south-east coasts",
-  "subtitle": "Circle size = estimated number of obese adults; colour = rate per 100 (darker = higher)."
+  "text": [
+   "Most adults with obesity live along the east and",
+   "south-east coasts"
+  ],
+  "subtitle": [
+   "Circle size = estimated number of adults with obesity.",
+   "Colour = obesity rate (% of adults), darker =",
+   "higher."
+  ]
  },
- "width": 720,
- "height": 560,
+ "width": 520,
+ "height": 430,
  "projection": {
   "type": "mercator"
  },
@@ -56,12 +63,12 @@
     "size": {
      "field": "obese_n",
      "type": "quantitative",
-     "title": "Estimated obese adults",
+     "title": "Adults with obesity",
      "scale": {
       "type": "sqrt",
       "range": [
-       3,
-       420
+       2,
+       300
       ],
       "domain": [
        0,
@@ -81,7 +88,7 @@
     "color": {
      "field": "obese_asr",
      "type": "quantitative",
-     "title": "Rate per 100",
+     "title": "Obesity rate (%)",
      "scale": {
       "scheme": "viridis",
       "reverse": true,
@@ -92,8 +99,9 @@
       "clamp": true
      },
      "legend": {
-      "orient": "bottom-right",
-      "gradientLength": 160
+      "orient": "top-right",
+      "gradientLength": 150,
+      "labelExpr": "datum.value + '%'"
      }
     },
     "order": {
@@ -103,19 +111,20 @@
     "tooltip": [
      {
       "field": "Name",
-      "title": "PHA"
+      "title": "Area"
      },
      {
       "field": "State"
      },
      {
       "field": "obese_n",
-      "title": "Estimated obese adults",
+      "title": "Estimated adults with obesity",
       "format": ",.0f"
      },
      {
       "field": "obese_asr",
-      "title": "Rate per 100"
+      "title": "Obesity rate (%)",
+      "format": ".1f"
      }
     ]
    }
@@ -137,13 +146,20 @@
    "tickColor": "#666",
    "gridColor": "#e5e0d8"
   },
+  "axisX": {
+   "grid": true
+  },
+  "axisY": {
+   "grid": true
+  },
   "title": {
    "fontSize": 16,
    "anchor": "start",
    "color": "#2b2d42",
    "subtitleColor": "#666",
    "subtitleFontSize": 12,
-   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "subtitlePadding": 4
   },
   "header": {
    "labelColor": "#222",
@@ -154,7 +170,8 @@
    "labelFontSize": 12,
    "titleFontSize": 12,
    "labelColor": "#222",
-   "titleColor": "#222"
+   "titleColor": "#222",
+   "titleLimit": 420
   },
   "text": {
    "color": "#222",

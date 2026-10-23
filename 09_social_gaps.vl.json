@@ -1,18 +1,26 @@
 {
  "description": "Connected dot plot showing, for the six social factors with the widest gaps, the obesity rate of the group with the lowest and highest obesity in 2017-18.",
  "title": {
-  "text": "Six social factors divide obesity most: gaps of up to 18 points",
-  "subtitle": "Obesity rate (age-standardised %, adults 18–64, 2017–18) of the lowest group (teal) and highest group (wine) within each factor."
+  "text": [
+   "Six social factors divide obesity most: gaps of up",
+   "to 18 points"
+  ],
+  "subtitle": [
+   "Obesity rate (age-standardised %, adults 18–64, 2017–18) of the",
+   "lowest group (teal) and highest group (wine) within each",
+   "factor. Numbers on the right are the gap in",
+   "percentage points."
+  ]
  },
  "data": {
-  "url": "08_social_gaps.csv",
+  "url": "09_social_gaps.csv",
   "format": {
    "type": "csv"
   }
  },
- "width": 620,
+ "width": 820,
  "height": {
-  "step": 38
+  "step": 40
  },
  "encoding": {
   "y": {
@@ -25,7 +33,12 @@
    "title": null,
    "axis": {
     "labelFontWeight": "bold",
-    "labelLimit": 180
+    "labelLimit": 200,
+    "grid": true,
+    "gridDash": [
+     2,
+     3
+    ]
    }
   }
  },
@@ -40,11 +53,24 @@
     "x": {
      "field": "low_value",
      "type": "quantitative",
-     "title": "% obese (age-standardised)",
+     "title": "Adults who are obese (%)",
      "scale": {
       "domain": [
        0,
        62
+      ],
+      "zero": true
+     },
+     "axis": {
+      "labelExpr": "datum.value + '%'",
+      "values": [
+       0,
+       10,
+       20,
+       30,
+       40,
+       50,
+       60
       ]
      }
     },
@@ -69,7 +95,8 @@
     },
     "tooltip": [
      {
-      "field": "group"
+      "field": "group",
+      "title": "Factor"
      },
      {
       "field": "low_group",
@@ -77,7 +104,7 @@
      },
      {
       "field": "low_value",
-      "title": "%"
+      "title": "Obesity (%)"
      }
     ]
    }
@@ -98,7 +125,8 @@
     },
     "tooltip": [
      {
-      "field": "group"
+      "field": "group",
+      "title": "Factor"
      },
      {
       "field": "high_group",
@@ -106,12 +134,18 @@
      },
      {
       "field": "high_value",
-      "title": "%"
+      "title": "Obesity (%)"
      }
     ]
    }
   },
   {
+   "transform": [
+    {
+     "calculate": "datum.low_group + ' ' + format(datum.low_value,'.1f') + '%'",
+     "as": "l"
+    }
+   ],
    "mark": {
     "type": "text",
     "align": "right",
@@ -125,11 +159,17 @@
      "type": "quantitative"
     },
     "text": {
-     "field": "low_group"
+     "field": "l"
     }
    }
   },
   {
+   "transform": [
+    {
+     "calculate": "datum.high_group + ' ' + format(datum.high_value,'.1f') + '%'",
+     "as": "h"
+    }
+   ],
    "mark": {
     "type": "text",
     "align": "left",
@@ -143,11 +183,17 @@
      "type": "quantitative"
     },
     "text": {
-     "field": "high_group"
+     "field": "h"
     }
    }
   },
   {
+   "transform": [
+    {
+     "calculate": "format(datum.gap,'.1f') + ' pts'",
+     "as": "g"
+    }
+   ],
    "mark": {
     "type": "text",
     "align": "right",
@@ -156,11 +202,10 @@
    },
    "encoding": {
     "x": {
-     "value": 620
+     "value": 820
     },
     "text": {
-     "field": "gap",
-     "format": ".1f"
+     "field": "g"
     }
    }
   }
@@ -181,13 +226,20 @@
    "tickColor": "#666",
    "gridColor": "#e5e0d8"
   },
+  "axisX": {
+   "grid": true
+  },
+  "axisY": {
+   "grid": true
+  },
   "title": {
    "fontSize": 16,
    "anchor": "start",
    "color": "#2b2d42",
    "subtitleColor": "#666",
    "subtitleFontSize": 12,
-   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "subtitlePadding": 4
   },
   "header": {
    "labelColor": "#222",
@@ -198,7 +250,8 @@
    "labelFontSize": 12,
    "titleFontSize": 12,
    "labelColor": "#222",
-   "titleColor": "#222"
+   "titleColor": "#222",
+   "titleLimit": 420
   },
   "text": {
    "color": "#222",
