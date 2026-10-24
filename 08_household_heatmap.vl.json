@@ -37,7 +37,7 @@
   }
  },
  "spec": {
-  "width": 600,
+  "width": 440,
   "height": {
    "step": 32
   },
@@ -90,7 +90,7 @@
       },
       "legend": {
        "orient": "bottom",
-       "gradientLength": 420,
+       "gradientLength": 320,
        "labelExpr": "datum.value + '%'"
       }
      },
