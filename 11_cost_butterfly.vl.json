@@ -10,8 +10,8 @@
    "lighter = direct obesity treatment."
   ]
  },
- "width": 700,
- "height": 440,
+ "width": 760,
+ "height": 540,
  "layer": [
   {
    "data": {
@@ -163,7 +163,7 @@
    ],
    "mark": {
     "type": "text",
-    "fontSize": 12,
+    "fontSize": 13.5,
     "fontWeight": "bold",
     "baseline": "middle",
     "align": "right",
@@ -228,7 +228,7 @@
    ],
    "mark": {
     "type": "text",
-    "fontSize": 12,
+    "fontSize": 13.5,
     "fontWeight": "bold",
     "baseline": "middle",
     "align": "left",

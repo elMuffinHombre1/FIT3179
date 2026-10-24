@@ -16,8 +16,8 @@
    "type": "csv"
   }
  },
- "width": 600,
- "height": 380,
+ "width": 740,
+ "height": 470,
  "encoding": {
   "x": {
    "field": "year",
@@ -178,7 +178,7 @@
     "align": "left",
     "dx": 10,
     "fontWeight": "bold",
-    "fontSize": 12
+    "fontSize": 13.5
    },
    "encoding": {
     "y": {

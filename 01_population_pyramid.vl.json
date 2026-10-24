@@ -39,9 +39,9 @@
   }
  },
  "spec": {
-  "width": 800,
+  "width": 740,
   "height": {
-   "step": 30
+   "step": 38
   },
   "layer": [
    {
@@ -128,7 +128,7 @@
       },
       "legend": {
        "orient": "bottom",
-       "columns": 1,
+       "columns": 2,
        "labelLimit": 320
       }
      },
@@ -184,7 +184,7 @@
     "mark": {
      "type": "text",
      "fontWeight": "bold",
-     "fontSize": 12,
+     "fontSize": 13,
      "align": "right",
      "dx": -6,
      "baseline": "middle"
@@ -242,7 +242,7 @@
     "mark": {
      "type": "text",
      "fontWeight": "bold",
-     "fontSize": 12,
+     "fontSize": 13,
      "align": "left",
      "dx": 6,
      "baseline": "middle"

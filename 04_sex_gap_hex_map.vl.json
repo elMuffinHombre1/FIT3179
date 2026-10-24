@@ -10,8 +10,8 @@
    "The scale starts at zero."
   ]
  },
- "width": 720,
- "height": 430,
+ "width": 800,
+ "height": 660,
  "projection": {
   "type": "mercator"
  },
@@ -64,7 +64,7 @@
      },
      "legend": {
       "orient": "bottom",
-      "gradientLength": 240,
+      "gradientLength": 340,
       "values": [
        0,
        0.5,

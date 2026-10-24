@@ -17,8 +17,8 @@
    "type": "csv"
   }
  },
- "width": 540,
- "height": 470,
+ "width": 820,
+ "height": 540,
  "encoding": {
   "x": {
    "field": "x",
@@ -135,7 +135,7 @@
     "type": "text",
     "align": "right",
     "dx": -12,
-    "fontSize": 11.5
+    "fontSize": 13
    },
    "encoding": {
     "y": {
@@ -167,7 +167,7 @@
     "type": "text",
     "align": "left",
     "dx": 12,
-    "fontSize": 11.5
+    "fontSize": 13
    },
    "encoding": {
     "y": {

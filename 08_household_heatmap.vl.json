@@ -37,9 +37,9 @@
   }
  },
  "spec": {
-  "width": 700,
+  "width": 600,
   "height": {
-   "step": 26
+   "step": 32
   },
   "encoding": {
    "y": {
@@ -90,7 +90,7 @@
       },
       "legend": {
        "orient": "bottom",
-       "gradientLength": 320,
+       "gradientLength": 420,
        "labelExpr": "datum.value + '%'"
       }
      },
@@ -131,7 +131,7 @@
     ],
     "mark": {
      "type": "text",
-     "fontSize": 12
+     "fontSize": 14
     },
     "encoding": {
      "text": {
