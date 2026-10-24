@@ -24,8 +24,8 @@
  ],
  "hconcat": [
   {
-   "width": 520,
-   "height": 460,
+   "width": 440,
+   "height": 400,
    "data": {
     "url": "PHA_2021_Aust_GDA2020_Gen50.json",
     "format": {
@@ -114,7 +114,7 @@
    }
   },
   {
-   "width": 300,
+   "width": 200,
    "height": {
     "step": 15
    },
@@ -159,7 +159,7 @@
      "sort": "-x",
      "title": null,
      "axis": {
-      "labelLimit": 240
+      "labelLimit": 180
      }
     },
     "x": {

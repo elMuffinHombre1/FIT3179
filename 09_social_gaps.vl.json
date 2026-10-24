@@ -18,7 +18,7 @@
    "type": "csv"
   }
  },
- "width": 820,
+ "width": 700,
  "height": {
   "step": 40
  },
@@ -202,7 +202,7 @@
    },
    "encoding": {
     "x": {
-     "value": 820
+     "value": 700
     },
     "text": {
      "field": "g"

@@ -1,6 +1,6 @@
 // ==========================================================
 // Obesity in Australia dashboard (FIT3179)
-// Compile with:  sass css/styles.scss css/styles.css
+// Compile with:  sass styles.scss styles.css
 // ==========================================================
 
 // ---------- Design tokens ----------
@@ -9,6 +9,7 @@ $fg:        #222;
 $muted:     #666;
 $accent:    #882255;   // wine: colour-blind safe, high contrast on white (same as $obese)
 $navy:      #2b2d42;
+$frame:     #14151f;   // darkest navy: the outer frame around the page
 $card:      #fff;
 $line:      #e5e0d8;
 $code-bg:   #eee;
@@ -16,10 +17,11 @@ $code-bg:   #eee;
 $serif: Georgia, 'Times New Roman', serif;
 $sans:  system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-$content-width: 1320px;
+$content-width: 1500px;
+$page-width: 1580px;
 $radius: 8px;
-$gutter: 24px;
-
+$gutter: 32px;
+$copy-width: 460px;    // width of the text column beside each chart
 
 // ---------- Chart palette ----------
 // Colour-blind safe (Okabe–Ito / Paul Tol / viridis). The Vega-Lite specs read these values,
@@ -43,25 +45,27 @@ $bi-s2-o1: #DFB0D6; $bi-s2-o2: #A5ADD3; $bi-s2-o3: #5698B9;
 $bi-s3-o1: #BE64AC; $bi-s3-o2: #8C62AA; $bi-s3-o3: #3B4994;
 
 // ---------- Mixins ----------
-@mixin card($pad: 16px) {
-  background: $card;
-  border: 1px solid $line;
-  border-radius: $radius;
-  padding: $pad;
-}
-
 @mixin centred {
   max-width: $content-width;
   margin: 0 auto;
 }
 
+// Strong border used on charts, where there are no words
+@mixin focus-frame {
+  background: $card;
+  border: 3px solid $navy;
+  border-radius: $radius;
+  box-shadow: 6px 6px 0 rgba($navy, 0.18);
+}
+
 // ---------- Base ----------
 * { box-sizing: border-box; }
+
+html { background: $frame; }
 
 body {
   margin: 0;
   font-family: $serif;
-  background: $bg;
   color: $fg;
   line-height: 1.65;
 }
@@ -72,23 +76,32 @@ code {
   border-radius: 3px;
 }
 
+// ---------- Page frame: strong outer borders push the eye inwards ----------
+.page {
+  max-width: $page-width;
+  margin: 0 auto;
+  background: $bg;
+  border-left: 16px solid $navy;
+  border-right: 16px solid $navy;
+  box-shadow: 0 0 0 6px $frame, 0 0 60px rgba(0, 0, 0, 0.6);
+}
+
 // ---------- Header ----------
-header {
+header.top {
   background: $navy;
   color: #fff;
-  padding: 56px $gutter 40px;
+  padding: 56px $gutter 44px;
 
   .in { @include centred; }
 
   h1 {
     margin: 0 0 12px;
-    font-size: 2.4rem;
+    font-size: 2.6rem;
     line-height: 1.15;
   }
 
   p {
     margin: 0;
-    max-width: 720px;
     font-size: 1.1rem;
     color: #dfe3ee;
   }
@@ -100,125 +113,139 @@ nav {
   top: 0;
   z-index: 10;
   background: #fff;
-  border-bottom: 1px solid $line;
-  padding: 10px $gutter;
+  border-bottom: 3px solid $navy;
+  padding: 12px $gutter;
   overflow-x: auto;
   white-space: nowrap;
   font-family: $sans;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
 
   a {
-    margin-right: 18px;
+    margin-right: 22px;
     color: $navy;
     text-decoration: none;
+    font-weight: 600;
 
     &:hover { color: $accent; }
   }
 }
 
-// ---------- Headline stats ----------
+main {
+  @include centred;
+  padding: 0 $gutter 48px;
+}
+
+// ---------- Section headings, with the explainer right underneath ----------
+.section-group { padding-top: 48px; }
+
+.group-head {
+  border-top: 6px solid $navy;
+  padding: 18px 0 4px;
+
+  h2 {
+    margin: 0 0 6px;
+    font-size: 2rem;
+    color: $navy;
+  }
+
+  .intro {
+    margin: 0;
+    max-width: 760px;
+    color: $muted;
+    font-size: 1.1rem;
+  }
+}
+
+// ---------- Text on one side, chart on the other, alternating ----------
+.feature {
+  display: grid;
+  grid-template-columns: minmax(300px, $copy-width) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+  padding: 36px 0;
+  border-bottom: 1px solid $line;
+
+  &.chart-left {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, $copy-width);
+
+    .copy { order: 2; }
+    .chart-wrap { order: 1; }
+  }
+
+  &:last-child { border-bottom: 0; }
+}
+
+.copy {
+  h3 {
+    margin: 0 0 10px;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    color: $navy;
+  }
+
+  .text p { margin: 0 0 14px; }
+}
+
+.chart-wrap { min-width: 0; margin: 0; }
+
+.chart {
+  @include focus-frame;
+  padding: 20px;
+  min-height: 120px;
+  overflow-x: auto;
+  text-align: center;
+}
+
+.src {
+  margin: 10px 0 0;
+  font-family: $sans;
+  font-size: 0.8rem;
+  color: $muted;
+}
+
+// ---------- Headline stats band ----------
 .stats {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  margin: 32px 0;
+  gap: 0;
+  margin: 48px 0 0;
+  background: $navy;
+  border: 3px solid $navy;
+  border-radius: $radius;
+  box-shadow: 6px 6px 0 rgba($navy, 0.18);
 }
 
 .stat {
-  @include card(16px 18px);
-  flex: 1 1 200px;
+  flex: 1 1 260px;
+  padding: 26px 30px;
+  color: #fff;
+  border-right: 2px solid rgba(255, 255, 255, 0.25);
+
+  &:last-child { border-right: 0; }
 
   b {
     display: block;
     font-family: $sans;
-    font-size: 2rem;
-    color: $accent;
+    font-size: 2.6rem;
+    line-height: 1.1;
+    color: #fff;
   }
 
   span {
     font-family: $sans;
-    font-size: 0.9rem;
-    color: $muted;
-  }
-}
-
-// ---------- Main content ----------
-main {
-  @include centred;
-  padding: 0 $gutter 40px;
-}
-
-section {
-  padding: 36px 0;
-  border-bottom: 1px solid $line;
-
-  h2 {
-    margin: 0 0 12px;
-    font-size: 1.6rem;
-  }
-
-  .text {
-    max-width: 760px;
-
-    p { margin: 0 0 12px; }
-  }
-
-  .chart {
-    @include card;
-    margin: 20px 0 8px;
-    min-height: 80px;
-    overflow-x: auto;
-  }
-
-  .src {
-    margin: 6px 0 0;
-    font-family: $sans;
-    font-size: 0.8rem;
-    color: $muted;
+    font-size: 0.95rem;
+    color: #dfe3ee;
   }
 }
 
 // ---------- Design notes ----------
 .design {
-  @include card(8px $gutter 16px);
-  margin-top: 36px;
+  @include focus-frame;
+  padding: 8px $gutter 20px;
+  margin-top: 48px;
 
   h2 { margin-top: 16px; }
   li { margin-bottom: 6px; }
-}
-
-// ---------- Footer ----------
-footer {
-  background: $navy;
-  color: #c9cde0;
-  padding: $gutter;
-  font-family: $sans;
-  font-size: 0.85rem;
-
-  .in { @include centred; }
-}
-
-
-// ---------- Section intros and colour key ----------
-.section-group {
-  padding: 40px 0 8px;
-  border-top: 4px solid $navy;
-  margin-top: 24px;
-
-  > h2.group-title {
-    margin: 0 0 6px;
-    font-size: 1.9rem;
-    color: $navy;
-  }
-
-  > .intro {
-    max-width: 760px;
-    margin: 0 0 8px;
-    color: $muted;
-    font-size: 1.05rem;
-  }
-
-  section { border-bottom: 1px solid $line; &:last-child { border-bottom: 0; } }
 }
 
 .swatches {
@@ -235,45 +262,28 @@ footer {
   i { display: inline-block; width: 18px; height: 18px; border-radius: 3px; border: 1px solid rgba(0, 0, 0, 0.25); }
 }
 
+// ---------- Footer ----------
+footer {
+  background: $navy;
+  color: #c9cde0;
+  padding: $gutter;
+  font-family: $sans;
+  font-size: 0.85rem;
 
-// ---------- Side-by-side layout ----------
-.row {
-  display: grid;
-  gap: 28px;
-  align-items: start;
-  margin-top: 24px;
-
-  &.one { grid-template-columns: minmax(0, 1fr); }
-  &.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .in { @include centred; }
 }
 
-.panel {
-  min-width: 0;
-
-  h3 {
-    margin: 0 0 8px;
-    font-size: 1.3rem;
-    color: $navy;
-  }
-
-  .text p { margin: 0 0 12px; }
-
-  .chart { margin-top: 12px; }
-
-  .src {
-    margin: 8px 0 0;
-    font-family: $sans;
-    font-size: 0.8rem;
-    color: $muted;
-  }
-}
-
+// ---------- Smaller screens: stack text above chart ----------
 @media (max-width: 1100px) {
-  .row.two { grid-template-columns: minmax(0, 1fr); }
+  .feature,
+  .feature.chart-left { grid-template-columns: minmax(0, 1fr); }
+
+  .feature.chart-left .copy { order: 1; }
+  .feature.chart-left .chart-wrap { order: 2; }
 }
 
-// ---------- Small screens ----------
 @media (max-width: 600px) {
-  header h1 { font-size: 1.8rem; }
-  section h2 { font-size: 1.35rem; }
+  header.top h1 { font-size: 1.9rem; }
+  .group-head h2 { font-size: 1.5rem; }
+  .page { border-left-width: 6px; border-right-width: 6px; }
 }

@@ -2,10 +2,13 @@
   box-sizing: border-box;
 }
 
+html {
+  background: #14151f;
+}
+
 body {
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
-  background: #faf8f5;
   color: #222;
   line-height: 1.65;
 }
@@ -16,23 +19,31 @@ code {
   border-radius: 3px;
 }
 
-header {
+.page {
+  max-width: 1580px;
+  margin: 0 auto;
+  background: #faf8f5;
+  border-left: 16px solid #2b2d42;
+  border-right: 16px solid #2b2d42;
+  box-shadow: 0 0 0 6px #14151f, 0 0 60px rgba(0, 0, 0, 0.6);
+}
+
+header.top {
   background: #2b2d42;
   color: #fff;
-  padding: 56px 24px 40px;
+  padding: 56px 32px 44px;
 }
-header .in {
-  max-width: 1320px;
+header.top .in {
+  max-width: 1500px;
   margin: 0 auto;
 }
-header h1 {
+header.top h1 {
   margin: 0 0 12px;
-  font-size: 2.4rem;
+  font-size: 2.6rem;
   line-height: 1.15;
 }
-header p {
+header.top p {
   margin: 0;
-  max-width: 720px;
   font-size: 1.1rem;
   color: #dfe3ee;
 }
@@ -42,131 +53,149 @@ nav {
   top: 0;
   z-index: 10;
   background: #fff;
-  border-bottom: 1px solid #e5e0d8;
-  padding: 10px 24px;
+  border-bottom: 3px solid #2b2d42;
+  padding: 12px 32px;
   overflow-x: auto;
   white-space: nowrap;
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
 }
 nav a {
-  margin-right: 18px;
+  margin-right: 22px;
   color: #2b2d42;
   text-decoration: none;
+  font-weight: 600;
 }
 nav a:hover {
   color: #882255;
 }
 
-.stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin: 32px 0;
-}
-
-.stat {
-  background: #fff;
-  border: 1px solid #e5e0d8;
-  border-radius: 8px;
-  padding: 16px 18px;
-  flex: 1 1 200px;
-}
-.stat b {
-  display: block;
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 2rem;
-  color: #882255;
-}
-.stat span {
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 0.9rem;
-  color: #666;
-}
-
 main {
-  max-width: 1320px;
+  max-width: 1500px;
   margin: 0 auto;
-  padding: 0 24px 40px;
+  padding: 0 32px 48px;
 }
 
-section {
+.section-group {
+  padding-top: 48px;
+}
+
+.group-head {
+  border-top: 6px solid #2b2d42;
+  padding: 18px 0 4px;
+}
+.group-head h2 {
+  margin: 0 0 6px;
+  font-size: 2rem;
+  color: #2b2d42;
+}
+.group-head .intro {
+  margin: 0;
+  max-width: 760px;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.feature {
+  display: grid;
+  grid-template-columns: minmax(300px, 460px) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
   padding: 36px 0;
   border-bottom: 1px solid #e5e0d8;
 }
-section h2 {
-  margin: 0 0 12px;
-  font-size: 1.6rem;
+.feature.chart-left {
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 460px);
 }
-section .text {
-  max-width: 760px;
+.feature.chart-left .copy {
+  order: 2;
 }
-section .text p {
-  margin: 0 0 12px;
+.feature.chart-left .chart-wrap {
+  order: 1;
 }
-section .chart {
+.feature:last-child {
+  border-bottom: 0;
+}
+
+.copy h3 {
+  margin: 0 0 10px;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  color: #2b2d42;
+}
+.copy .text p {
+  margin: 0 0 14px;
+}
+
+.chart-wrap {
+  min-width: 0;
+  margin: 0;
+}
+
+.chart {
   background: #fff;
-  border: 1px solid #e5e0d8;
+  border: 3px solid #2b2d42;
   border-radius: 8px;
-  padding: 16px;
-  margin: 20px 0 8px;
-  min-height: 80px;
+  box-shadow: 6px 6px 0 rgba(43, 45, 66, 0.18);
+  padding: 20px;
+  min-height: 120px;
   overflow-x: auto;
+  text-align: center;
 }
-section .src {
-  margin: 6px 0 0;
+
+.src {
+  margin: 10px 0 0;
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: 0.8rem;
   color: #666;
 }
 
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 48px 0 0;
+  background: #2b2d42;
+  border: 3px solid #2b2d42;
+  border-radius: 8px;
+  box-shadow: 6px 6px 0 rgba(43, 45, 66, 0.18);
+}
+
+.stat {
+  flex: 1 1 260px;
+  padding: 26px 30px;
+  color: #fff;
+  border-right: 2px solid rgba(255, 255, 255, 0.25);
+}
+.stat:last-child {
+  border-right: 0;
+}
+.stat b {
+  display: block;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 2.6rem;
+  line-height: 1.1;
+  color: #fff;
+}
+.stat span {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+  color: #dfe3ee;
+}
+
 .design {
   background: #fff;
-  border: 1px solid #e5e0d8;
+  border: 3px solid #2b2d42;
   border-radius: 8px;
-  padding: 8px 24px 16px;
-  margin-top: 36px;
+  box-shadow: 6px 6px 0 rgba(43, 45, 66, 0.18);
+  padding: 8px 32px 20px;
+  margin-top: 48px;
 }
 .design h2 {
   margin-top: 16px;
 }
 .design li {
   margin-bottom: 6px;
-}
-
-footer {
-  background: #2b2d42;
-  color: #c9cde0;
-  padding: 24px;
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 0.85rem;
-}
-footer .in {
-  max-width: 1320px;
-  margin: 0 auto;
-}
-
-.section-group {
-  padding: 40px 0 8px;
-  border-top: 4px solid #2b2d42;
-  margin-top: 24px;
-}
-.section-group > h2.group-title {
-  margin: 0 0 6px;
-  font-size: 1.9rem;
-  color: #2b2d42;
-}
-.section-group > .intro {
-  max-width: 760px;
-  margin: 0 0 8px;
-  color: #666;
-  font-size: 1.05rem;
-}
-.section-group section {
-  border-bottom: 1px solid #e5e0d8;
-}
-.section-group section:last-child {
-  border-bottom: 0;
 }
 
 .swatches {
@@ -192,50 +221,39 @@ footer .in {
   border: 1px solid rgba(0, 0, 0, 0.25);
 }
 
-.row {
-  display: grid;
-  gap: 28px;
-  align-items: start;
-  margin-top: 24px;
-}
-.row.one {
-  grid-template-columns: minmax(0, 1fr);
-}
-.row.two {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.panel {
-  min-width: 0;
-}
-.panel h3 {
-  margin: 0 0 8px;
-  font-size: 1.3rem;
-  color: #2b2d42;
-}
-.panel .text p {
-  margin: 0 0 12px;
-}
-.panel .chart {
-  margin-top: 12px;
-}
-.panel .src {
-  margin: 8px 0 0;
+footer {
+  background: #2b2d42;
+  color: #c9cde0;
+  padding: 32px;
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 0.8rem;
-  color: #666;
+  font-size: 0.85rem;
+}
+footer .in {
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
 @media (max-width: 1100px) {
-  .row.two {
+  .feature,
+  .feature.chart-left {
     grid-template-columns: minmax(0, 1fr);
+  }
+  .feature.chart-left .copy {
+    order: 1;
+  }
+  .feature.chart-left .chart-wrap {
+    order: 2;
   }
 }
 @media (max-width: 600px) {
-  header h1 {
-    font-size: 1.8rem;
+  header.top h1 {
+    font-size: 1.9rem;
   }
-  section h2 {
-    font-size: 1.35rem;
+  .group-head h2 {
+    font-size: 1.5rem;
+  }
+  .page {
+    border-left-width: 6px;
+    border-right-width: 6px;
   }
 }
