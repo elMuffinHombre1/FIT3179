@@ -11,8 +11,8 @@
    "higher."
   ]
  },
- "width": 330,
- "height": 290,
+ "width": 250,
+ "height": 270,
  "projection": {
   "type": "mercator"
  },
@@ -27,8 +27,8 @@
    },
    "mark": {
     "type": "geoshape",
-    "fill": "#efefef",
-    "stroke": "#d0d0d0",
+    "fill": "#EEF2F6",
+    "stroke": "#CBD5E1",
     "strokeWidth": 0.2
    }
   },
@@ -36,7 +36,13 @@
    "data": {
     "url": "phidu_obesity_symbols.csv",
     "format": {
-     "type": "csv"
+     "type": "csv",
+     "parse": {
+      "obese_asr": "number",
+      "obese_n": "number",
+      "lon": "number",
+      "lat": "number"
+     }
     }
    },
    "transform": [
@@ -67,8 +73,8 @@
      "scale": {
       "type": "sqrt",
       "range": [
-       1.5,
-       150
+       2,
+       200
       ],
       "domain": [
        0,
@@ -76,13 +82,15 @@
       ]
      },
      "legend": {
-      "orient": "bottom-left",
+      "orient": "bottom",
       "format": ",.0f",
       "values": [
        2000,
        10000,
        20000
-      ]
+      ],
+      "direction": "horizontal",
+      "columns": 3
      }
     },
     "color": {
@@ -90,17 +98,27 @@
      "type": "quantitative",
      "title": "Obesity rate (%)",
      "scale": {
-      "scheme": "viridis",
-      "reverse": true,
       "domain": [
-       10,
-       55
+       10.0,
+       19.0,
+       28.0,
+       37.0,
+       46.0,
+       55.0
       ],
-      "clamp": true
+      "clamp": true,
+      "range": [
+       "#E3EEF8",
+       "#B7D3EA",
+       "#7FB1D8",
+       "#4A8CC2",
+       "#1C63A0",
+       "#0B3560"
+      ]
      },
      "legend": {
       "orient": "top-right",
-      "gradientLength": 150,
+      "gradientLength": 160,
       "labelExpr": "datum.value + '%'"
      }
     },
@@ -155,9 +173,9 @@
    "mark": {
     "type": "text",
     "align": "left",
-    "dx": 14,
+    "dx": 8,
     "dy": 0,
-    "fontSize": 13,
+    "fontSize": 12,
     "fontWeight": "bold",
     "color": "#ffffff",
     "stroke": "#ffffff",
@@ -191,11 +209,11 @@
    "mark": {
     "type": "text",
     "align": "left",
-    "dx": 14,
+    "dx": 8,
     "dy": 0,
-    "fontSize": 13,
+    "fontSize": 12,
     "fontWeight": "bold",
-    "color": "#222"
+    "color": "#0F172A"
    }
   },
   {
@@ -224,9 +242,9 @@
    "mark": {
     "type": "text",
     "align": "right",
-    "dx": -14,
+    "dx": -8,
     "dy": 14,
-    "fontSize": 13,
+    "fontSize": 12,
     "fontWeight": "bold",
     "color": "#ffffff",
     "stroke": "#ffffff",
@@ -260,11 +278,11 @@
    "mark": {
     "type": "text",
     "align": "right",
-    "dx": -14,
+    "dx": -8,
     "dy": 14,
-    "fontSize": 13,
+    "fontSize": 12,
     "fontWeight": "bold",
-    "color": "#222"
+    "color": "#0F172A"
    }
   },
   {
@@ -293,9 +311,9 @@
    "mark": {
     "type": "text",
     "align": "left",
-    "dx": 14,
+    "dx": 8,
     "dy": -4,
-    "fontSize": 13,
+    "fontSize": 12,
     "fontWeight": "bold",
     "color": "#ffffff",
     "stroke": "#ffffff",
@@ -329,11 +347,11 @@
    "mark": {
     "type": "text",
     "align": "left",
-    "dx": 14,
+    "dx": 8,
     "dy": -4,
-    "fontSize": 13,
+    "fontSize": 12,
     "fontWeight": "bold",
-    "color": "#222"
+    "color": "#0F172A"
    }
   },
   {
@@ -362,9 +380,9 @@
    "mark": {
     "type": "text",
     "align": "right",
-    "dx": -14,
+    "dx": -8,
     "dy": 0,
-    "fontSize": 13,
+    "fontSize": 12,
     "fontWeight": "bold",
     "color": "#ffffff",
     "stroke": "#ffffff",
@@ -398,11 +416,11 @@
    "mark": {
     "type": "text",
     "align": "right",
-    "dx": -14,
+    "dx": -8,
     "dy": 0,
-    "fontSize": 13,
+    "fontSize": 12,
     "fontWeight": "bold",
-    "color": "#222"
+    "color": "#0F172A"
    }
   },
   {
@@ -431,9 +449,9 @@
    "mark": {
     "type": "text",
     "align": "right",
-    "dx": -14,
+    "dx": -8,
     "dy": 6,
-    "fontSize": 13,
+    "fontSize": 12,
     "fontWeight": "bold",
     "color": "#ffffff",
     "stroke": "#ffffff",
@@ -467,11 +485,11 @@
    "mark": {
     "type": "text",
     "align": "right",
-    "dx": -14,
+    "dx": -8,
     "dy": 6,
-    "fontSize": 13,
+    "fontSize": 12,
     "fontWeight": "bold",
-    "color": "#222"
+    "color": "#0F172A"
    }
   },
   {
@@ -500,9 +518,9 @@
    "mark": {
     "type": "text",
     "align": "left",
-    "dx": 16,
+    "dx": 8,
     "dy": 6,
-    "fontSize": 13,
+    "fontSize": 12,
     "fontWeight": "bold",
     "color": "#ffffff",
     "stroke": "#ffffff",
@@ -536,29 +554,34 @@
    "mark": {
     "type": "text",
     "align": "left",
-    "dx": 16,
+    "dx": 8,
     "dy": 6,
-    "fontSize": 13,
+    "fontSize": 12,
     "fontWeight": "bold",
-    "color": "#222"
+    "color": "#0F172A"
    }
   }
  ],
  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
  "config": {
-  "background": "#fff",
+  "background": "#ffffff",
+  "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
   "view": {
    "stroke": null
   },
-  "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
   "axis": {
+   "labelFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "titleFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
    "labelFontSize": 12,
    "titleFontSize": 12,
-   "labelColor": "#222",
-   "titleColor": "#222",
-   "domainColor": "#666",
-   "tickColor": "#666",
-   "gridColor": "#e5e0d8"
+   "titleFontWeight": 600,
+   "labelColor": "#334155",
+   "titleColor": "#0F172A",
+   "domainColor": "#94A3B8",
+   "tickColor": "#94A3B8",
+   "gridColor": "#E2E8F0",
+   "titlePadding": 10,
+   "labelPadding": 6
   },
   "axisX": {
    "grid": true
@@ -566,29 +589,40 @@
   "axisY": {
    "grid": true
   },
-  "title": {
-   "fontSize": 16,
-   "anchor": "start",
-   "color": "#2b2d42",
-   "subtitleColor": "#666",
-   "subtitleFontSize": 12,
-   "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
-   "subtitlePadding": 4
-  },
-  "header": {
-   "labelColor": "#222",
-   "titleColor": "#222",
-   "labelFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif"
-  },
   "legend": {
+   "labelFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "titleFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
    "labelFontSize": 12,
    "titleFontSize": 12,
-   "labelColor": "#222",
-   "titleColor": "#222",
-   "titleLimit": 420
+   "titleFontWeight": 600,
+   "labelColor": "#334155",
+   "titleColor": "#0F172A",
+   "titleLimit": 420,
+   "symbolSize": 110
+  },
+  "header": {
+   "labelFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "titleFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "labelColor": "#0F172A",
+   "titleColor": "#0F172A",
+   "labelFontWeight": 600
+  },
+  "title": {
+   "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "subtitleFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "fontSize": 16,
+   "fontWeight": 700,
+   "anchor": "start",
+   "color": "#0F172A",
+   "subtitleColor": "#64748B",
+   "subtitleFontSize": 12,
+   "subtitlePadding": 6
   },
   "text": {
-   "color": "#222",
+   "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "color": "#0F172A"
+  },
+  "mark": {
    "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif"
   }
  }

@@ -18,7 +18,7 @@
    "type": "csv"
   }
  },
- "width": 700,
+ "width": 600,
  "height": {
   "step": 40
  },
@@ -47,7 +47,7 @@
    "mark": {
     "type": "rule",
     "strokeWidth": 3,
-    "color": "#b5b5b5"
+    "color": "#94A3B8"
    },
    "encoding": {
     "x": {
@@ -151,7 +151,8 @@
     "align": "right",
     "dx": -12,
     "fontSize": 11,
-    "color": "#1b6b5f"
+    "color": "#0F6B5C",
+    "dy": -14
    },
    "encoding": {
     "x": {
@@ -175,7 +176,8 @@
     "align": "left",
     "dx": 12,
     "fontSize": 11,
-    "color": "#882255"
+    "color": "#882255",
+    "dy": -14
    },
    "encoding": {
     "x": {
@@ -202,7 +204,7 @@
    },
    "encoding": {
     "x": {
-     "value": 700
+     "value": 690
     },
     "text": {
      "field": "g"
@@ -212,19 +214,24 @@
  ],
  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
  "config": {
-  "background": "#fff",
+  "background": "#ffffff",
+  "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
   "view": {
    "stroke": null
   },
-  "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
   "axis": {
+   "labelFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "titleFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
    "labelFontSize": 12,
    "titleFontSize": 12,
-   "labelColor": "#222",
-   "titleColor": "#222",
-   "domainColor": "#666",
-   "tickColor": "#666",
-   "gridColor": "#e5e0d8"
+   "titleFontWeight": 600,
+   "labelColor": "#334155",
+   "titleColor": "#0F172A",
+   "domainColor": "#94A3B8",
+   "tickColor": "#94A3B8",
+   "gridColor": "#E2E8F0",
+   "titlePadding": 10,
+   "labelPadding": 6
   },
   "axisX": {
    "grid": true
@@ -232,30 +239,41 @@
   "axisY": {
    "grid": true
   },
-  "title": {
-   "fontSize": 16,
-   "anchor": "start",
-   "color": "#2b2d42",
-   "subtitleColor": "#666",
-   "subtitleFontSize": 12,
-   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
-   "subtitlePadding": 4
-  },
-  "header": {
-   "labelColor": "#222",
-   "titleColor": "#222",
-   "labelFont": "system-ui, -apple-system, 'Segoe UI', sans-serif"
-  },
   "legend": {
+   "labelFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "titleFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
    "labelFontSize": 12,
    "titleFontSize": 12,
-   "labelColor": "#222",
-   "titleColor": "#222",
-   "titleLimit": 420
+   "titleFontWeight": 600,
+   "labelColor": "#334155",
+   "titleColor": "#0F172A",
+   "titleLimit": 420,
+   "symbolSize": 110
+  },
+  "header": {
+   "labelFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "titleFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "labelColor": "#0F172A",
+   "titleColor": "#0F172A",
+   "labelFontWeight": 600
+  },
+  "title": {
+   "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "subtitleFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "fontSize": 16,
+   "fontWeight": 700,
+   "anchor": "start",
+   "color": "#0F172A",
+   "subtitleColor": "#64748B",
+   "subtitleFontSize": 12,
+   "subtitlePadding": 6
   },
   "text": {
-   "color": "#222",
-   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+   "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "color": "#0F172A"
+  },
+  "mark": {
+   "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif"
   }
  }
 }

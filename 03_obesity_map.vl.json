@@ -24,7 +24,7 @@
  ],
  "hconcat": [
   {
-   "width": 400,
+   "width": 440,
    "height": 360,
    "data": {
     "url": "PHA_2021_Aust_GDA2020_Gen50.json",
@@ -43,7 +43,11 @@
       "data": {
        "url": "phidu_obesity_clean.csv",
        "format": {
-        "type": "csv"
+        "type": "csv",
+        "parse": {
+         "obese_asr": "number",
+         "obese_n": "number"
+        }
        }
       },
       "key": "Code",
@@ -66,22 +70,33 @@
     "color": {
      "condition": {
       "test": "!isValid(datum.obese_asr)",
-      "value": "#e0e0e0"
+      "value": "#CBD5E1"
      },
      "field": "obese_asr",
      "type": "quantitative",
      "title": "Obese adults (%)",
      "scale": {
-      "scheme": "viridis",
-      "reverse": true,
       "domain": [
-       10,
-       55
-      ]
+       10.0,
+       19.0,
+       28.0,
+       37.0,
+       46.0,
+       55.0
+      ],
+      "range": [
+       "#E3EEF8",
+       "#B7D3EA",
+       "#7FB1D8",
+       "#4A8CC2",
+       "#1C63A0",
+       "#0B3560"
+      ],
+      "clamp": true
      },
      "legend": {
       "orient": "bottom",
-      "gradientLength": 230,
+      "gradientLength": 240,
       "labelExpr": "datum.value + '%'"
      }
     },
@@ -149,7 +164,7 @@
    "title": "25 highest areas",
    "mark": {
     "type": "bar",
-    "color": "#31688E",
+    "color": "#1C63A0",
     "tooltip": true
    },
    "encoding": {
@@ -212,19 +227,24 @@
  ],
  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
  "config": {
-  "background": "#fff",
+  "background": "#ffffff",
+  "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
   "view": {
    "stroke": null
   },
-  "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
   "axis": {
+   "labelFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "titleFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
    "labelFontSize": 12,
    "titleFontSize": 12,
-   "labelColor": "#222",
-   "titleColor": "#222",
-   "domainColor": "#666",
-   "tickColor": "#666",
-   "gridColor": "#e5e0d8"
+   "titleFontWeight": 600,
+   "labelColor": "#334155",
+   "titleColor": "#0F172A",
+   "domainColor": "#94A3B8",
+   "tickColor": "#94A3B8",
+   "gridColor": "#E2E8F0",
+   "titlePadding": 10,
+   "labelPadding": 6
   },
   "axisX": {
    "grid": true
@@ -232,29 +252,40 @@
   "axisY": {
    "grid": true
   },
-  "title": {
-   "fontSize": 16,
-   "anchor": "start",
-   "color": "#2b2d42",
-   "subtitleColor": "#666",
-   "subtitleFontSize": 12,
-   "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
-   "subtitlePadding": 4
-  },
-  "header": {
-   "labelColor": "#222",
-   "titleColor": "#222",
-   "labelFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif"
-  },
   "legend": {
+   "labelFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "titleFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
    "labelFontSize": 12,
    "titleFontSize": 12,
-   "labelColor": "#222",
-   "titleColor": "#222",
-   "titleLimit": 420
+   "titleFontWeight": 600,
+   "labelColor": "#334155",
+   "titleColor": "#0F172A",
+   "titleLimit": 420,
+   "symbolSize": 110
+  },
+  "header": {
+   "labelFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "titleFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "labelColor": "#0F172A",
+   "titleColor": "#0F172A",
+   "labelFontWeight": 600
+  },
+  "title": {
+   "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "subtitleFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "fontSize": 16,
+   "fontWeight": 700,
+   "anchor": "start",
+   "color": "#0F172A",
+   "subtitleColor": "#64748B",
+   "subtitleFontSize": 12,
+   "subtitlePadding": 6
   },
   "text": {
-   "color": "#222",
+   "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "color": "#0F172A"
+  },
+  "mark": {
    "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif"
   }
  }

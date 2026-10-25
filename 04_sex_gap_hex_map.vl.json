@@ -10,8 +10,8 @@
    "The scale starts at zero."
   ]
  },
- "width": 330,
- "height": 290,
+ "width": 275,
+ "height": 275,
  "projection": {
   "type": "mercator"
  },
@@ -26,8 +26,8 @@
    },
    "mark": {
     "type": "geoshape",
-    "fill": "#efefef",
-    "stroke": "#d6d6d6",
+    "fill": "#EEF2F6",
+    "stroke": "#CBD5E1",
     "strokeWidth": 0.2
    }
   },
@@ -54,17 +54,25 @@
      "scale": {
       "domain": [
        0,
-       3
+       0.6,
+       1.2,
+       1.8,
+       2.4,
+       3.0
       ],
       "range": [
-       "#E6F1F8",
-       "#0072B2"
+       "#E3EEF8",
+       "#B7D3EA",
+       "#7FB1D8",
+       "#4A8CC2",
+       "#1C63A0",
+       "#0B3560"
       ],
-      "interpolate": "lab"
+      "clamp": true
      },
      "legend": {
       "orient": "bottom",
-      "gradientLength": 150,
+      "gradientLength": 200,
       "values": [
        0,
        0.5,
@@ -114,7 +122,7 @@
      {
       "lon": 148.26366666666667,
       "lat": -41.43016666666667,
-      "t": "George Town (Tas.): 2.8 pts"
+      "t": "George Town 2.8"
      }
     ]
    },
@@ -134,9 +142,9 @@
    "mark": {
     "type": "text",
     "align": "right",
-    "dx": -16,
-    "dy": 6,
-    "fontSize": 12,
+    "dx": -10,
+    "dy": 8,
+    "fontSize": 11,
     "fontWeight": "bold",
     "color": "#ffffff",
     "stroke": "#ffffff",
@@ -150,7 +158,7 @@
      {
       "lon": 148.26366666666667,
       "lat": -41.43016666666667,
-      "t": "George Town (Tas.): 2.8 pts"
+      "t": "George Town 2.8"
      }
     ]
    },
@@ -170,11 +178,11 @@
    "mark": {
     "type": "text",
     "align": "right",
-    "dx": -16,
-    "dy": 6,
-    "fontSize": 12,
+    "dx": -10,
+    "dy": 8,
+    "fontSize": 11,
     "fontWeight": "bold",
-    "color": "#222"
+    "color": "#0F172A"
    }
   },
   {
@@ -183,7 +191,7 @@
      {
       "lon": 146.87800000000001,
       "lat": -37.731833333333334,
-      "t": "Traralgon (Vic.): 2.8 pts"
+      "t": "Traralgon 2.8"
      }
     ]
    },
@@ -203,9 +211,9 @@
    "mark": {
     "type": "text",
     "align": "left",
-    "dx": 16,
-    "dy": 10,
-    "fontSize": 12,
+    "dx": 10,
+    "dy": 12,
+    "fontSize": 11,
     "fontWeight": "bold",
     "color": "#ffffff",
     "stroke": "#ffffff",
@@ -219,7 +227,7 @@
      {
       "lon": 146.87800000000001,
       "lat": -37.731833333333334,
-      "t": "Traralgon (Vic.): 2.8 pts"
+      "t": "Traralgon 2.8"
      }
     ]
    },
@@ -239,11 +247,11 @@
    "mark": {
     "type": "text",
     "align": "left",
-    "dx": 16,
-    "dy": 10,
-    "fontSize": 12,
+    "dx": 10,
+    "dy": 12,
+    "fontSize": 11,
     "fontWeight": "bold",
-    "color": "#222"
+    "color": "#0F172A"
    }
   },
   {
@@ -252,7 +260,7 @@
      {
       "lon": 130.943,
       "lat": -13.084166666666667,
-      "t": "Palmerston (NT): 2.6 pts"
+      "t": "Palmerston 2.6"
      }
     ]
    },
@@ -272,9 +280,9 @@
    "mark": {
     "type": "text",
     "align": "left",
-    "dx": 16,
+    "dx": 10,
     "dy": 0,
-    "fontSize": 12,
+    "fontSize": 11,
     "fontWeight": "bold",
     "color": "#ffffff",
     "stroke": "#ffffff",
@@ -288,7 +296,7 @@
      {
       "lon": 130.943,
       "lat": -13.084166666666667,
-      "t": "Palmerston (NT): 2.6 pts"
+      "t": "Palmerston 2.6"
      }
     ]
    },
@@ -308,11 +316,11 @@
    "mark": {
     "type": "text",
     "align": "left",
-    "dx": 16,
+    "dx": 10,
     "dy": 0,
-    "fontSize": 12,
+    "fontSize": 11,
     "fontWeight": "bold",
-    "color": "#222"
+    "color": "#0F172A"
    }
   },
   {
@@ -321,7 +329,7 @@
      {
       "lon": 116.394,
       "lat": -31.8235,
-      "t": "Ellenbrook (WA): 1.1 pts"
+      "t": "Ellenbrook 1.1"
      }
     ]
    },
@@ -340,10 +348,10 @@
    },
    "mark": {
     "type": "text",
-    "align": "right",
-    "dx": -16,
-    "dy": 0,
-    "fontSize": 12,
+    "align": "left",
+    "dx": -4,
+    "dy": -14,
+    "fontSize": 11,
     "fontWeight": "bold",
     "color": "#ffffff",
     "stroke": "#ffffff",
@@ -357,7 +365,7 @@
      {
       "lon": 116.394,
       "lat": -31.8235,
-      "t": "Ellenbrook (WA): 1.1 pts"
+      "t": "Ellenbrook 1.1"
      }
     ]
    },
@@ -376,30 +384,35 @@
    },
    "mark": {
     "type": "text",
-    "align": "right",
-    "dx": -16,
-    "dy": 0,
-    "fontSize": 12,
+    "align": "left",
+    "dx": -4,
+    "dy": -14,
+    "fontSize": 11,
     "fontWeight": "bold",
-    "color": "#222"
+    "color": "#0F172A"
    }
   }
  ],
  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
  "config": {
-  "background": "#fff",
+  "background": "#ffffff",
+  "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
   "view": {
    "stroke": null
   },
-  "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
   "axis": {
+   "labelFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "titleFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
    "labelFontSize": 12,
    "titleFontSize": 12,
-   "labelColor": "#222",
-   "titleColor": "#222",
-   "domainColor": "#666",
-   "tickColor": "#666",
-   "gridColor": "#e5e0d8"
+   "titleFontWeight": 600,
+   "labelColor": "#334155",
+   "titleColor": "#0F172A",
+   "domainColor": "#94A3B8",
+   "tickColor": "#94A3B8",
+   "gridColor": "#E2E8F0",
+   "titlePadding": 10,
+   "labelPadding": 6
   },
   "axisX": {
    "grid": true
@@ -407,29 +420,40 @@
   "axisY": {
    "grid": true
   },
-  "title": {
-   "fontSize": 16,
-   "anchor": "start",
-   "color": "#2b2d42",
-   "subtitleColor": "#666",
-   "subtitleFontSize": 12,
-   "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
-   "subtitlePadding": 4
-  },
-  "header": {
-   "labelColor": "#222",
-   "titleColor": "#222",
-   "labelFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif"
-  },
   "legend": {
+   "labelFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "titleFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
    "labelFontSize": 12,
    "titleFontSize": 12,
-   "labelColor": "#222",
-   "titleColor": "#222",
-   "titleLimit": 420
+   "titleFontWeight": 600,
+   "labelColor": "#334155",
+   "titleColor": "#0F172A",
+   "titleLimit": 420,
+   "symbolSize": 110
+  },
+  "header": {
+   "labelFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "titleFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "labelColor": "#0F172A",
+   "titleColor": "#0F172A",
+   "labelFontWeight": 600
+  },
+  "title": {
+   "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "subtitleFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "fontSize": 16,
+   "fontWeight": 700,
+   "anchor": "start",
+   "color": "#0F172A",
+   "subtitleColor": "#64748B",
+   "subtitleFontSize": 12,
+   "subtitlePadding": 6
   },
   "text": {
-   "color": "#222",
+   "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "color": "#0F172A"
+  },
+  "mark": {
    "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif"
   }
  }

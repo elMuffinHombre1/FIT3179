@@ -5,8 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Obesity in Australia: a data story</title>
 
+  <!-- Font (charts use the same one) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=20261026c">
+  <!-- Styling (compiled from styles.scss) -->
+  <link rel="stylesheet" href="styles.css?v=20261026d">
 
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
@@ -15,45 +20,42 @@
 
 <body>
 <div class="page">
+
   <header class="top">
-    <div class="in">
-      <h1>Obesity in Australia</h1>
-      <p>
-        Roughly two in three Australian adults are overweight or obese. This dashboard explains who is
-        affected, how it has changed, where it concentrates, which social factors divide it, and what it
-        costs the health system.
-      </p>
-    </div>
+    <p class="eyebrow">FIT3179 Data Visualisation</p>
+    <h1>Obesity in Australia</h1>
+    <p class="lead">
+      Roughly two in three Australian adults are overweight or obese. This dashboard explains who is affected, how it has changed, where it concentrates, which social factors divide it, and what it costs the health system.
+    </p>
   </header>
 
-  <!-- ===================================================================
-       NAVIGATION (links to each section id below)
-       =================================================================== -->
+  <!-- NAVIGATION: links to each section id below -->
   <nav aria-label="Sections">
-    <a href="#pop" id="nav-pop">Population Profile and Trends</a>
-    <a href="#geo" id="nav-geo">Geographic Distribution</a>
-    <a href="#social" id="nav-social">Social Determinants of Obesity</a>
-    <a href="#health" id="nav-health">Health System Impact</a>
+    <a href="#pop" id="nav-pop">Population Profile</a>
+    <a href="#geo" id="nav-geo">Geography</a>
+    <a href="#social" id="nav-social">Social Determinants</a>
+    <a href="#health" id="nav-health">Health System</a>
     <a href="#place" id="nav-place" hidden>Social Determinants and Place</a>
+    <a href="#about">About</a>
+    <a href="#refs">References</a>
   </nav>
 
   <main>
 
-    <!-- ###################################################################
-         SECTION 1: POPULATION PROFILE AND TRENDS
-         ################################################################### -->
+    <!-- ################ SECTION 1: POPULATION PROFILE AND TRENDS ################ -->
     <div class="section-group" id="pop">
-
-      <!-- Section heading with its explainer directly underneath -->
       <div class="group-head">
+        <p class="eyebrow">Section 1</p>
         <h2>Population Profile and Trends</h2>
         <p class="intro">
           Who is affected, and how the picture has changed over a decade.
         </p>
       </div>
 
-      <div class="feature chart-right" id="pyramid-sec">
+      <!-- Chart 1 of 12 | text left, chart right | swap sides with chart-left / chart-right | file: 01_population_pyramid.vl.json -->
+      <article class="feature chart-right" id="pyramid-sec">
         <div class="copy">
+          <p class="kicker">Chart 1</p>
           <h3>Who is affected?</h3>
           <div class="text">
             <p>
@@ -68,26 +70,19 @@
               with caution.
             </p>
           </div>
-          <!-- Source note shown under the text -->
           <p class="src">
-            Sources: AIHW Table S15 (children, 2022–24) and the adult BMI table (2022). Obese for adults
-            combines BMI classes I to III. Children and adults are classified differently, so compare
-            shapes, not exact values.
+            Sources: AIHW Table S15 (children, 2022–24) and the adult BMI table (2022). Obese for adults combines BMI classes I to III. Children and adults are classified differently, so compare shapes, not exact values.
           </p>
         </div>
         <figure class="chart-wrap">
           <div class="chart" data-spec="01_population_pyramid.vl.json" role="img" aria-label="Population pyramid of the share of boys, girls, men and women who are overweight or obese"></div>
         </figure>
-      </div>
+      </article>
 
-      <!-- ------------------------------------------------------------
-           Chart 2 of 12: Is it getting worse?
-           Layout: chart on the left, text on the right
-           To swap sides change "chart-left" to "chart-right"
-           Chart file: 02_obesity_trend.vl.json
-           ------------------------------------------------------------ -->
-      <div class="feature chart-left" id="trend-sec">
+      <!-- Chart 2 of 12 | text chart left, text right | swap sides with chart-left / chart-right | file: 02_obesity_trend.vl.json -->
+      <article class="feature chart-left" id="trend-sec">
         <div class="copy">
+          <p class="kicker">Chart 2</p>
           <h3>Is it getting worse?</h3>
           <div class="text">
             <p>
@@ -100,50 +95,38 @@
               percentage points (31.3% vs 28.0%).
             </p>
           </div>
-          <!-- Source note shown under the text -->
           <p class="src">
-            Source: AIHW Table S5 (age-standardised, adults 18–64). The series ends in 2017–18 because
-            that is the latest year in the supplied table.
+            Source: AIHW Table S5 (age-standardised, adults 18–64). The series ends in 2017–18 because that is the latest year in the supplied table.
           </p>
         </div>
         <figure class="chart-wrap">
           <div class="chart" data-spec="02_obesity_trend.vl.json" role="img" aria-label="Line chart of adult obesity rates for males, females and persons from 2007-08 to 2017-18"></div>
         </figure>
-      </div>
+      </article>
 
     </div>
 
-    <!-- ===================================================================
-         HEADLINE STATS (sits between section 1 and section 2)
-         =================================================================== -->
+    <!-- HEADLINE STATS (between section 1 and section 2) -->
     <div class="stats">
       <div class="stat"><b>67%</b><span>of adults are overweight or obese</span></div>
       <div class="stat"><b>32.8%</b><span>of adults are obese</span></div>
-      <div class="stat"><b>26.9%</b><span>of children aged 2–17 are overweight or obese</span></div>
+      <div class="stat"><b>26.9%</b><span>of children aged 2&ndash;17 are overweight or obese</span></div>
     </div>
 
-    <!-- ###################################################################
-         SECTION 2: GEOGRAPHIC DISTRIBUTION
-         ################################################################### -->
+    <!-- ################ SECTION 2: GEOGRAPHIC DISTRIBUTION ################ -->
     <div class="section-group" id="geo">
-
-      <!-- Section heading with its explainer directly underneath -->
       <div class="group-head">
+        <p class="eyebrow">Section 2</p>
         <h2>Geographic Distribution</h2>
         <p class="intro">
-          Where obesity is concentrated across Australia, who lives there, and how men and women
-          differ.
+          Where obesity is concentrated across Australia, who lives there, and how men and women differ.
         </p>
       </div>
 
-      <!-- ------------------------------------------------------------
-           Chart 3 of 12: Where is obesity highest?
-           Layout: text on the left, chart on the right
-           To swap sides change "chart-right" to "chart-left"
-           Chart file: 03_obesity_map.vl.json
-           ------------------------------------------------------------ -->
-      <div class="feature chart-right" id="map-sec">
+      <!-- Chart 3 of 12 | text left, chart right | swap sides with chart-left / chart-right | file: 03_obesity_map.vl.json -->
+      <article class="feature chart-right" id="map-sec">
         <div class="copy">
+          <p class="kicker">Chart 3</p>
           <h3>Where is obesity highest?</h3>
           <div class="text">
             <p>
@@ -158,29 +141,22 @@
               (15.8%).
             </p>
           </div>
-          <!-- Source note shown under the text -->
           <p class="src">
-            Source: PHIDU, modelled estimates of adults 18+ who were obese, 2022. These are modelled
-            estimates, not direct counts.
+            Source: PHIDU, modelled estimates of adults 18+ who were obese, 2022. These are modelled estimates, not direct counts.
           </p>
         </div>
         <figure class="chart-wrap">
           <div class="chart" data-spec="03_obesity_map.vl.json" role="img" aria-label="Map of adult obesity rates by area, next to a ranked bar chart of the 25 highest areas"></div>
         </figure>
-      </div>
+      </article>
 
-      <!-- ------------------------------------------------------------
-           Charts 4 and 5 of 12: one row of four blocks
-           hex map | hex text | bubble map | bubble text
-           Chart files: 04_sex_gap_hex_map.vl.json, 05_obesity_bubble_map.vl.json
-           ------------------------------------------------------------ -->
-      <div class="pair" id="hex-sec">
-
+      <!-- Charts 4 and 5 of 12 | one row: hex map, hex text, bubble map, bubble text -->
+      <article class="pair" id="hex-sec">
         <figure class="chart-wrap">
           <div class="chart" data-spec="04_sex_gap_hex_map.vl.json" role="img" aria-label="Hexagon map of how much higher male obesity is than female obesity"></div>
         </figure>
-
         <div class="copy">
+          <p class="kicker">Chart 4</p>
           <h3>Do men and women differ everywhere?</h3>
           <div class="text">
             <p>
@@ -195,12 +171,11 @@
             Source: PHIDU, modelled estimates by sex, adults 18+, 2022.
           </p>
         </div>
-
         <figure class="chart-wrap" id="bubbles-sec">
           <div class="chart" data-spec="05_obesity_bubble_map.vl.json" role="img" aria-label="Bubble map of the estimated number of adults with obesity in each area"></div>
         </figure>
-
         <div class="copy">
+          <p class="kicker">Chart 5</p>
           <h3>Where do the people live?</h3>
           <div class="text">
             <p>
@@ -215,32 +190,23 @@
             Source: PHIDU, modelled estimates, 2022. Circles sit at an interior point of each area.
           </p>
         </div>
-
-      </div>
-
+      </article>
     </div>
 
-    <!-- ###################################################################
-         SECTION 3: SOCIAL DETERMINANTS OF OBESITY
-         ################################################################### -->
+    <!-- ################ SECTION 3: SOCIAL DETERMINANTS ################ -->
     <div class="section-group" id="social">
-
-      <!-- Section heading with its explainer directly underneath -->
       <div class="group-head">
+        <p class="eyebrow">Section 3</p>
         <h2>Social Determinants of Obesity</h2>
         <p class="intro">
           Which social groups carry the most risk, and how that has changed.
         </p>
       </div>
 
-      <!-- ------------------------------------------------------------
-           Chart 6 of 12: Is education a ladder?
-           Layout: chart on the left, text on the right
-           To swap sides change "chart-left" to "chart-right"
-           Chart file: 06_education_slope.vl.json
-           ------------------------------------------------------------ -->
-      <div class="feature chart-left" id="edu-sec">
+      <!-- Chart 6 of 12 | text chart left, text right | swap sides with chart-left / chart-right | file: 06_education_slope.vl.json -->
+      <article class="feature chart-left" id="edu-sec">
         <div class="copy">
+          <p class="kicker">Chart 6</p>
           <h3>Is education a ladder?</h3>
           <div class="text">
             <p>
@@ -254,7 +220,6 @@
               moved from near the bottom to close to the middle.
             </p>
           </div>
-          <!-- Source note shown under the text -->
           <p class="src">
             Source: AIHW Table S5, age-standardised percentages, adults 18–64.
           </p>
@@ -262,16 +227,12 @@
         <figure class="chart-wrap">
           <div class="chart" data-spec="06_education_slope.vl.json" role="img" aria-label="Slope chart of obesity rates by education level in 2007-08 and 2017-18"></div>
         </figure>
-      </div>
+      </article>
 
-      <!-- ------------------------------------------------------------
-           Chart 7 of 12: Which jobs carry the most risk?
-           Layout: text on the left, chart on the right
-           To swap sides change "chart-right" to "chart-left"
-           Chart file: 07_occupation_bump.vl.json
-           ------------------------------------------------------------ -->
-      <div class="feature chart-right" id="occ-sec">
+      <!-- Chart 7 of 12 | text left, chart right | swap sides with chart-left / chart-right | file: 07_occupation_bump.vl.json -->
+      <article class="feature chart-right" id="occ-sec">
         <div class="copy">
+          <p class="kicker">Chart 7</p>
           <h3>Which jobs carry the most risk?</h3>
           <div class="text">
             <p>
@@ -285,25 +246,19 @@
               Rankings can move on small changes in rate, so only the two ends are reliable.
             </p>
           </div>
-          <!-- Source note shown under the text -->
           <p class="src">
-            Source: AIHW Table S5, age-standardised percentages, adults 18–64. Rank 1 = highest obesity
-            rate.
+            Source: AIHW Table S5, age-standardised percentages, adults 18–64. Rank 1 = highest obesity rate.
           </p>
         </div>
         <figure class="chart-wrap">
           <div class="chart" data-spec="07_occupation_bump.vl.json" role="img" aria-label="Bump chart ranking eight occupation groups by obesity rate over four surveys"></div>
         </figure>
-      </div>
+      </article>
 
-      <!-- ------------------------------------------------------------
-           Chart 8 of 12: Do household circumstances matter?
-           Layout: chart on the left, text on the right
-           To swap sides change "chart-left" to "chart-right"
-           Chart file: 08_household_heatmap.vl.json
-           ------------------------------------------------------------ -->
-      <div class="feature chart-left" id="heat-sec">
+      <!-- Chart 8 of 12 | text chart left, text right | swap sides with chart-left / chart-right | file: 08_household_heatmap.vl.json -->
+      <article class="feature chart-left" id="heat-sec">
         <div class="copy">
+          <p class="kicker">Chart 8</p>
           <h3>Do household circumstances matter?</h3>
           <div class="text">
             <p>
@@ -316,25 +271,19 @@
               married 31.6%, and renters 31.0% vs owners without a mortgage 28.8%.
             </p>
           </div>
-          <!-- Source note shown under the text -->
           <p class="src">
-            Source: AIHW Table S5, age-standardised percentages, adults 18–64. Hover over a cell for the
-            confidence interval.
+            Source: AIHW Table S5, age-standardised percentages, adults 18–64. Hover over a cell for the confidence interval.
           </p>
         </div>
         <figure class="chart-wrap">
           <div class="chart" data-spec="08_household_heatmap.vl.json" role="img" aria-label="Heatmap of obesity rates by household type, employment, marital status and tenure"></div>
         </figure>
-      </div>
+      </article>
 
-      <!-- ------------------------------------------------------------
-           Chart 9 of 12: Which factors divide obesity most?
-           Layout: text on the left, chart on the right
-           To swap sides change "chart-right" to "chart-left"
-           Chart file: 09_social_gaps.vl.json
-           ------------------------------------------------------------ -->
-      <div class="feature chart-right" id="gaps-sec">
+      <!-- Chart 9 of 12 | text left, chart right | swap sides with chart-left / chart-right | file: 09_social_gaps.vl.json -->
+      <article class="feature chart-right" id="gaps-sec">
         <div class="copy">
+          <p class="kicker">Chart 9</p>
           <h3>Which factors divide obesity most?</h3>
           <div class="text">
             <p>
@@ -349,40 +298,31 @@
               country of birth (10.0), household income (8.9) and remoteness (8.6).
             </p>
           </div>
-          <!-- Source note shown under the text -->
           <p class="src">
-            Source: AIHW Table S5, age-standardised obesity rate, adults 18–64, 2017–18. Groups labelled
-            "Other" were left out.
+            Source: AIHW Table S5, age-standardised obesity rate, adults 18–64, 2017–18. Groups labelled "Other" were left out.
           </p>
         </div>
         <figure class="chart-wrap">
           <div class="chart" data-spec="09_social_gaps.vl.json" role="img" aria-label="Dot plot of the lowest and highest obesity group within each of six social factors"></div>
         </figure>
-      </div>
+      </article>
 
     </div>
 
-    <!-- ###################################################################
-         SECTION 4: HEALTH SYSTEM IMPACT
-         ################################################################### -->
+    <!-- ################ SECTION 4: HEALTH SYSTEM IMPACT ################ -->
     <div class="section-group" id="health">
-
-      <!-- Section heading with its explainer directly underneath -->
       <div class="group-head">
+        <p class="eyebrow">Section 4</p>
         <h2>Health System Impact</h2>
         <p class="intro">
           What obesity means for hospitals and for health spending.
         </p>
       </div>
 
-      <!-- ------------------------------------------------------------
-           Chart 10 of 12: Why do people with obesity go to hospital?
-           Layout: chart on the left, text on the right
-           To swap sides change "chart-left" to "chart-right"
-           Chart file: 10_comorbidity_bar.vl.json
-           ------------------------------------------------------------ -->
-      <div class="feature chart-left" id="bars-sec">
+      <!-- Chart 10 of 12 | text chart left, text right | swap sides with chart-left / chart-right | file: 10_comorbidity_bar.vl.json -->
+      <article class="feature chart-left" id="bars-sec">
         <div class="copy">
+          <p class="kicker">Chart 10</p>
           <h3>Why do people with obesity go to hospital?</h3>
           <div class="text">
             <p>
@@ -397,25 +337,19 @@
               cancer drug therapy (1.0%) are much lower.
             </p>
           </div>
-          <!-- Source note shown under the text -->
           <p class="src">
-            Source: hospital separations with a supplementary U78.1 (obesity) code. This shows how often
-            obesity is recorded, not that it caused the admission.
+            Source: hospital separations with a supplementary U78.1 (obesity) code. This shows how often obesity is recorded, not that it caused the admission.
           </p>
         </div>
         <figure class="chart-wrap">
           <div class="chart" data-spec="10_comorbidity_bar.vl.json" role="img" aria-label="Bar chart of the most common diagnoses in hospital stays with obesity recorded"></div>
         </figure>
-      </div>
+      </article>
 
-      <!-- ------------------------------------------------------------
-           Chart 11 of 12: What does it cost?
-           Layout: text on the left, chart on the right
-           To swap sides change "chart-right" to "chart-left"
-           Chart file: 11_cost_butterfly.vl.json
-           ------------------------------------------------------------ -->
-      <div class="feature chart-right" id="cost-sec">
+      <!-- Chart 11 of 12 | text left, chart right | swap sides with chart-left / chart-right | file: 11_cost_butterfly.vl.json -->
+      <article class="feature chart-right" id="cost-sec">
         <div class="copy">
+          <p class="kicker">Chart 11</p>
           <h3>What does it cost?</h3>
           <div class="text">
             <p>
@@ -429,7 +363,6 @@
               million for females). Males account for about $5.7 billion and females $5.1 billion.
             </p>
           </div>
-          <!-- Source note shown under the text -->
           <p class="src">
             Source: AIHW Table S29, 2023–24. Values converted from dollars to millions.
           </p>
@@ -437,32 +370,24 @@
         <figure class="chart-wrap">
           <div class="chart" data-spec="11_cost_butterfly.vl.json" role="img" aria-label="Butterfly chart of health spending on excess weight by age and sex"></div>
         </figure>
-      </div>
+      </article>
 
     </div>
 
-    <!-- ###################################################################
-         SECTION 5: SOCIAL DETERMINANTS AND PLACE
-         (hidden until social_area.csv has data rows)
-         ################################################################### -->
+    <!-- ################ OPTIONAL SECTION: appears once social_area.csv has data ################ -->
     <div class="section-group" id="place" data-optional-csv="social_area.csv" hidden>
-
-      <!-- Section heading with its explainer directly underneath -->
       <div class="group-head">
+        <p class="eyebrow">Optional</p>
         <h2>Social Determinants and Place</h2>
         <p class="intro">
           How obesity overlaps with a social measure across Australia's Population Health Areas.
         </p>
       </div>
 
-      <!-- ------------------------------------------------------------
-           Chart 12 of 12: Where do obesity and social disadvantage overlap?
-           Layout: chart on the left, text on the right
-           To swap sides change "chart-left" to "chart-right"
-           Chart file: 12_social_overlap.vl.json
-           ------------------------------------------------------------ -->
-      <div class="feature chart-left" id="overlap-sec">
+      <!-- Chart 12 of 12 | text chart left, text right | swap sides with chart-left / chart-right | file: 12_social_overlap.vl.json -->
+      <article class="feature chart-left" id="overlap-sec">
         <div class="copy">
+          <p class="kicker">Chart 12</p>
           <h3>Where do obesity and social disadvantage overlap?</h3>
           <div class="text">
             <p>
@@ -472,63 +397,83 @@
               areas on the map.
             </p>
           </div>
-          <!-- Source note shown under the text -->
           <p class="src">
-            Source: PHIDU modelled obesity estimates and the social measure listed in social_area.csv.
-            Add your own source here.
+            Source: PHIDU modelled obesity estimates and the social measure listed in social_area.csv. Add your own source here.
           </p>
         </div>
         <figure class="chart-wrap">
           <div class="chart" data-spec="12_social_overlap.vl.json" role="img" aria-label="Bivariate map and scatterplot of obesity against a social measure"></div>
         </figure>
-      </div>
+      </article>
 
     </div>
 
-    <!-- ===================================================================
-         ABOUT THIS DASHBOARD (one bullet per <li>; edit freely)
-         =================================================================== -->
-    <section class="design">
+    <!-- ################ ABOUT ################ -->
+    <section class="about" id="about">
       <h2>About this dashboard</h2>
       <ul>
-        <li>
-          <strong>Author:</strong> Justin Sandoval.
-        </li>
+        <li><strong>Author:</strong> Justin Sandoval.</li>
         <li>
           <strong>One idiom per question:</strong> population pyramid and line with confidence bands
           (who and when); choropleth with ranked bars, hexagon map and proportional symbol map
           (where); slope chart, bump chart, heatmap and connected dot plot (social determinants); bar
           chart and butterfly chart (health system); and a bivariate map with a linked scatterplot
-          (overlap with a social measure). Charts sit side by side where they answer related
-          questions.
+          (overlap with a social measure).
         </li>
         <li>
-          <strong>AI Usage:</strong> Artificial Intelligence has been used to format the data into a more usable form
+          <strong>AI Usage:</strong> Artificial Intelligence has been used to format the data into a more usable form.
         </li>
         <li>
-          <strong>Data: Sources :</strong> AIHW overweight and obesity tables (S5, S15, S21, S29), hospital
+          <strong>Data Sources:</strong> AIHW overweight and obesity tables (S5, S15, S21, S29), hospital
           separations with U78.1, and PHIDU modelled estimates for Population Health Areas (2022).
           Boundaries: ABS Population Health Areas 2021, simplified for web use.
         </li>
       </ul>
     </section>
+
+    <!-- ################ REFERENCES ################
+         For each source: edit the text, then paste the web address into BOTH
+         href="..." and the words between the <a> tags. Copy a whole <li> to add another. -->
+    <section class="refs" id="refs">
+      <h2>References</h2>
+      <p>Paste each link below. One source per line; copy a line to add more.</p>
+      <ol>
+        <li>
+          Australian Institute of Health and Welfare. <em>Overweight and obesity</em> (tables S5, S15, S21, S29).
+          <a class="ref-link" href="#" target="_blank" rel="noopener">paste link here</a>
+        </li>
+        <li>
+          Australian Institute of Health and Welfare. <em>Hospital separations with obesity code U78.1</em>.
+          <a class="ref-link" href="#" target="_blank" rel="noopener">paste link here</a>
+        </li>
+        <li>
+          Public Health Information Development Unit (PHIDU). <em>Modelled estimates, Population Health Areas, 2022</em>.
+          <a class="ref-link" href="#" target="_blank" rel="noopener">paste link here</a>
+        </li>
+        <li>
+          Australian Bureau of Statistics. <em>Population Health Areas, 2021 boundaries</em>.
+          <a class="ref-link" href="#" target="_blank" rel="noopener">paste link here</a>
+        </li>
+        <li>
+          Satyanarayan, A., Moritz, D., Wongsuphasawat, K. and Heer, J. (2017). <em>Vega-Lite: A grammar of interactive graphics</em>.
+          <a class="ref-link" href="#" target="_blank" rel="noopener">paste link here</a>
+        </li>
+        <li>
+          Okabe, M. and Ito, K. <em>Color Universal Design</em> (colour-blind-safe palette used for male and female).
+          <a class="ref-link" href="#" target="_blank" rel="noopener">paste link here</a>
+        </li>
+      </ol>
+    </section>
+
   </main>
 
-  <footer>
-    <div class="in">Built with Vega-Lite. Hover over any chart for exact values.</div>
-  </footer>
-
+  <footer>Built with Vega-Lite. Hover over any chart for exact values.</footer>
 </div>
 
-<!-- =====================================================================
-     SCRIPT: loads each chart, and keeps paragraphs to a few words per line.
-     You normally only need to change the three settings below.
-     ===================================================================== -->
 <script>
 // ---- Settings ----------------------------------------------------------
-const MAX_WORDS_PER_LINE = 9;      // paragraphs are broken so no line has more words than this
-const ASSET_VERSION = '20261026c';        // change this after updating chart or data files so browsers re-download them
-const BRANCH = 'main';             // only used if the page is hosted somewhere other than GitHub Pages
+const ASSET_VERSION = '20261026d';   // change after updating chart or data files so browsers re-download them
+const BRANCH = 'main';               // only used if the page is hosted somewhere other than GitHub Pages
 
 // ---- Where the chart files live ----------------------------------------
 // On your computer (Live Server) and on GitHub Pages the files sit next to this page.
@@ -538,36 +483,7 @@ const SAME_PLACE = ['localhost', '127.0.0.1', ''].includes(location.hostname) ||
 const CHARTS_BASE = SAME_PLACE ? '' : GITHUB_BASE;
 const V = '?v=' + ASSET_VERSION;
 
-// ---- 1. Break paragraphs into short lines -------------------------------
-function wrapLines(el, maxWords) {
-  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
-  const nodes = [];
-  while (walker.nextNode()) nodes.push(walker.currentNode);
-  if (!nodes.length) return;
-  nodes[0].nodeValue = nodes[0].nodeValue.replace(/^\s+/, '');
-  nodes[nodes.length - 1].nodeValue = nodes[nodes.length - 1].nodeValue.replace(/\s+$/, '');
-  let count = 0;
-  nodes.forEach(node => {
-    const frag = document.createDocumentFragment();
-    node.nodeValue.split(/(\s+)/).forEach(part => {
-      if (part === '') return;
-      if (/^\s+$/.test(part)) {
-        if (count >= maxWords) { frag.appendChild(document.createElement('br')); count = 0; }
-        else frag.appendChild(document.createTextNode(' '));
-      } else {
-        frag.appendChild(document.createTextNode(part));
-        count++;
-      }
-    });
-    node.parentNode.replaceChild(frag, node);
-  });
-}
-document.querySelectorAll('header.top p, .intro, .text p, .src, .design ul:not(.swatches) > li')
-  .forEach(el => wrapLines(el, MAX_WORDS_PER_LINE));
-
-// ---- 2. Draw the charts -------------------------------------------------
-// Every <div class="chart" data-spec="..."> is filled with the Vega-Lite chart named in data-spec.
-// Specs use short data paths such as "05_cost_butterfly.csv"; point those at the right folder.
+// Short data paths inside a spec (such as "02_obesity_trend.csv") are pointed at the right folder.
 function addBase(node) {
   if (Array.isArray(node)) { node.forEach(addBase); return; }
   if (node && typeof node === 'object') {
@@ -575,17 +491,39 @@ function addBase(node) {
     Object.values(node).forEach(addBase);
   }
 }
-const errorText = e => (e && e.message) ? e.message : String(e);
+const joinText = t => Array.isArray(t) ? t.join(' ') : (t || '');
 
-document.querySelectorAll('.chart[data-spec]').forEach(box => {
+// Draw one chart: the title and subtitle become normal page text (so they wrap),
+// and the chart is drawn as SVG that scales to fill its frame.
+function drawChart(box) {
   const file = box.dataset.spec;
-  fetch(CHARTS_BASE + file + V)
+  return fetch(CHARTS_BASE + file + V)
     .then(r => { if (!r.ok) throw new Error(file + ' (HTTP ' + r.status + ')'); return r.json(); })
-    .then(spec => { addBase(spec); return vegaEmbed(box, spec, {actions: {export: true, source: false, editor: false}}); })
-    .catch(e => { box.textContent = 'Could not load chart: ' + errorText(e); });
-});
+    .then(spec => {
+      addBase(spec);
+      const t = spec.title && typeof spec.title === 'object' ? spec.title : { text: spec.title };
+      delete spec.title;
+      box.innerHTML = '<h4 class="chart-title"></h4><p class="chart-sub"></p><div class="plot"></div>';
+      box.querySelector('.chart-title').textContent = joinText(t.text);
+      box.querySelector('.chart-sub').textContent = joinText(t.subtitle);
+      const plot = box.querySelector('.plot');
+      return vegaEmbed(plot, spec, { renderer: 'svg', actions: { export: true, source: false, editor: false } })
+        .then(() => {
+          const svg = plot.querySelector('svg');
+          if (svg) {
+            const w = parseFloat(svg.getAttribute('width')), h = parseFloat(svg.getAttribute('height'));
+            svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);   // lets the chart scale to its frame
+            svg.style.width = '100%'; svg.style.height = 'auto';
+          }
+        });
+    })
+    .catch(e => { box.textContent = 'Could not load chart: ' + ((e && e.message) ? e.message : e); });
+}
 
-// ---- 3. Optional sections stay hidden until their data file has rows ----
+const fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+fontsReady.then(() => document.querySelectorAll('.chart[data-spec]').forEach(drawChart));
+
+// ---- Optional sections stay hidden until their data file has rows ----
 document.querySelectorAll('[data-optional-csv]').forEach(group => {
   fetch(CHARTS_BASE + group.dataset.optionalCsv + V)
     .then(r => r.ok ? r.text() : '')
