@@ -170,68 +170,64 @@
       </div>
 
       <!-- ------------------------------------------------------------
-           Chart 4 of 12: Do men and women differ everywhere?
-           Layout: chart on the left, text on the right
-           To swap sides change "chart-left" to "chart-right"
-           Chart file: 04_sex_gap_hex_map.vl.json
+           Charts 4 and 5 of 12: hex map | bubble map
+           One smaller side-by-side row under the choropleth.
+           Each half = explanation on top, its map below.
+           Chart files: 04_sex_gap_hex_map.vl.json, 05_obesity_bubble_map.vl.json
            ------------------------------------------------------------ -->
-      <div class="feature chart-left" id="hex-sec">
-        <div class="copy">
-          <h3>Do men and women differ everywhere?</h3>
-          <div class="text">
-            <p>
-              This map asks a different question from the one above: how much higher is the male obesity
-              rate than the female rate? Each hexagon averages the areas inside it, so crowded city areas
-              stay readable. Males have the higher rate in <strong>1,121 of 1,134 areas</strong> with
-              estimates, and the typical gap is <strong>1.9 percentage points</strong>.
-            </p>
-            <p>
-              Gaps are widest, at up to <strong>2.8 points</strong>, around George Town in north-east
-              Tasmania and Traralgon in Victoria, and 2.6 points around Palmerston in the Northern
-              Territory. Around Ellenbrook, in Perth's north-east, the gap is only 1.1 points.
+      <div class="pair">
+        <div class="pair-cell" id="hex-sec">
+          <div class="copy">
+            <h3>Do men and women differ everywhere?</h3>
+            <div class="text">
+              <p>
+                This map asks a different question from the one above: how much higher is the male obesity
+                rate than the female rate? Each hexagon averages the areas inside it, so crowded city areas
+                stay readable. Males have the higher rate in <strong>1,121 of 1,134 areas</strong> with
+                estimates, and the typical gap is <strong>1.9 percentage points</strong>.
+              </p>
+              <p>
+                Gaps are widest, at up to <strong>2.8 points</strong>, around George Town in north-east
+                Tasmania and Traralgon in Victoria, and 2.6 points around Palmerston in the Northern
+                Territory. Around Ellenbrook, in Perth's north-east, the gap is only 1.1 points.
+              </p>
+            </div>
+            <!-- Source note shown under the text -->
+            <p class="src">
+              Source: PHIDU, modelled estimates by sex, adults 18+, 2022. Hexagons are weighted by the
+              estimated number of adults with obesity in each area.
             </p>
           </div>
-          <!-- Source note shown under the text -->
-          <p class="src">
-            Source: PHIDU, modelled estimates by sex, adults 18+, 2022. Hexagons are weighted by the
-            estimated number of adults with obesity in each area.
-          </p>
+          <figure class="chart-wrap">
+            <div class="chart" data-spec="04_sex_gap_hex_map.vl.json" role="img" aria-label="Hexagon map of how much higher male obesity is than female obesity"></div>
+          </figure>
         </div>
-        <figure class="chart-wrap">
-          <div class="chart" data-spec="04_sex_gap_hex_map.vl.json" role="img" aria-label="Hexagon map of how much higher male obesity is than female obesity"></div>
-        </figure>
-      </div>
 
-      <!-- ------------------------------------------------------------
-           Chart 5 of 12: Where do the people live?
-           Layout: text on the left, chart on the right
-           To swap sides change "chart-right" to "chart-left"
-           Chart file: 05_obesity_bubble_map.vl.json
-           ------------------------------------------------------------ -->
-      <div class="feature chart-right" id="bubbles-sec">
-        <div class="copy">
-          <h3>Where do the people live?</h3>
-          <div class="text">
-            <p>
-              A high rate in a sparsely populated area affects few people, while a moderate rate in a city
-              affects many. Here circle size shows the estimated <em>number</em> of adults with obesity in
-              each area. Large circles cluster along the east and south-east coasts and in south-west
-              Western Australia.
-            </p>
-            <p>
-              New South Wales, Victoria and Queensland together account for roughly <strong>77%</strong>
-              of the estimated 6.3 million adults with obesity in areas with estimates.
+        <div class="pair-cell" id="bubbles-sec">
+          <div class="copy">
+            <h3>Where do the people live?</h3>
+            <div class="text">
+              <p>
+                A high rate in a sparsely populated area affects few people, while a moderate rate in a city
+                affects many. Here circle size shows the estimated <em>number</em> of adults with obesity in
+                each area. Large circles cluster along the east and south-east coasts and in south-west
+                Western Australia.
+              </p>
+              <p>
+                New South Wales, Victoria and Queensland together account for roughly <strong>77%</strong>
+                of the estimated 6.3 million adults with obesity in areas with estimates.
+              </p>
+            </div>
+            <!-- Source note shown under the text -->
+            <p class="src">
+              Source: PHIDU, modelled estimates, 2022. Circles are placed at an interior point of each
+              area, not its exact population centre.
             </p>
           </div>
-          <!-- Source note shown under the text -->
-          <p class="src">
-            Source: PHIDU, modelled estimates, 2022. Circles are placed at an interior point of each
-            area, not its exact population centre.
-          </p>
+          <figure class="chart-wrap">
+            <div class="chart" data-spec="05_obesity_bubble_map.vl.json" role="img" aria-label="Bubble map of the estimated number of adults with obesity in each area"></div>
+          </figure>
         </div>
-        <figure class="chart-wrap">
-          <div class="chart" data-spec="05_obesity_bubble_map.vl.json" role="img" aria-label="Bubble map of the estimated number of adults with obesity in each area"></div>
-        </figure>
       </div>
 
     </div>
@@ -543,7 +539,7 @@
 <script>
 // ---- Settings ----------------------------------------------------------
 const MAX_WORDS_PER_LINE = 9;      // paragraphs are broken so no line has more words than this
-const ASSET_VERSION = '20261026a';        // change this after updating chart or data files so browsers re-download them
+const ASSET_VERSION = '20261026b';        // change this after updating chart or data files so browsers re-download them
 const BRANCH = 'main';             // only used if the page is hosted somewhere other than GitHub Pages
 
 // ---- Where the chart files live ----------------------------------------

@@ -10,8 +10,8 @@
    "The scale starts at zero."
   ]
  },
- "width": 800,
- "height": 660,
+ "width": 540,
+ "height": 450,
  "projection": {
   "type": "mercator"
  },
@@ -64,7 +64,7 @@
      },
      "legend": {
       "orient": "bottom",
-      "gradientLength": 340,
+      "gradientLength": 240,
       "values": [
        0,
        0.5,
@@ -107,6 +107,282 @@
      }
     ]
    }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "lon": 148.26366666666667,
+      "lat": -41.43016666666667,
+      "t": "George Town (Tas.): 2.8 pts"
+     }
+    ]
+   },
+   "encoding": {
+    "longitude": {
+     "field": "lon",
+     "type": "quantitative"
+    },
+    "latitude": {
+     "field": "lat",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "t"
+    }
+   },
+   "mark": {
+    "type": "text",
+    "align": "right",
+    "dx": -16,
+    "dy": 6,
+    "fontSize": 12,
+    "fontWeight": "bold",
+    "color": "#ffffff",
+    "stroke": "#ffffff",
+    "strokeWidth": 4,
+    "strokeJoin": "round"
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "lon": 148.26366666666667,
+      "lat": -41.43016666666667,
+      "t": "George Town (Tas.): 2.8 pts"
+     }
+    ]
+   },
+   "encoding": {
+    "longitude": {
+     "field": "lon",
+     "type": "quantitative"
+    },
+    "latitude": {
+     "field": "lat",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "t"
+    }
+   },
+   "mark": {
+    "type": "text",
+    "align": "right",
+    "dx": -16,
+    "dy": 6,
+    "fontSize": 12,
+    "fontWeight": "bold",
+    "color": "#222"
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "lon": 146.87800000000001,
+      "lat": -37.731833333333334,
+      "t": "Traralgon (Vic.): 2.8 pts"
+     }
+    ]
+   },
+   "encoding": {
+    "longitude": {
+     "field": "lon",
+     "type": "quantitative"
+    },
+    "latitude": {
+     "field": "lat",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "t"
+    }
+   },
+   "mark": {
+    "type": "text",
+    "align": "left",
+    "dx": 16,
+    "dy": 10,
+    "fontSize": 12,
+    "fontWeight": "bold",
+    "color": "#ffffff",
+    "stroke": "#ffffff",
+    "strokeWidth": 4,
+    "strokeJoin": "round"
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "lon": 146.87800000000001,
+      "lat": -37.731833333333334,
+      "t": "Traralgon (Vic.): 2.8 pts"
+     }
+    ]
+   },
+   "encoding": {
+    "longitude": {
+     "field": "lon",
+     "type": "quantitative"
+    },
+    "latitude": {
+     "field": "lat",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "t"
+    }
+   },
+   "mark": {
+    "type": "text",
+    "align": "left",
+    "dx": 16,
+    "dy": 10,
+    "fontSize": 12,
+    "fontWeight": "bold",
+    "color": "#222"
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "lon": 130.943,
+      "lat": -13.084166666666667,
+      "t": "Palmerston (NT): 2.6 pts"
+     }
+    ]
+   },
+   "encoding": {
+    "longitude": {
+     "field": "lon",
+     "type": "quantitative"
+    },
+    "latitude": {
+     "field": "lat",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "t"
+    }
+   },
+   "mark": {
+    "type": "text",
+    "align": "left",
+    "dx": 16,
+    "dy": 0,
+    "fontSize": 12,
+    "fontWeight": "bold",
+    "color": "#ffffff",
+    "stroke": "#ffffff",
+    "strokeWidth": 4,
+    "strokeJoin": "round"
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "lon": 130.943,
+      "lat": -13.084166666666667,
+      "t": "Palmerston (NT): 2.6 pts"
+     }
+    ]
+   },
+   "encoding": {
+    "longitude": {
+     "field": "lon",
+     "type": "quantitative"
+    },
+    "latitude": {
+     "field": "lat",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "t"
+    }
+   },
+   "mark": {
+    "type": "text",
+    "align": "left",
+    "dx": 16,
+    "dy": 0,
+    "fontSize": 12,
+    "fontWeight": "bold",
+    "color": "#222"
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "lon": 116.394,
+      "lat": -31.8235,
+      "t": "Ellenbrook (WA): 1.1 pts"
+     }
+    ]
+   },
+   "encoding": {
+    "longitude": {
+     "field": "lon",
+     "type": "quantitative"
+    },
+    "latitude": {
+     "field": "lat",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "t"
+    }
+   },
+   "mark": {
+    "type": "text",
+    "align": "right",
+    "dx": -16,
+    "dy": 0,
+    "fontSize": 12,
+    "fontWeight": "bold",
+    "color": "#ffffff",
+    "stroke": "#ffffff",
+    "strokeWidth": 4,
+    "strokeJoin": "round"
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "lon": 116.394,
+      "lat": -31.8235,
+      "t": "Ellenbrook (WA): 1.1 pts"
+     }
+    ]
+   },
+   "encoding": {
+    "longitude": {
+     "field": "lon",
+     "type": "quantitative"
+    },
+    "latitude": {
+     "field": "lat",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "t"
+    }
+   },
+   "mark": {
+    "type": "text",
+    "align": "right",
+    "dx": -16,
+    "dy": 0,
+    "fontSize": 12,
+    "fontWeight": "bold",
+    "color": "#222"
+   }
   }
  ],
  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
@@ -115,7 +391,7 @@
   "view": {
    "stroke": null
   },
-  "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+  "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
   "axis": {
    "labelFontSize": 12,
    "titleFontSize": 12,
@@ -137,13 +413,13 @@
    "color": "#2b2d42",
    "subtitleColor": "#666",
    "subtitleFontSize": 12,
-   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
    "subtitlePadding": 4
   },
   "header": {
    "labelColor": "#222",
    "titleColor": "#222",
-   "labelFont": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+   "labelFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif"
   },
   "legend": {
    "labelFontSize": 12,
@@ -154,7 +430,7 @@
   },
   "text": {
    "color": "#222",
-   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+   "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif"
   }
  }
 }

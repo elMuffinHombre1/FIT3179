@@ -14,8 +14,10 @@ $card:      #fff;
 $line:      #e5e0d8;
 $code-bg:   #eee;
 
-$serif: Georgia, 'Times New Roman', serif;
-$sans:  system-ui, -apple-system, 'Segoe UI', sans-serif;
+// Typography: Fraunces (display headings) + Source Serif 4 (reading text) + Inter (labels and charts)
+$display: 'Fraunces', Georgia, 'Times New Roman', serif;
+$serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+$sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
 $content-width: 1500px;
 $page-width: 1580px;
@@ -68,6 +70,18 @@ body {
   font-family: $serif;
   color: $fg;
   line-height: 1.65;
+}
+
+h1, h2, h3 {
+  font-family: $display;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+main a {
+  color: $accent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
 }
 
 code {
@@ -273,6 +287,66 @@ footer {
   .in { @include centred; }
 }
 
+
+// ---------- Overview: domain, who, what, why, how ----------
+.overview {
+  @include focus-frame;
+  padding: 8px $gutter 30px;
+  margin-top: 40px;
+
+  h2 {
+    margin: 18px 0 18px;
+    font-size: 2rem;
+    color: $navy;
+  }
+
+  dl {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 22px 36px;
+    margin: 0;
+  }
+
+  dt {
+    margin-bottom: 6px;
+    font-family: $sans;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: $accent;
+  }
+
+  dd { margin: 0; }
+}
+
+// ---------- Key takeaways ----------
+.takeaway-list {
+  max-width: 820px;
+  margin: 22px 0 0;
+  padding-left: 1.5em;
+  font-size: 1.1rem;
+
+  li { margin-bottom: 14px; }
+  li::marker { font-family: $display; font-weight: 700; color: $accent; }
+}
+
+// ---------- Glossary ----------
+.glossary dl {
+  display: grid;
+  grid-template-columns: minmax(170px, 250px) minmax(0, 1fr);
+  gap: 12px 28px;
+  margin: 8px 0 0;
+}
+
+.glossary dt {
+  font-family: $sans;
+  font-weight: 700;
+  color: $navy;
+}
+
+.glossary dd { margin: 0; }
+
 // ---------- Smaller screens: stack text above chart ----------
 @media (max-width: 1100px) {
   .feature,
@@ -280,10 +354,41 @@ footer {
 
   .feature.chart-left .copy { order: 1; }
   .feature.chart-left .chart-wrap { order: 2; }
+
+  .glossary dl { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .glossary dd { margin-bottom: 10px; }
 }
 
 @media (max-width: 600px) {
   header.top h1 { font-size: 1.9rem; }
   .group-head h2 { font-size: 1.5rem; }
   .page { border-left-width: 6px; border-right-width: 6px; }
+}
+
+// ---------- Two maps side by side: explanation above each map ----------
+.pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: auto auto;
+  column-gap: 48px;
+  row-gap: 20px;
+  align-items: start;
+  padding: 36px 0;
+  border-bottom: 1px solid $line;
+
+  .pair-cell {
+    display: grid;
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+    row-gap: 20px;
+    min-width: 0;
+  }
+
+  .copy h3 { font-size: 1.3rem; }
+  .copy .text p { font-size: 0.95rem; }
+
+  @media (max-width: 1100px) {
+    grid-template-columns: minmax(0, 1fr);
+    .pair-cell { grid-row: auto; grid-template-rows: none; }
+  }
 }

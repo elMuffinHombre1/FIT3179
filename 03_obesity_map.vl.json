@@ -24,8 +24,8 @@
  ],
  "hconcat": [
   {
-   "width": 440,
-   "height": 400,
+   "width": 400,
+   "height": 360,
    "data": {
     "url": "PHA_2021_Aust_GDA2020_Gen50.json",
     "format": {
@@ -81,7 +81,7 @@
      },
      "legend": {
       "orient": "bottom",
-      "gradientLength": 260,
+      "gradientLength": 230,
       "labelExpr": "datum.value + '%'"
      }
     },
@@ -114,9 +114,9 @@
    }
   },
   {
-   "width": 200,
+   "width": 190,
    "height": {
-    "step": 15
+    "step": 14
    },
    "data": {
     "url": "phidu_obesity_clean.csv",
@@ -169,7 +169,7 @@
      "scale": {
       "domain": [
        0,
-       60
+       70
       ],
       "zero": true
      },
@@ -216,7 +216,7 @@
   "view": {
    "stroke": null
   },
-  "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+  "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
   "axis": {
    "labelFontSize": 12,
    "titleFontSize": 12,
@@ -238,13 +238,13 @@
    "color": "#2b2d42",
    "subtitleColor": "#666",
    "subtitleFontSize": 12,
-   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
    "subtitlePadding": 4
   },
   "header": {
    "labelColor": "#222",
    "titleColor": "#222",
-   "labelFont": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+   "labelFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif"
   },
   "legend": {
    "labelFontSize": 12,
@@ -255,7 +255,7 @@
   },
   "text": {
    "color": "#222",
-   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+   "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif"
   }
  }
 }

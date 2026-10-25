@@ -11,8 +11,8 @@
    "higher."
   ]
  },
- "width": 800,
- "height": 660,
+ "width": 540,
+ "height": 450,
  "projection": {
   "type": "mercator"
  },
@@ -67,8 +67,8 @@
      "scale": {
       "type": "sqrt",
       "range": [
-       3,
-       560
+       2,
+       260
       ],
       "domain": [
        0,
@@ -128,6 +128,420 @@
      }
     ]
    }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "lon": 151.21,
+      "lat": -33.87,
+      "t": "Sydney"
+     }
+    ]
+   },
+   "encoding": {
+    "longitude": {
+     "field": "lon",
+     "type": "quantitative"
+    },
+    "latitude": {
+     "field": "lat",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "t"
+    }
+   },
+   "mark": {
+    "type": "text",
+    "align": "left",
+    "dx": 14,
+    "dy": 0,
+    "fontSize": 13,
+    "fontWeight": "bold",
+    "color": "#ffffff",
+    "stroke": "#ffffff",
+    "strokeWidth": 4,
+    "strokeJoin": "round"
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "lon": 151.21,
+      "lat": -33.87,
+      "t": "Sydney"
+     }
+    ]
+   },
+   "encoding": {
+    "longitude": {
+     "field": "lon",
+     "type": "quantitative"
+    },
+    "latitude": {
+     "field": "lat",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "t"
+    }
+   },
+   "mark": {
+    "type": "text",
+    "align": "left",
+    "dx": 14,
+    "dy": 0,
+    "fontSize": 13,
+    "fontWeight": "bold",
+    "color": "#222"
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "lon": 144.96,
+      "lat": -37.81,
+      "t": "Melbourne"
+     }
+    ]
+   },
+   "encoding": {
+    "longitude": {
+     "field": "lon",
+     "type": "quantitative"
+    },
+    "latitude": {
+     "field": "lat",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "t"
+    }
+   },
+   "mark": {
+    "type": "text",
+    "align": "right",
+    "dx": -14,
+    "dy": 14,
+    "fontSize": 13,
+    "fontWeight": "bold",
+    "color": "#ffffff",
+    "stroke": "#ffffff",
+    "strokeWidth": 4,
+    "strokeJoin": "round"
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "lon": 144.96,
+      "lat": -37.81,
+      "t": "Melbourne"
+     }
+    ]
+   },
+   "encoding": {
+    "longitude": {
+     "field": "lon",
+     "type": "quantitative"
+    },
+    "latitude": {
+     "field": "lat",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "t"
+    }
+   },
+   "mark": {
+    "type": "text",
+    "align": "right",
+    "dx": -14,
+    "dy": 14,
+    "fontSize": 13,
+    "fontWeight": "bold",
+    "color": "#222"
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "lon": 153.03,
+      "lat": -27.47,
+      "t": "Brisbane"
+     }
+    ]
+   },
+   "encoding": {
+    "longitude": {
+     "field": "lon",
+     "type": "quantitative"
+    },
+    "latitude": {
+     "field": "lat",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "t"
+    }
+   },
+   "mark": {
+    "type": "text",
+    "align": "left",
+    "dx": 14,
+    "dy": -4,
+    "fontSize": 13,
+    "fontWeight": "bold",
+    "color": "#ffffff",
+    "stroke": "#ffffff",
+    "strokeWidth": 4,
+    "strokeJoin": "round"
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "lon": 153.03,
+      "lat": -27.47,
+      "t": "Brisbane"
+     }
+    ]
+   },
+   "encoding": {
+    "longitude": {
+     "field": "lon",
+     "type": "quantitative"
+    },
+    "latitude": {
+     "field": "lat",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "t"
+    }
+   },
+   "mark": {
+    "type": "text",
+    "align": "left",
+    "dx": 14,
+    "dy": -4,
+    "fontSize": 13,
+    "fontWeight": "bold",
+    "color": "#222"
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "lon": 115.86,
+      "lat": -31.95,
+      "t": "Perth"
+     }
+    ]
+   },
+   "encoding": {
+    "longitude": {
+     "field": "lon",
+     "type": "quantitative"
+    },
+    "latitude": {
+     "field": "lat",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "t"
+    }
+   },
+   "mark": {
+    "type": "text",
+    "align": "right",
+    "dx": -14,
+    "dy": 0,
+    "fontSize": 13,
+    "fontWeight": "bold",
+    "color": "#ffffff",
+    "stroke": "#ffffff",
+    "strokeWidth": 4,
+    "strokeJoin": "round"
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "lon": 115.86,
+      "lat": -31.95,
+      "t": "Perth"
+     }
+    ]
+   },
+   "encoding": {
+    "longitude": {
+     "field": "lon",
+     "type": "quantitative"
+    },
+    "latitude": {
+     "field": "lat",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "t"
+    }
+   },
+   "mark": {
+    "type": "text",
+    "align": "right",
+    "dx": -14,
+    "dy": 0,
+    "fontSize": 13,
+    "fontWeight": "bold",
+    "color": "#222"
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "lon": 138.6,
+      "lat": -34.93,
+      "t": "Adelaide"
+     }
+    ]
+   },
+   "encoding": {
+    "longitude": {
+     "field": "lon",
+     "type": "quantitative"
+    },
+    "latitude": {
+     "field": "lat",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "t"
+    }
+   },
+   "mark": {
+    "type": "text",
+    "align": "right",
+    "dx": -14,
+    "dy": 6,
+    "fontSize": 13,
+    "fontWeight": "bold",
+    "color": "#ffffff",
+    "stroke": "#ffffff",
+    "strokeWidth": 4,
+    "strokeJoin": "round"
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "lon": 138.6,
+      "lat": -34.93,
+      "t": "Adelaide"
+     }
+    ]
+   },
+   "encoding": {
+    "longitude": {
+     "field": "lon",
+     "type": "quantitative"
+    },
+    "latitude": {
+     "field": "lat",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "t"
+    }
+   },
+   "mark": {
+    "type": "text",
+    "align": "right",
+    "dx": -14,
+    "dy": 6,
+    "fontSize": 13,
+    "fontWeight": "bold",
+    "color": "#222"
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "lon": 147.33,
+      "lat": -42.88,
+      "t": "Hobart"
+     }
+    ]
+   },
+   "encoding": {
+    "longitude": {
+     "field": "lon",
+     "type": "quantitative"
+    },
+    "latitude": {
+     "field": "lat",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "t"
+    }
+   },
+   "mark": {
+    "type": "text",
+    "align": "left",
+    "dx": 16,
+    "dy": 6,
+    "fontSize": 13,
+    "fontWeight": "bold",
+    "color": "#ffffff",
+    "stroke": "#ffffff",
+    "strokeWidth": 4,
+    "strokeJoin": "round"
+   }
+  },
+  {
+   "data": {
+    "values": [
+     {
+      "lon": 147.33,
+      "lat": -42.88,
+      "t": "Hobart"
+     }
+    ]
+   },
+   "encoding": {
+    "longitude": {
+     "field": "lon",
+     "type": "quantitative"
+    },
+    "latitude": {
+     "field": "lat",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "t"
+    }
+   },
+   "mark": {
+    "type": "text",
+    "align": "left",
+    "dx": 16,
+    "dy": 6,
+    "fontSize": 13,
+    "fontWeight": "bold",
+    "color": "#222"
+   }
   }
  ],
  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
@@ -136,7 +550,7 @@
   "view": {
    "stroke": null
   },
-  "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+  "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
   "axis": {
    "labelFontSize": 12,
    "titleFontSize": 12,
@@ -158,13 +572,13 @@
    "color": "#2b2d42",
    "subtitleColor": "#666",
    "subtitleFontSize": 12,
-   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+   "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
    "subtitlePadding": 4
   },
   "header": {
    "labelColor": "#222",
    "titleColor": "#222",
-   "labelFont": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+   "labelFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif"
   },
   "legend": {
    "labelFontSize": 12,
@@ -175,7 +589,7 @@
   },
   "text": {
    "color": "#222",
-   "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+   "font": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif"
   }
  }
 }
