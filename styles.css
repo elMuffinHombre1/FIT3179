@@ -358,13 +358,13 @@ footer .in {
 .pair .chart {
   padding: 12px;
 }
-@media (max-width: 1250px) {
+@media (max-width: 900px) {
   .pair {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     row-gap: 24px;
   }
 }
-@media (max-width: 700px) {
+@media (max-width: 560px) {
   .pair {
     grid-template-columns: minmax(0, 1fr);
   }
