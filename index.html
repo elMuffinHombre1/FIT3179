@@ -5,12 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Obesity in Australia: a data story</title>
 
-  <!-- STYLING
-       Edit styles.scss, then rebuild styles.css with:  sass styles.scss styles.css
-       The ?v= number makes browsers download the new file. Change it whenever styles.css changes. -->
+
   <link rel="stylesheet" href="styles.css?v=20261026a">
 
-  <!-- Vega-Lite libraries (these draw the charts) -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
@@ -18,10 +15,6 @@
 
 <body>
 <div class="page">
-
-  <!-- ===================================================================
-       PAGE HEADER
-       =================================================================== -->
   <header class="top">
     <div class="in">
       <h1>Obesity in Australia</h1>
@@ -59,18 +52,12 @@
         </p>
       </div>
 
-      <!-- ------------------------------------------------------------
-           Chart 1 of 12: Who is affected?
-           Layout: text on the left, chart on the right
-           To swap sides change "chart-right" to "chart-left"
-           Chart file: 01_population_pyramid.vl.json
-           ------------------------------------------------------------ -->
       <div class="feature chart-right" id="pyramid-sec">
         <div class="copy">
           <h3>Who is affected?</h3>
           <div class="text">
             <p>
-              The pyramid puts males on the left and females on the right. Among children aged 2 to 17,
+              The pyramid puts males in blue and females in orange. Among children aged 2 to 17,
               between about <strong>17% and 32%</strong> of each age and sex group are overweight or
               obese, compared with <strong>73% of adult men and 62% of adult women</strong>.
             </p>
@@ -521,9 +508,7 @@
       <h2>About this dashboard</h2>
       <ul>
         <li>
-          <strong>Audience and purpose:</strong> a general audience who want to understand obesity in
-          Australia: where it is concentrated and what it costs, who is affected and how that has
-          changed, and which social factors divide it most.
+          <strong>Author:</strong> Justin Sandoval.
         </li>
         <li>
           <strong>One idiom per question:</strong> population pyramid and line with confidence bands
@@ -534,37 +519,13 @@
           questions.
         </li>
         <li>
-          <strong>One colour theme, colour-blind safe:</strong> the same colours mean the same thing
-          everywhere. Males are blue and females vermillion (Okabe–Ito); wine marks the
-          highest-obesity group and teal the lowest; ordered weight categories use a Paul Tol
-          blue–sand–wine set that differs in lightness as well as hue; and sequential data uses
-          viridis, where darker always means a higher rate. Colour is never the only cue: charts also
-          use direct labels, marker shapes, line styles and printed values.
+          <strong>AI Usage:</strong> Artificial Intelligence has been used to format the data into a more usable form
         </li>
         <li>
-          <strong>Reading the charts:</strong> measured axes start at zero, grid lines mark every
-          scale, percentages carry a % sign, and units (percentage points, $ million, stays, adults)
-          are named in labels and tooltips. Where the sources give 95% confidence intervals they are
-          shown so small differences are not over-read.
-        </li>
-        <li>
-          <strong>Data:</strong> AIHW overweight and obesity tables (S5, S15, S21, S29), hospital
+          <strong>Data: Sources :</strong> AIHW overweight and obesity tables (S5, S15, S21, S29), hospital
           separations with U78.1, and PHIDU modelled estimates for Population Health Areas (2022).
           Boundaries: ABS Population Health Areas 2021, simplified for web use.
         </li>
-      </ul>
-
-      <h3>Colour guide</h3>
-      <ul class="swatches">
-        <li><i style="background:#0072B2"></i>Males</li>
-        <li><i style="background:#D55E00"></i>Females</li>
-        <li><i style="background:#88CCEE"></i>Not overweight</li>
-        <li><i style="background:#DDCC77"></i>Overweight (not obese)</li>
-        <li><i style="background:#882255"></i>Obese</li>
-        <li><i style="background:#882255"></i>Highest-obesity group</li>
-        <li><i style="background:#44AA99"></i>Lowest-obesity group</li>
-        <li><i style="background:#9A9A9A"></i>Other groups</li>
-        <li><i style="width:90px;background:linear-gradient(90deg,#fde725,#5ec962,#21918c,#3b528b,#440154)"></i>Sequential scale: darker = higher rate</li>
       </ul>
     </section>
   </main>
