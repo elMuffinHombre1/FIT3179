@@ -11,8 +11,8 @@
    "higher."
   ]
  },
- "width": 540,
- "height": 450,
+ "width": 330,
+ "height": 290,
  "projection": {
   "type": "mercator"
  },
@@ -67,8 +67,8 @@
      "scale": {
       "type": "sqrt",
       "range": [
-       2,
-       260
+       1.5,
+       150
       ],
       "domain": [
        0,
